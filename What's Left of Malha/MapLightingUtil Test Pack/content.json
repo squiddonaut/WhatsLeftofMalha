@@ -1,0 +1,34 @@
+{
+    "Format": "1.27.0",
+    "Changes": [
+        {
+			// Light textures are as follows (pulled from game code):
+			// Lantern = 1
+			// Window light = 2
+			// Sconce light = 4
+			// Cauldron light = 5
+			// Indoor window light = 6
+			// Projector light = 7
+			// Fish tank light = 8
+			// you can look at the different texture types in your unpacked content files > LooseSprites > Lighting
+			
+            "LogName": "Light Test",
+            "Action": "EditData",
+            "Target": "sophie.MapLightingUtil/Lights",
+            "Entries": {
+                "myTestID": {
+                    "Location": "BusStop",  		// game location to add light in - uses the internal name of the location, so "Custom_sophie_MyCustomLocation" or whatever
+					"StartTime": 1730,				// time to start showing light, formatted in military time (just bc thats how it is in the game code)
+					"EndTime": 2100,				// same thing but for time to turn off the light
+					"TextureType": 4,				// type of light texture to use 
+                    "Position": "10.5, 12.22",      // tile location: decimal values are okay
+                    "Radius": "3.5",	            // radius of light: decimal values are fine for this too
+					"R": 134,						// you know the drill, Red value from 0-255
+					"G": 65,						// Green value
+					"B": 240,						// Blue value
+					"A": 255						// Alpha value - not sure this has any effect?? probs just leave it at 255 (or experiment at your own risk)
+                }
+            }
+        }
+    ]
+}

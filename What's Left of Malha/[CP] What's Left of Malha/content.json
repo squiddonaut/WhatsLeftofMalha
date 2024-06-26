@@ -1,0 +1,867 @@
+{
+    "Format": "1.29.0",
+    "CustomLocations": [ 
+        {
+           "Name": "Custom_Malha_Malha",
+           "FromMapFile": "assets/Maps/MalhaRuins.tmx"
+        },
+        {
+            "Name": "Custom_Malha_Castle",
+            "FromMapFile": "assets/Maps/CastleRuins.tmx"
+         },
+         {
+            "Name": "Custom_Malha_SoniaHouse",
+            "FromMapFile": "assets/Maps/SoniaHouseRuins.tmx"
+         },
+         {
+            "Name": "Custom_Malha_Jellytopia",
+            "FromMapFile": "assets/Maps/Jellytopia.tmx"
+         },
+        {
+           "Name": "Custom_Malha_WarpRoom",
+           "FromMapFile": "assets/Maps/WarpRoom.tmx"
+        },        
+        {
+            "Name": "Custom_Malha_PrideFest",
+            "FromMapFile": "assets/Maps/PrideFest.tmx"
+         },
+        {
+            "Name": "Custom_Malha_SoniaParentsHouse",
+            "FromMapFile": "assets/Maps/SoniaParentsHouse.tmx"
+         }
+         
+     ],
+     "ConfigSchema": {
+        "PondPatio": {
+            "AllowValues": "true, false",
+            "Default": true
+        },
+        "Homophobia": {
+            "AllowValues": "true, false",
+            "Default": true
+        }
+    },
+    "Changes": [
+//Map Stuff
+        { //NPCWarp for Ryden
+            "Action": "EditMap",
+            "Target": "Maps/Beach",
+            "MapProperties": {
+                "NPCWarp": "14 38 Custom_Malha_Malha 28 0"
+            },
+            "When": {
+                "HasSeenEvent | contains=184432": true,
+                "HasSeenEvent | contains=184433": false
+            }
+        },
+        { //Ryden Spouse Patio
+            "Action": "Load",
+            "Target": "Maps/Custom_Malha_RydenSpousePatio",
+            "FromFile": "assets/Maps/RydenSpousePatio.tmx"
+        },
+        { //Ryden Spouse Patio No Pond
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_RydenSpousePatio",
+            "FromFile": "assets/Maps/RydenPatioNoPond.tmx",
+            "When": {
+                "PondPatio": false
+            }
+        },
+        {  //When player has Skull Key but has not seen Power Restored, Ryden is on beach
+			"Action": "EditMap",
+			"Target": "Maps/Beach",
+			"FromFile": "assets/Maps/Beach.tmx",
+			"FromArea": { "X": 49, "Y": 23, "Width": 2, "Height": 2},
+			"ToArea": { "X": 49, "Y": 23, "Width": 2, "Height": 2},
+            "When": {
+                "HasWalletItem": "SkullKey",
+                "HasSeenEvent | contains=184433": false
+            },
+            "Update": "OnTimeChange"
+		},
+        { //adds warp to Malha after Ryden lets you into Malha
+            "Action": "EditMap",
+            "Target": "Maps/Beach",
+            "AddWarps": [
+               "16 38 Custom_Malha_Malha 29 0"
+            ],
+            "When": {
+                "HasSeenEvent | contains=184433": true
+         }
+        },
+        { //Adds bubble to Beach after Ryden lets you into Malha
+            "Action": "EditMap",
+            "Target": "Maps/Beach",
+            "FromFile": "assets/Maps/Beach.tmx",
+            "FromArea": { "X": 14, "Y": 37, "Width": 4, "Height": 3},
+			"ToArea": { "X": 14, "Y": 37, "Width": 4, "Height": 3},
+            "When": {
+                "HasSeenEvent | contains=184433": true
+         }
+        },
+        { //Adds bubble to Beach to Night Market
+            "Action": "EditMap",
+            "Target": "Maps/Beach-NightMarket",
+            "AddWarps": [
+               "15 38 Custom_Malha_Malha 29 0"
+            ],
+            "When": {
+                "HasSeenEvent | contains=184433": true
+         }
+        },
+        { //Sonia Bundle Completion
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_SoniaHouse",
+            "FromFile": "assets/Maps/SoniaHouseRestored.tmx",
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.SoniaHouse}} >= 0": true
+         }
+        },
+        { //Ryden Bundle Completion
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Castle",
+            "FromFile": "assets/Maps/CastleRestored.tmx",
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+        }
+        },
+        { //Ryden Bundle Completion Properties
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Castle",
+            "MapProperties": {
+                "AmbientLight": "95 95 95",
+                "Light": "10 15 4 16 15 4 22 12 4 28 12 4 34 15 4 38 15 4 37 2 4 44 2 4",
+                "DayTiles": "Front 5 2 571 Front 5 3 601 Front 12 2 571 Front 12 3 601 Front 18 13 724 Front 18 14 754 Front 32 13 724 Front 32 14 754",
+                "NightTiles": "Front 5 2 570 Front 5 3 600 Front 12 2 570 Front 12 3 600 Front 18 13 723 Front 18 14 753 Front 32 13 723 Front 32 14 753"
+            },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+        }
+        },
+        { //Castle Doors
+            "Action": "EditImage",
+            "Target": "LooseSprites/Cursors",
+            "FromFile": "assets/Maps/castledoor.png",
+            "ToArea": { "X": 512, "Y": 144, "Width": 64, "Height": 48 },
+            "When": {
+                "LocationName": "Custom_Malha_Castle"
+                },
+            "Update": "OnLocationChange"
+        },
+        { //Also Castle Doors teehee
+            "Action": "EditImage",
+            "Target": "Maps/townInterior",
+            "FromFile": "assets/Maps/castledoor.png",
+            "FromArea": { "X": 0, "Y": 0, "Width": 16, "Height": 48 },
+            "ToArea": { "X": 384, "Y": 16, "Width": 16, "Height": 48 },
+            "When": {
+                "LocationName": "Custom_Malha_Castle"
+                },
+            "Update": "OnLocationChange"
+        },
+        { //Castle Doors restored
+            "Action": "EditImage",
+            "Target": "LooseSprites/Cursors",
+            "FromFile": "assets/Maps/castledoorrestored.png",
+            "ToArea": { "X": 512, "Y": 144, "Width": 64, "Height": 48 },
+            "When": {
+                "LocationName": "Custom_Malha_Castle",
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+                },
+            "Update": "OnLocationChange"
+        },
+        { //Also Castle Doors restored
+            "Action": "EditImage",
+            "Target": "Maps/townInterior",
+            "FromFile": "assets/Maps/castledoorrestored.png",
+            "FromArea": { "X": 0, "Y": 0, "Width": 16, "Height": 48 },
+            "ToArea": { "X": 384, "Y": 16, "Width": 16, "Height": 48 },
+            "When": {
+                "LocationName": "Custom_Malha_Castle",
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+                },
+            "Update": "OnLocationChange"
+        },
+//Custom NPC Exclusions
+         {
+            "Action": "EditData",
+            "Target": "Data/CustomNPCExclusions",
+            "Entries": {
+                "Ryden": "All"
+            },
+            "When": {
+                "HasSeenEvent | contains=184432": false
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/CustomNPCExclusions",
+            "Entries": {
+                "Ryden": "ItemDelivery"
+            },
+            "When": {
+                "HasSeenEvent | contains=184432": true
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/CustomNPCExclusions",
+            "Entries": {
+                "Sonia": "All"
+            },
+            "When": {
+                "HasSeenEvent | contains=1844310": false
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/CustomNPCExclusions",
+            "Entries": {
+                "Sonia": "TownEvent TownQuest IslandEvent"
+            },
+            "When": {
+                "HasSeenEvent | contains=1844310": true,
+                "HasSeenEvent | contains=1844318": false
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/CustomNPCExclusions",
+            "Entries": {
+                "Sonia": "ItemDelivery"
+            },
+            "When": {
+                "HasSeenEvent | contains=1844318": true
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/CustomNPCExclusions",
+            "Entries": {
+                "Marcus": "All"
+            }
+        },
+//Unlockable Bundles Stuff
+        {
+            "Action": "Load",
+            "Target": "Mods/squiddonaut.WhatsLeftofMalha/Sonia",
+            "FromFile": "assets/BundleIcons/Sonia.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Mods/squiddonaut.WhatsLeftofMalha/Ryden",
+            "FromFile": "assets/BundleIcons/Ryden.png"
+        },
+        {
+            "Action": "EditData",
+            "Target": "UnlockableBundles/Bundles",
+            "Entries":{
+            "Malha.SoniaHouse": {
+                "Location": "Custom_Malha_SoniaHouse",
+                "BundleName": "Sonia's Bundle",
+                "BundleIconAsset": "Mods/squiddonaut.WhatsLeftofMalha/Sonia",
+                "BundleSlots": 4,	  
+                "ShopPosition": "15, 15",
+                "ShopType": "CCBundle",
+                "BundleReward": {
+                    "money": 50000,
+                    "645": 3 //Iridium Sprinkler
+                    },
+                "Price": {
+                  "221": 1, //Pink cake
+                  "344": 3, //jelly ;)
+                  "577": 1, //Fairy Stone
+                  "595:gold": 5, //Gold Fairy Rose
+                  "636": 10 //Peach
+                    }
+                 }
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "UnlockableBundles/Bundles",
+            "Entries":{
+            "Malha.Castle": {
+                "Location": "Custom_Malha_Castle",
+                "BundleName": "Ryden's Bundle",
+                "BundleIconAsset": "Mods/squiddonaut.WhatsLeftofMalha/Ryden",
+                "BundleSlots": 4,	  
+                "ShopPosition": "11, 9",
+                "ShopType": "CCBundle",
+                "BundleReward": {
+                    "money": 50000,
+                    "204": 3, //Lucky Lunch
+                    "265": 3,  //Seafoam Pudding
+                    "201": 3 //Complete Breakfast
+                  },
+                "Price": {
+                  "228": 1, //Maki Roll
+                  "715": 1, //Lobster
+                  "226": 1, //Spicy Eel
+                  "614": 1 //Green tea
+                }
+              }
+            }
+        }, 
+//Mail
+        {
+            "Action": "EditData",
+            "Target": "Data/Mail",
+            "Entries": {
+                "Custom_Malha_RydenDate": "To my bestest friend @,^I must humbly request that you meet me outside of the castle in Malha. I have something very special planned.   ^   From your favorite merman,   ^   Ryden[#]Ryden's Invitation"
+            }
+        },  
+//Ryden Stuff
+        {
+            "Action": "Load",
+            "Target": "Characters/Ryden",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_surface.png"
+        },
+        {
+            "Action": "EditImage",
+            "Target": "Characters/Ryden",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden.png",
+            "When": {
+                "LocationName": "Custom_Malha_Castle, Custom_Malha_Malha, Custom_Malha_SoniaHouse, Beach, Custom_Malha_Jellytopia"
+            },
+            "Update": "OnLocationChange"
+         },   
+        {
+            "Action": "Load",
+            "Target": "Portraits/Ryden",
+            "FromFile": "assets/CharacterFiles/Portraits/Ryden/Ryden_surface.png"
+        },
+        {
+            "Action": "EditImage",
+            "Target": "Portraits/Ryden",
+            "FromFile": "assets/CharacterFiles/Portraits/Ryden/Ryden.png",
+            "When": {
+                "LocationName": "Custom_Malha_Castle, Custom_Malha_Malha, Custom_Malha_SoniaHouse, Beach, Custom_Malha_Jellytopia"
+            },
+            "Update": "OnLocationChange"
+         },
+         { ///Note: only used in 10 heart event
+            "Action": "Load",
+            "Target": "Characters/Ryden_underwater",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden.png"
+        },
+        { ///Note: only used in 10 heart event
+            "Action": "Load",
+            "Target": "Portraits/Ryden_underwater",
+            "FromFile": "assets/CharacterFiles/Portraits/Ryden/Ryden.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/Dialogue/Ryden",
+            "FromFile": "assets/CharacterFiles/Dialogue/Ryden/Dialogue.json"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/Dialogue/MarriageDialogueRyden",
+            "FromFile": "assets/CharacterFiles/Dialogue/Ryden/MarriageDialogue.json"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/schedules/Ryden",
+            "FromFile": "assets/CharacterFiles/Schedules/Ryden.json"
+        },
+        {
+            "Action": "Load",
+            "Target": "Strings/schedules/Ryden",
+            "FromFile": "assets/Strings/ScheduleDialogue/Ryden.json"
+        },
+           {
+            "Action": "EditData",
+            "Target": "Data/SpouseRooms",
+            "Entries": {
+                "Ryden": "Custom_Malha_RydenSpouseRoom/0"
+            }
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/Custom_Malha_RydenSpouseRoom",
+            "FromFile": "assets/Maps/RydenSpouseRoom.tmx"
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/SpousePatios",
+            "Entries": {
+                "Ryden": "Custom_Malha_RydenSpousePatio/0/22 22 22 22 22 23 23 23 23 23/1 3"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Characters/schedules/Ryden",
+            "Entries": {
+                "spring":"610 Custom_Malha_Castle 6 5 3/2200 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "default": "GOTO spring"
+            }
+        },
+        { //schedule
+            "Action": "EditData",
+            "Target": "Characters/schedules/Ryden",
+            "Entries": {
+                "rain": "610 Custom_Malha_Castle 6 5 3/1000 Beach 51 24 2 \"Strings\\schedules\\Ryden:rain.000\"/1400 ArchaeologyHouse 15 9 0/2200 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "spring":"610 Custom_Malha_Castle 6 5 3/900 Beach 20 13 2/1400 Custom_Malha_Malha 29 30 2/2200 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "winter": "610 Custom_Malha_Castle 6 5 3/1300 Custom_Malha_Malha 29 32 2/2130 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "Tue": "610 Custom_Malha_Castle 6 5 3/1000 Custom_Malha_Malha 28 50 2 \"Strings\\schedules\\Ryden:ruins.000\"/1400 Custom_Malha_Castle 24 17 2/1800 Custom_Malha_Castle 4 10 3/2200 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "Wed": "610 Custom_Malha_Castle 6 5 3/1030 Town 87 103 2/1330 Town 72 91 3/1700 Town 51 87 0 \"Strings\\schedules\\Ryden:grave.000\"/2130 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "Fri": "610 Custom_Malha_Castle 6 5 3/1000 Custom_Malha_Malha 42 5 0 ryden_dishes/1400 Saloon 20 19 3/2200 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "fall_Mon": "610 Custom_Malha_Castle 6 5 3/1000 Mountain 58 35 1/1600 Town 32 89 0/2100 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "summer_Thu": "610 Custom_Malha_Castle 6 5 3/900 Beach 10 39 2/1300 Custom_Malha_Castle 9 6 2 ryden_weights \"Strings\\schedules\\Ryden:weights.000\"/1700 Custom_Malha_Malha 29 32 2/2130 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "winter_15": "610 Custom_Malha_Castle 6 5 3/1100 Custom_Malha_Castle 40 5 0/1600 Beach 11 30 2/2200 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "winter_16": "610 Custom_Malha_Castle 6 5 3/1100 Custom_Malha_Malha 28 46 0/1600 Beach 11 30 2/2200 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "winter_17": "610 Custom_Malha_Castle 6 5 3/1100 Custom_Malha_Castle 40 5 0/1600 Beach 11 30 2/2200 Custom_Malha_Castle 6 5 3 ryden_sleep",
+                "marriage_Tue":"900 Custom_Malha_Malha 26 31 2/1500 BusStop -1 23 3",
+                "default": "GOTO spring"
+            },
+            "When": {
+                "HasSeenEvent | contains=184432": true
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/NPCDispositions",
+            "Entries": {
+                "Ryden": "teen/neutral/outgoing/positive/male/datable/none/Other/summer 10//Custom_Malha_Castle 6 5/Ryden"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/NPCGiftTastes",
+            "Entries": {
+                "Ryden": "I am astounded! What a wonderful gift!$h/228 837 213/I'm flattered, @! Thank you./206 194 -4 -5/Well, this is... cute.//Why would you bestow upon me something so detestable?/256 -21 -22/I can surely find use for this. Thank you, @.//"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/EngagementDialogue",
+            "Entries": {
+                "Ryden0": "Oh, blessed day!$h#$e#The prospect of sharing my life with the one I love...$l#$b#How unbelievably exciting!$h",
+                "Ryden1": "If you went back in time and told me I was going to get married, I would've thought you were crazy...#$b#But now, there's nothing more I want in the world.$l"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Characters/Dialogue/MarriageDialogueRyden",
+            "Entries": {
+                "OneKid_1": "%kid1 is most definitely half merperson. I can sense it.#$b#When the time is right, I will instruct %kid1 in the art of merfolk transformation - if you think it best, of course.",
+                "TwoKids_1": "I wonder what it will be like for our children, growing up as half merpeople in such a divided world...$s#$b#Whether they will choose to be a part of the human world or the merfolk world - I think it is best that we leave that decision to them.$11"
+            },
+            "When": {
+                "PlayerGender": "Female"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/animationDescriptions",
+            "Entries": {
+                "ryden_sleep": "21/21/21",
+                "ryden_dishes": "36/36 37/36",
+                "ryden_weights": "40/40 40 40 40 40 41 42 43 43 43 43 43 43 43 42 41 40/40"
+            }
+        },
+//Sonia Stuff
+        {
+            "Action": "Load",
+            "Target": "Characters/Sonia",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Sonia/Sonia_surface.png"
+        },
+        {
+            "Action": "EditImage",
+            "Target": "Characters/Sonia",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Sonia/Sonia_surfacecast.png",
+            "When": {
+                "HasSeenEvent | contains=1844306": "true"
+            },
+            "Update": "OnTimeChange, OnLocationChange"
+        },
+        {
+            "Action": "EditImage",
+            "Target": "Characters/Sonia",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Sonia/Sonia.png",
+            "When": {
+                "LocationName": "Custom_Malha_Castle, Custom_Malha_Malha, Custom_Malha_SoniaHouse, Beach, Hospital"
+            },
+            "Update": "OnLocationChange"
+        },
+        {
+            "Action": "EditImage",
+            "Target": "Characters/Sonia",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Sonia/Sonia_cast.png",
+            "When": {
+                "LocationName": "Custom_Malha_Castle, Custom_Malha_Malha, Custom_Malha_SoniaHouse, Beach",
+                "HasSeenEvent | contains=1844306": "true"
+            },
+            "Update": "OnTimeChange, OnLocationChange"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/Sonia",
+            "FromFile": "assets/CharacterFiles/Portraits/Sonia/Sonia_surface.png"
+        },
+        {
+            "Action": "EditImage",
+            "Target": "Portraits/Sonia",
+            "FromFile": "assets/CharacterFiles/Portraits/Sonia/Sonia.png",
+            "When": {
+                "LocationName": "Custom_Malha_Castle, Custom_Malha_Malha, Custom_Malha_SoniaHouse, Beach, Hospital"
+            },
+            "Update": "OnLocationChange"
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/NPCDispositions",
+            "Entries": {
+                "Sonia": "teen/neutral/neutral/negative/female/datable/none/Other/winter 5//Custom_Malha_SoniaHouse 18 14/Sonia"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/NPCGiftTastes",
+            "Entries": {
+                "Sonia": "Woah... who told you this was my favorite?/577 595 838/Hey, this is actually really nice. Thanks.//Thanks, I guess... I can at least pass it on to someone who actually wants it./74/This is truly vomit-inducing. Well done./162 -21 -22/Huh... not bad. Is this something humans are into?//"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/EngagementDialogue",
+            "Entries": {
+                "Sonia0": "I never thought I'd be friends with a human, much less marry one...$u#$b#But I don't think I'll regret this decision.",
+                "Sonia1": "Going from being a warrior to a farmer's wife...$s#$b#My life is about to change, but I'm ready for it."
+            }
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/schedules/Sonia",
+            "FromFile": "assets/CharacterFiles/Schedules/Sonia.json"
+        },
+        {
+            "Action": "EditData",
+            "Target": "Characters/schedules/Sonia",
+            "Entries": {
+                "spring": "610 Custom_Malha_SoniaHouse 12 8 2/2200 Custom_Malha_SoniaHouse 18 14 1",
+                "summer": "610 Custom_Malha_SoniaHouse 12 8 2/2200 Custom_Malha_SoniaHouse 18 14 1",
+                "fall": "610 Custom_Malha_SoniaHouse 12 8 2/2200 Custom_Malha_SoniaHouse 18 14 1",
+                "winter": "610 Custom_Malha_SoniaHouse 12 8 2/2200 Custom_Malha_SoniaHouse 18 14 1",
+                "default": "GOTO spring"
+            }
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/Dialogue/Sonia",
+            "FromFile": "assets/CharacterFiles/Dialogue/Sonia/Dialogue.json"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/Dialogue/MarriageDialogueSonia",
+            "FromFile": "assets/CharacterFiles/Dialogue/Sonia/MarriageDialogue.json"
+        },
+//Marcus Stuff
+        {
+            "Action": "Load",
+            "Target": "Characters/Marcus",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Marcus/Marcus.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/Marcus",
+            "FromFile": "assets/CharacterFiles/Portraits/Marcus/Marcus.png"
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/NPCDispositions",
+            "Entries": {
+                "Marcus": "adult/neutral/neutral/negative/male/not-datable/none/Other/fall 26//Custom_Malha_WarpRoom 1 1/Marcus"
+            }
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/schedules/Marcus",
+            "FromFile": "assets/CharacterFiles/Schedules/Marcus.json"
+        },
+        {
+            "Action": "EditData",
+            "Target": "Characters/schedules/Marcus",
+            "Entries": {
+                "spring": "610 Custom_MalhaWarpRoom 1 2 2/2200 Custom_Malha_WarpRoom 1 1 1",
+                "summer": "610 Custom_MalhaWarpRoom 1 2 2/2200 Custom_Malha_WarpRoom 1 1 1",
+                "fall": "610 Custom_MalhaWarpRoom 1 2 2/2200 Custom_Malha_WarpRoom 1 1 1",
+                "winter": "610 Custom_MalhaWarpRoom 1 2 2/2200 Custom_Malha_WarpRoom 1 1 1",
+                "default": "GOTO spring"
+            }
+        },
+//Sonia Parents Stuff
+        {
+            "Action": "Load",
+            "Target": "Characters/SoniaMom",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/SoniaParents/SoniaMom.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/SoniaMom",
+            "FromFile": "assets/CharacterFiles/Portraits/SoniaParents/SoniaMom.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/SoniaDad",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/SoniaParents/SoniaDad.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/SoniaDad",
+            "FromFile": "assets/CharacterFiles/Portraits/SoniaParents/SoniaDad.png"
+        },
+//Malha Lighting
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "125 125 125"
+                },
+                "When": {
+                    "Time": "{{Range: 600, 1650}}"
+                },
+                 "Update": "OnTimeChange"
+        },
+         {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "145 145 145"
+                },
+                "When": {
+                    "Time": "{{Range: 1700, 1720}}"
+                },
+                "Update": "OnTimeChange"
+        },
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "165 165 165"
+                },
+                "When": {
+                    "Time": "{{Range: 1730, 1750}}"
+                },
+                "Update": "OnTimeChange"
+        },
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "185 185 185"
+                },
+                "When": {
+                    "Time": "{{Range: 1800, 1820}}"
+                },
+                "Update": "OnTimeChange"
+        },
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "205 205 205"
+                },
+                "When": {
+                    "Time": "{{Range: 1830, 1850}}"
+                },
+                "Update": "OnTimeChange"
+        },
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "225 225 225"
+                },
+                "When": {
+                    "Time": "{{Range: 1900, 1920}}"
+                },
+                "Update": "OnTimeChange"
+        },
+//end Malha lighting
+//Events
+        { //Mail Events
+            "Action": "EditData",
+            "Target": "Data/Events/Farmhouse",
+            "Entries": {
+                "1844307/f Ryden 2000/x Custom_Malha_RydenDate": "null"
+            }
+        },
+        { //Castle Events
+            "Action": "Load",
+            "Target": "Data/Events/Custom_Malha_Castle",
+            "FromFile": "assets/Events/Custom_Malha_Castle.json"
+        },
+        { //Sonia's House Events
+            "Action": "Load",
+            "Target": "Data/Events/Custom_Malha_SoniaHouse",
+            "FromFile": "assets/Events/Custom_Malha_SoniaHouse.json"
+        },
+        { //Malha Events
+        "Action": "Load",
+        "Target": "Data/Events/Custom_Malha_Malha",
+        "FromFile": "assets/Events/Custom_Malha_Malha.json"
+    },
+        {
+            "Action": "EditData",
+            "Target": "Data/Events/Beach",
+            "Entries": {
+                "184431/b 1/t 600 1900": "ocean/-1000 -1000/farmer 40 24 1 Ryden 100 100 0/skippable/changeName Ryden ???/fade unfade/viewport 48 24/fade true/move farmer 3 0 1/shake Ryden 1000/pause 3000/speak Ryden \"Urgh...$8\"/move farmer 4 0 1/pause 2000/speak Ryden \"Fish tacos...$8\"/emote farmer 8/speak Ryden \"All I need... is one fish taco...$8\"/shake Ryden 1000/pause 3000/speak Ryden \"Huh? ...A human?$9#$b#You there... please, hear my plea.$8\"/pause 1500/speak Ryden \"I just need one fish taco...$8\"/end",
+                "184432/e 184431/i 213": "ocean/-1000 -1000/farmer 43 24 1 Ryden 100 100 0/skippable/changeName Ryden ???/fade unfade/viewport 48 24/fade true/move farmer 4 0 1/pause 2000/speak Ryden \"That smell...$8#$b#Could it be...?$9\"/addObject 48 24 213/removeItem 213/playSound throwDownITem/pause 1500/speak Ryden \"Yes... finally...$8\"/pause 1000/removeObject 48 24/playSound eat/pause 1000/speak Ryden \"Ahhh... I can feel the power surging through me...$10\"/pause 500/globalFade 0.04/viewport -1000 -1000/playSound wand/screenFlash 1/warp farmer 12 35 2/faceDirection farmer 2/warp Ryden 12 37 2/faceDirection Ryden 2/pause 800/fade/viewport 12 39 clamp/pause 1000/animate Ryden false false 100 1 5 9 13 1/pause 500/playSound yoba/animate Ryden false true 2500 16/pause 2500/faceDirection Ryden 2/speak Ryden \"YES!$h\"/stopAnimation Ryden/playMusic musicboxsong/pause 1500/move Ryden 0 1 2/speak Ryden \"I thought I'd never gaze upon the sea in all of its glory again...\"/faceDirection Ryden 0/speak Ryden \"Human! You have my deepest of gratitudes.$h#$b#Perhaps we will meet again, but for now, I must take my leave.\"/faceDirection Ryden 2/move Ryden 0 1 2/speak Ryden \"So long!\"/pause 3000/shake Ryden 1000/playMusic ocean/pause 2500/emote farmer 8/pause 2000/speak Ryden \"...$7\"/pause 2500/faceDirection Ryden 0/speak Ryden \"Have you ever heard tale of the fate of Malha?$11#$b#It's not a story most merfolk will tell you.$7\"/move farmer 0 1 2/pause 1000/faceDirection Ryden 2/playMusic echos/speak Ryden \"Long ago, the city of Malha was founded as a safe haven for merfolk from all across the Gem Sea.$11#$b#The city grew in size and power, becoming a hub of trade and culture within the vast expanse of the sea.$11#$b#No one ever thought that a city so prosperous could fall so easily.$7#$b#Previously docile sea creatures became suddenly agitated, tearing down our walls and ravaging our homeland.$11#$b#It can't be said for sure, but many believe that they were provoked by the poisoning of our waters.$11#$b#Only one last bastion remains--yet even it is in disarray.$11#$b#It was in the defense of this last bastion that I was defeated and found myself here.$7\"/pause 500/faceDirection Ryden 0/pause 1000/faceDirection Ryden 2/playMusic none/speak Ryden \"I owe the merpeople my presence, but...$s#$b#It is a place I hesitate to return to.$7\"/playMusic ocean/pause 3000/faceDirection Ryden 0/speak Ryden \"Human! With my powers restored, I can transform into one of your kind at will.$0#$b#Perhaps I could... come back around every once in a while?$u\"/faceDirection Ryden 2/animate Ryden false false 100 1 5 9 13 1/pause 500/playSound yoba/animate Ryden false true 1000 16/speak Ryden \"So long for now!$h\"/stopAnimation Ryden/globalFade 0.03/viewport -1000 -1000/pause 1000/playSound pullItemFromWater/pause 2000/end",
+                "1844306/e 184433/f Ryden 1500/t 600 1900": "ocean/-1000 -1000/farmer 12 17 2 Ryden 5 24 2/pause 1000/skippable/showFrame Ryden 24/positionOffset Ryden 0 24/fade/viewport 10 26 clamp/move farmer 0 9 3/move farmer -1 0 3/pause 3000/speak Ryden \"...$7#$b#Oh. Hi, @.#$b#I'm just... sitting enjoying the weather. Nothing to see here.$s\"/pause 1000/quickQuestion ...#Is something wrong? You seem upset.#Well, I'll leave you to it.(break)speak Ryden \"No! I mean, doesn't everyone like to sit on a rock and brood every once in a while?$12#$b#...Fine. You caught me.$7#$b#It's just family stuff. I mean - daddy issues. You know how it is.$12\"(break)move farmer 1 0 0\\move farmer 0 -3 0\\speak Ryden \"Wait.$s\"\\faceDirection farmer 3\\speak Ryden \"Don't go. Not yet.$11\"\\move farmer 0 3 3\\move farmer -1 0 3/playMusic echos/speak Ryden \"The truth is, me and my dad got into a pretty bad fight about me spending so much time away lately.$12#$b#It was about that at first, at least... but then he started talking about how I'm dishonoring the family with how I live my life.$12#$b#When I was younger, I would come to this pier on rainy days and watch for a human boy that would come by.$s#$b#The way his hair clung to his face, the way his eyes seemed to glimmer in the light... I couldn't get enough.$l#$b#I hated myself for it.$s#$b#Not the \"boy\" part, mind you! Merfolk come in \"all colors of the coral\", as we say.#$b#I had simply never found myself attracted to something so... legged.#$b#Finally, my dad asked me what had gotten me so head over heels lately. I figured if I told him it was a boy and conveniently left out the human part, he wouldn't be mad.$s#$b#Turns out my dad is more traditional than I thought.$7#$b#He started going on and on about how \"unbecoming\" it is of me to be messing around with other mermen, and that if I don't produce an heir, my mother would be rolling in her grave.$s#$b#Which is ridiculous! His kingdom was completely torn apart and he cares about the optics of a gay relationship?!$a#$b#If he was actually a half decent dad, he'd just leave me alone!$a#$b#Even if I might not produce an heir...$12\"/playMusic none/pause 1500/speak Ryden \"Even if he wishes I wasn't his son.$7#$b#...$s#$b#...$15\"/animate Ryden false false 350 0 25 26 25 26 25 26 25 26 25 26 25 26 25 26 27 29 30 31 32/pause 5000/speak Ryden \"Ever since that day, I've been terrified to tell him that I love humans, too. I just don't know how he'd react.$14#$b#And yeah, I know it always seems like I'm confident and I don't care what other people think, but honestly... I want people to like me.$13#$b#I want my dad to love me.$13#$b#Sometimes I think it would be easier to just be the son he wants, but...$13\"/quickQuestion I'm not sure I'd be happy that way.#Living authentically is hard, but pretending to be someone you're not is even harder.#It would definitely be easier...#Your dad sounds like he sucks.(break)speak Ryden \"*sniff*...$13#$b#Yeah. You're right.$14#$b#That was very poetic of you, @. ...Thank you.$14#$b#It's time for me to get off this stupid rock.$14\"(break)speak Ryden \"I know... no more fights, no more feeling like I've failed as a son...$11#$b#...No. That's not right.$7#$b#I'm not gonna let someone bully the fabulous out of me. Even if he is my dad.$s#$b#Plus... I think the joy I get from being myself is greater than the pain of being rejected.$11#$b#Thank you for letting me be myself around you, @.#$b#It's time for me to get off this stupid rock.\"(break)speak Ryden \"...$13#$b#...Pffhahaha!$16#$b#You know what - he DOES suck, huh?$14#$b#And I don't let sucky people tell me what to do.$16#$b#You really know how to cheer me up. Thank you, @.$14#$b#It's time for me to get off this stupid rock.$14\"/globalFade 0.007/viewport -1000 -1000/playMusic ocean/pause 2000/playSound pullItemFromWater/pause 500/playSound slosh/pause 500/playSound slosh/pause 500/playSound pullItemFromWater/warp farmer 13 27 3/warp Ryden 11 27 1/showFrame Ryden 0/faceDirection Ryden 1/positionOffset Ryden 0 -24/fade/viewport 10 26 clamp/pause 2000/speak Ryden \"I'm such a teenager sometimes, aren't I?\"/pause 500/speak Ryden \"@...you're one of my closest friends.#$b#And I won't let anyone get in the way of our friendship. No matter what.\"/pause 5000/end"
+            }
+        },
+        {//Ryden lets you into Malha
+            "Action": "EditData",
+                "Target": "Data/Events/Town",
+                "Entries": { 
+                    "184433/e 184432/f Ryden 500/t 1000 1900": "springtown/-1000 -1000/farmer 52 29 0 Ryden 50 22 0/skippable/fade/viewport 52 24/advancedMove Ryden false 5 0 4 1/pause 500/move farmer 0 -4 0/pause 2000/move Ryden -5 0 0/pause 2000/move Ryden 2 0 0/pause 1000/speak Ryden \"Hmmm...$u\"/pause 500/faceDirection Ryden 2/speak Ryden \"Oh! Hello there, @!\"/faceDirection Ryden 0/speak Ryden \"Every time I've visited Pelican Town, this community center has caught my eye.#$b#I sense a magical presence in the area...$u\"/faceDirection Ryden 2/quickQuestion Tell me - have you seen anything peculiar?#I think I've seen some kind of spirits...#Yeah. Magical apples.(break)speak Ryden \"Spirits, you say? That is most intriguing...$u\"(break)speak Ryden \"Magical apples, you say? That is most intriguing...$u\"/playMusic none/pause 1000/speak Ryden \"@... can I ask something of you that might sound a little bit crazy?\"/emote farmer 32/pause 500/faceDirection Ryden 0/pause 500/speak Ryden \"...I want you to come to Malha.$7\"/faceDirection Ryden 2/playMusic malha_malharuins/speak Ryden \"There's something I haven't been telling you.$s#$b#...I'm actually a prince.$7#$b#For years now, I have watched my people suffer... and I have not been able to do anything about it.$s#$b#Unlike mermaids, humans are generally numb to magic. But if you have a uniquely intimate connection to the arcane forces of nature...$s#$b#You might just be the cure to our ailment.\"/pause 200/move Ryden 0 1 2/pause 500/speak Ryden \"In my time on the surface, @... you have become a dear friend.#$b#I trust that you would not do anything to endanger Malha.#$b#With all that said... wait one moment.\"/move Ryden 0 -1 2/pause 500/shake Ryden 1000/pause 1000/playSound wand/screenFlash 1/pause 500/speak Ryden \"Don't fear, @. It was simply a spell of water breathing, and nothing more.#$b#Visit the westernmost dock on the beach tomorrow, and I will have opened a magical method of transport for you.#$b#I will eagerly await your arrival.$h\"/playMusic none/move Ryden -1 0 2/move Ryden 0 6 2/faceDirection farmer 2/pause 500/faceDirection Ryden 0/speak Ryden \"One more thing, @. There's a little house nestled into a shipwreck in the northeastern part of Malha where my friend Sonia lives.#$b#I know that she would just love to meet you... so stop by when you can, okay?$h\"/faceDirection Ryden 2/speak Ryden \"See you!$h\"/move Ryden 0 5 2 true/pause 500/end "
+                }
+        },
+        {//Sonia learns to crochet
+            "Action": "EditData",
+            "Target": "Data/Events/ArchaeologyHouse",
+            "Entries": {
+                "1844318/e 184433/f Sonia 2000": "libraryTheme/-1000 -1000/farmer 11 11 1 Sonia 16 11 1/skippable/showFrame Sonia 28/fade/viewport 14 11/move farmer 3 0 1/pause 1000/speak Sonia \"Hmmm...$9\"/pause 2000/faceDirection Sonia 3/pause 500/speak Sonia \"Oh. Hi, @.\"/quickQuestion ...#You're on the surface?!#Your cast is gone?!(break)speak Sonia \"Don't look so surprised, @.$8\"(break)speak Sonia \"Sure is! I got it off today.$h\"/speak Sonia \"I... thought about what you said. About getting a new hobby.$u#$b#And I figured maybe I could get some inspiration from the human world.#$b#I'm still skeptical, but... you've shown me that maybe it's not so bad after all.\"/faceDirection Sonia 1/showFrame Sonia 28/pause 1000/shake Sonia 1000/pause 1000/speak Sonia \"Ugh!$a\"/move farmer 0 1 1/move farmer 2 0 0/pause 1000/faceDirection Sonia 2/speak Sonia \"I picked up this book on how to crochet.#$b#My arm still isn't back to what it was...$u#$b#But I thought it was at least worth checking out.#$b#The book even says that it's possible for people with disabilities to crochet one handed...$9#$b#But it's just so hard!$11#$b#My left fingers don't move like they used to...$s\"/quickQuestion It's making me think I should just try something else.#There are lots of other things to try.#You shouldn't give up yet.(break)speak Sonia \"I guess... I'll keep looking.$s#$b#...Wait. Before I do, though, can you hold this yarn in place for me so I can try something?$8\"(break)speak Sonia \"You're right. I've never been one to give up so easily.$17#$b#...I have an idea. Can you hold this yarn in place for me so I can try something?$8\"/faceDirection Sonia 1/showFrame Sonia 28/pause 500/startJittering/pause 500/stopJittering/pause 500/message \"As you hold the yarn, Sonia finds a way to prop her arm up on the crochet book, holding the hook in place underneath her forearm.\"/speak Sonia \"I think I'm on to something.$17\"/message \"Slowly and carefully, Sonia makes a stitch.\"/animate Sonia false false 800 28 29 28/pause 500/speak Sonia \"Yes!$h\"/emote farmer 32/pause 500/faceDirection Sonia 2/speak Sonia \"It'll take some practice, but...#$b#I think I might be able to make this work.$h\"/faceDirection Sonia 1/playMusic none/pause 2000/speak Sonia \"Crocheting is so... quiet, isn't it?$s#$b#I'm not really used to something like this. Doing something so... small.$s#$b#Part of me feels like I have to push myself until I become the best crocheter there ever was...$9#$b#But that's not really the point, is it?$11\"/pause 1000/faceDirection Sonia 2/pause 1000/speak Sonia \"You know... I think it might be okay to do something just for the sake of having fun.#$b#You've helped me realize that. Thank you, @.$h\"/faceDirection Sonia 1/playMusic libraryTheme/pause 1000/speak Sonia \"I'm gonna be the greatest fun-haver in all the Gem Sea!$h\"/emote farmer 28/pause 500/faceDirection Sonia 2/pause 500/emote Sonia 32/pause 500/end"
+            }
+        },
+        {//Making terrible food with Ryden
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Castle",
+            "Entries": { 
+                "1844304/e 184433/f Ryden 1000/t 800 2000": "none/-1000 -1000/farmer 39 13 0 Ryden 41 5 0/fade/addObject 38 3 153/addObject 39 3 138/viewport 40 6 clamp/move farmer 0 -3 0/faceDirection Ryden 2/speak Ryden \"Farmer! Thank goodness you're here!$6#$b#You have arrived at a most critical moment...$11#$b#I'm cooking!$h\"/playMusic playful/move farmer 0 -4 0/move farmer 3 0 0/move farmer 0 -1 3/faceDirection Ryden 1/speak Ryden \"You must know by now, @, that I have an insatiable appetite for all things fine cuisine.$11#$b#I regret to admit that, despite this, I have never learned how to cook myself.#$b#But then... I considered the freedoms I would unlock if I had the ability to make whatever I want whenever I want.#$b#The possibilities would be endless!$6#$b#In light of this epiphany... I have resolved to become a master chef!$h\"/faceDirection Ryden 0/speak Ryden \"I can only imagine all the delectable dishes I will soon be able to enjoy...\"/faceDirection Ryden 1/speak Ryden \"$q 1844305 null#@! Do you have a favorite dish?#$r 18443000 50 food_curry#Curry#$r 18443001 50 food_bisque#Lobster bisque#$r 18443002 50 food_breakfast#A full, hearty breakfast\"/faceDirection Ryden 3/pause 500/speak Ryden \"As you can see... we're making trout soup!$h\"/faceDirection Ryden 1/speak Ryden \"\"But Ryden!\" I hear you say. \"How can you cook underwater?\"#$b#You see, human, instead of fire, us merfolk use hydrothermal vents!\"/faceDirection Ryden 0/speak Ryden \"Now, if you would be so kind, would you bring me my ingredients?\"/move farmer 0 1 3/move farmer -4 0 0/move farmer 0 -1 0/pause 500/removeObject 38 3/move farmer 1 0 0/pause 500/removeObject 39 3/move farmer 1 0 1/faceDirection Ryden 3/speak Ryden \"Thank you, @!\"/faceDirection Ryden 0/globalFade 0.07/viewport -1000 -1000/playSound fishSlap/pause 500/playSound axe/pause 500/playSound axe/pause 500/playSound axe/warp farmer 39 5 1/warp Ryden 40 5 0/pause 1000/fade/viewport 40 6 clamp/pause 500/speak Ryden \"Now, with the ingredients all assembled... it's time to crank up the heat and add some SPICE!$h\"/shake Ryden 500/pause 500/playSound furnace/speak Ryden \"Ah... I can already sense a wonderful aroma!$h#$b#Dear @, could you grab me some salt, pepper, and cayenne?\"/move farmer 0 1 1/move farmer 3 0 0/move farmer 0 -1 0/pause 500/playSound backpackIN/pause 250/move farmer -1 0 3/faceDirection Ryden 1/speak Ryden \"Yes... the most important tool of my culinary artistry!\"/faceDirection Ryden 0/animate Ryden false true 500 17 18/pause 2000/speak Ryden \"More!\"/animate Ryden false true 100 17 18/pause 2000/speak Ryden \"MORE!$6\"/animate Ryden false true 50 17 18/pause 2000/stopAnimation Ryden 8/speak Ryden \"And finally, the most essential ingredient of all... heat!\"/playSound furnace/speak Ryden \"I think we can turn it up a notch!$h\"/playSound furnace/speak Ryden \"It's getting toasty in here!\"/playSound furnace/speak Ryden \"Almost there...!$h\"/playMusic none/playSound furnace/animate Ryden false true 500 19 20/speak Ryden \"...$6\"/playSound furnace/stopAnimation Ryden 8/speak Ryden \"Eheheh...$h\"/faceDirection Ryden 1/speak Ryden \"I think it's probably done.\"/move Ryden -1 0 1/speak Ryden \"Try a bite!\"/move farmer -1 0 0/farmerEat 219/pause 1000/message \"It's so spicy! And also a little burnt...#You can tell there's a lot of love put into it, though.\"/faceDirection farmer 3/speak Ryden \"Come on! Let's sit down and have ourselves a bowl.\"/faceDirection farmer 2/move Ryden 0 1 1/move Ryden 4 0 2 true/pause 500/globalFade/viewport -1000 -1000/end"
+            }
+        },
+        {//Sonia intro
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_SoniaHouse",
+            "Entries": {
+                "1844310/e 184433/t 800 2000": "jaunty/-1000 -1000/farmer 100 100 0 Ryden 9 13 0 Sonia 100 99 0//addConversationTopic custom_malha_soniaintro 14/skippable/fade/viewport 9 9/move Ryden 0 -3 1/move Ryden 1 0 2/warp farmer 9 13/move farmer 0 -3 1/move farmer -1 0 1/faceDirection Ryden 3/speak Ryden \"Thank you for joining me here, @! I can assure you that Sonia will be delighted to meet you.\"/faceDirection Ryden 1/speak Ryden \"Sonia~?\"/faceDirection Ryden 3/faceDirection Ryden 1/faceDirection Ryden 0/playMusic none/speak Ryden \"...Sonia?$u\"/speak Sonia \"HYAAAAAAH!$6\"/globalFade 0.09/viewport -1000 -1000/pause 1000/playSound clubSmash/warp Sonia 8 8/warp Ryden 10 9/faceDirection Sonia 2/faceDirection Ryden 3/showFrame Sonia 16/faceDirection farmer 2/showframe farmer 5/pause 1000/playMusic malha_soniatheme/fade/viewport 9 9/pause 1000/showFrame Ryden 33/speak Sonia \"Prepare to feel my wrath, human!$6\"/showFrame Sonia 17/shake Sonia 5000/pause 500/showFrame Ryden 33/jump Ryden/speak Ryden \"SONIA!!!$6\"/speed Ryden 6/move Ryden -2 0 0/speak Ryden \"Sonia! What is the meaning of this?!$a\"/speak Sonia \"What do you mean \"What is the meaning of this\"? I'm defending the city!$a\"/speak Ryden \"Sonia, I will not stand for this! This is my friend!$a\"/speak Sonia \"Friend?! This is a human!$a\"/speak Ryden \"But it's just one! Pleeease?$13\"/speak Sonia \"...$u#$b#No.$9\"/emote Ryden 16/speak Sonia \"Humans are the entire reason we're in this mess! Why would we want one traipsing around down here?$a\"/speak Ryden \"Put the trident down and I'll explain everything.$a\"/speak Sonia \"...$u\"/playMusic none/shake Sonia 500/showFrame Sonia 0/pause 1000/move Ryden 2 0 0/move Ryden 0 -1 3/faceDirection Sonia 1/faceDirection farmer 0/speak Ryden \"Listen, I know you're a little... *sensitive* around humans, but this one is different. I promise.$11#$b#I have reason to believe he has communed with the forest spirits.$11^I have reason to believe she has communed with the forest spirits.$11#$b#Malha needs nothing short of a miracle right now. And if this human has a special connection to nature and the arcane...$s#$b#He might be able to help us.^She might be able to help us.$11\"/faceDirection Sonia 2/speak Sonia \"I just... I don't think I can support this. I mean, a human? In Malha? What would your dad think?$s\"/speak Ryden \"How about this: you let this slip by and don't tell my dad, and I'll keep him completely out of your sight and out of your mind. Deal?$11^How about this: you let this slip by and don't tell my dad, and I'll keep her completely out of your sight and out of your mind. Deal?$11\"/faceDirection Sonia 1/speak Sonia \"...$s#$b#...Whatever.$u\"/faceDirection Sonia 2/speak Sonia \"But I'm watching you, human. If you mess up, it won't be pretty.$a\"/speak Ryden \"Thank you, Sonia.$7\"/faceDirection Ryden 2/speak Ryden \"@, please excuse her... uncouth behavior. My \"friend\" here has obviously forgotten what basic manners are!$a\"/faceDirection Sonia 1/speak Sonia \"How dare you!$a\"/playMusic jaunty/faceDirection Ryden 3/pause 1000/emote Ryden 12 true/emote Sonia 12 true/pause 1000/speak Sonia \"It's not my fault I actually care about protecting Malha!$a\"/speak Ryden \"And it's not my fault I care about having friends!$a\"/speak Sonia \"Wow. Really stooping low for that one, huh?$u\"/speak Ryden \"You know, if you actually gave humans a chance for once, you might make a new friend.$12#$b#Plus... don't you think he's kind of cute?$l^Plus... don't you think she's kind of cute?$l\"/speak Sonia \"RYDEN!$a\"/showFrame Sonia 19/animate Ryden false true 500 34 35/pause 3000/end"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Malha",
+            "Entries": {
+                "1844314/e 184433/e 1844312/f Sonia 1000/t 800 1900": "playful/-1000 -1000/farmer 42 13 0 Sonia 51 13 0/skippable/showFrame Sonia 20/extendSourceRect Sonia 16 0/fade/viewport 50 13 clamp/move farmer 4 0 1/pause 1000/shake Sonia 1000/pause 1000/jump Sonia/pause 2500/extendSourceRect Sonia reset/showFrame Sonia 22/pause 800/speak Sonia \"I'm just practicing spears. No need to gawk.$9\"/showFrame Sonia 20/extendSourceRect Sonia 16 0/pause 1000/shake Sonia 1000/pause 1000/jump Sonia/pause 2000/emote Sonia 40/pause 1500/extendSourceRect Sonia reset/showFrame Sonia 22/speak Sonia \"Do you know how to fight, human?$8\"/quickQuestion ...#I'm a famous monster hunter#I mostly just stick to farming(break)speak Sonia \"Is that so? Malha could use someone like you. If you aren't playing me for a fool, of course.#$b#Come closer.$17\"(break)speak Sonia \"Well, that's no good. Being ignorant to the ways of combat leaves you helpless and vulnerable to attack.$9#$b#We can fix that, though. Come closer.$17\"/move farmer 3 0 1/pause 500/speak Sonia \"Now try me.$17\"/showFrame Sonia 25/extendSourceRect Sonia -16 0/warp Sonia 50 13 0/shake Sonia 1000/pause 1000/screenFlash 1/playSound swordswipe/jump Sonia/pause 500/speak Sonia \"Not bad. Try me again.$17\"/shake Sonia 1000/pause 1000/screenFlash 4/playSound swordswipe/faceDirection farmer 2/showFrame farmer 5/playSound swordswipe/extendSourceRect Sonia reset/warp Sonia 51 13 3/showFrame Sonia 22/pause 1000/speak Sonia \"Hah! It seems you have a thing or two to learn about letting your guard down.$17\"/pause 1000/showFrame farmer 0/faceDirection farmer 1/speak Sonia \"I let you off easy that first time, by the way. In reality you'd left an opening on your right side where I easily could have checked you if I wanted to.$8#$b#Still, though... you have potential. If you come back, perhaps I could instruct you further.$17\"/playMusic none/faceDirection Sonia 0/move Sonia -1 0 0/move Sonia 0 -2 0/faceDirection farmer 0/pause 800/speak Sonia \"Your name is @, right?$9\"/emote farmer 32/pause 500/speak Sonia \"@... I may have misjudged you.$8\"/move Sonia 0 -1 0/warp Sonia 200 200/pause 2000/end"
+            }       
+        },
+        {
+            "Action": "EditData",    
+            "Target": "Data/Events/Custom_Malha_Malha",
+            "Entries": {
+                "1844312/e 184433/f Sonia 500/t 800 1900": "malha_ambience/-1000 -1000/farmer 28 58 0 Sonia 28 46 0/skippable/fade/viewport 28 47/move farmer 0 -8 0/pause 1000/faceDirection Sonia 2/speak Sonia \"Don't come any closer.$a#$b#Ryden said he'd keep you out of my sight. Pfft, what a joke.$u\"/faceDirection Sonia 0/pause 2000/speak Sonia \"...$u\"/faceDirection Sonia 2/pause 500/speak Sonia \"Do you know who this statue is of?$9\"/emote farmer 8/pause 500/speak Sonia \"I wouldn't expect you to know.$u\"/faceDirection Sonia 0/playMusic malha_malharuins/speak Sonia \"Long ago, the merpeople of the Gem Sea were a nomadic people. We drifted along the current, never settling down in one way or another aside from a few outposts here and there.$8#$b#One day, a group of some of the most talented and respected merpeople from across the Gem Sea - doctors, artists, wizards, warriors - banded together with the goal of creating a new city named Malha.$8#$b#This city would be a center of democracy, culture, and innovation, where merpeople from all walks of life could come together as one.$8#$b#The founders of this city formed the first Malhan Council, the head of which was Alana, the first Queen of Malha. This statue was made in her likeness.$9\"/faceDirection Sonia 2/pause 500/speak Sonia \"It is said that Alana was a great politician - a kind and gracious leader, but also a staunch and powerful warrior.$9#$b#She led the merpeople of the Gem Sea into a new era, where *anyone* regardless of who they were before could find a home.$8#$b#...Everything I do is in her name.$16\"/faceDirection Sonia 0/playMusic malha_ambience/speak Sonia \"Her beautiful creation is in ruin... but I can't let it be defiled further.$16#$b#Especially not by a human.$9\"/faceDirection Sonia 2/speak Sonia \"I meant what I said, by the way. One step out of line and you're done for.$9#$b#My entire life - my entire purpose - is defending Malha. I have no qualms with stepping over a measly little land dweller if I have to.$9\"/faceDirection Sonia 1/speak Sonia \"Now, if you'll excuse me.$u\"/move Sonia 2 0 0/move Sonia 0 -2 1/advancedMove Sonia true 2 0/end",
+                "1844316/e 184433/e 1844312/f Sonia 1500/t 800 1900": "malha_malharuins/-1000 -1000/farmer 43 21 0 Sonia 43 39 0 Harvey 200 200 0/skippable/fade/viewport 43 36 clamp/speed Sonia 1/move Sonia 0 -3 0/pause 1500/shake Sonia 1500/pause 1500/showFrame Sonia 26/extendSourceRect Sonia 16 0/playSound stoneStep/move farmer 0 9 2/emote farmer 16/speed farmer 6/move farmer 0 4 2/speak Sonia \"Must... keep... going...$14#$b#@? No...$15\"/quickQuestion This is my battle to win...#Are you okay?!#*Prod her.*(break)speak Sonia \"I'm fine... I just need... a moment...$14\"(break)jump farmer 1\\pause 500\\speak Sonia \"Don't... taunt me...$15#$b#I just need a moment...$14\"/question null \"Agh...#You're hurt. We need to get you to a doctor.\"/speak Sonia \"A doctor...? I don't need anyone's help...$14\"/question null \"There are no doctors left in Malha, anyway.#I have an idea....\"/speak Sonia \"A human doctor? ...Are you out of your mind?$15#$b#I can do this myself...\"/shake Sonia 1000/pause 1000/speak Sonia \"Agh!$14#$b#You're right. I can't do this.$15#$b#...Take me.$14\"/globalFade 0.007/viewport -1000 -1000/playMusic none/pause 1000/message \"Sneaking through the town as to not be seen with a mermaid by any townsfolk, you carry Sonia to Harvey's office.\"/changeToTemporaryMap Hospital/viewport -1000 -1000/warp Sonia 19 12/faceDirection Sonia 1/warp farmer 22 12/faceDirection farmer 3/warp Harvey 20 12/faceDirection Harvey 3/extendSourceRect Sonia reset/faceDirection Sonia 2/fade/viewport 20 12/playMusic distantBanjo/pause 1000/speak Harvey \"...$8#$b#Umm... I've never treated a mermaid before, but I'll do my best.$s#$b#And I won't tell anyone about you. I promise.#$b#Can you tell me what's going on?\"/speak Sonia \"It hurts... my arm...$12\"/speak Harvey \"What happened?\"/speak Sonia \"It's none of your business.$a\"/speak Harvey \"If you want me to help you, I need to know what happened to your arm.\"/speak Sonia \"...It got crushed by a sea monster.$12\"/speak Harvey \"O-oh. Alright. Let me just gently press right here-\"/speak Sonia \"Gah!$12\"/speak Harvey \"Okay. Can you wiggle your fingers for me?\"/speak Sonia \"No. I can't move or feel them.$12\"/speak Harvey \"I see... I can probably guess what's wrong, but just to be sure, let's take you in for an X-ray.\"/speak Sonia \"Does that hurt?$11\"/speak Harvey \"No, it doesn't hurt at all. Here, I'll help you up.\"/shake Sonia 500/globalFade .007/viewport -1000 -1000/pause 3000/fade/viewport 20 12/pause 1000/speak Harvey \"So, the X-ray results are back and you've broken your radius.\"/speak Sonia \"But that's fine, right? Like, it'll heal in a few weeks and I can get back to whatever I was doing?$11\"/speak Harvey \"Well, normally I'd say yes, but the fact that you can't feel or move your fingers indicates to me that you may have nerve damage.\"/speak Sonia \"But that'll heal too, right?$11\"/speak Harvey \"We can certainly hope. Unfortunately, nerve damage may be permanent, and there's a chance you won't be able to ever fully use your arm again.\"/playMusic none/shake Sonia 1000/pause 1000/playSound dwop/warp Sonia 20 13/faceDirection Sonia 0/faceDirection Harvey 2/speak Sonia \"Is this some kind of sick joke?!$a\"/speak Harvey \"Well, no - radial nerve injury, which is the likely culprit of numbness in the fingers after an arm fracture, often leads to-$s\"/speak Sonia \"I don't care what it is! I HAVE to be able to use my arm. Please just tell me it'll get better and I can go back to normal!$13\"/speak Harvey \"As your doctor, I can't tell you that for certain. I'm sorry.$s\"/shake Sonia 1000/pause 2000/speak Sonia \"Just... do what you need to do so I can go home. Please.$s\"/speak Harvey \"Okay... well, we'll need to put you in a cast. I can get you a waterproof one because of your, uh, living situation. Just wait one moment.\"/move Harvey 0 -1 0/move Harvey 2 0 0/move Harvey 0 3 0 true/globalFade .007/viewport -1000 -1000/pause 2000/message \"Harvey puts Sonia in a cast, and you escort her back to her home in Malha for bed rest.\"/end"
+            }
+        },
+        { //Meeting Ryden's Dad
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Malha",
+            "Entries": {
+                "1844320/e 1844310/A custom_malha_soniaintro/t 800 1900": "malha_malharuins/-1000 -1000/farmer 42 35 2 Ryden 30 35 2 Marcus 29 35 2/skippable/fade/viewport 33 41/advancedMove Ryden false 0 7 4 2000/advancedMove farmer false 0 7 3 2000/pause 500/advancedMove Marcus false 0 4 4 2000/pause 4500/faceDirection Ryden 3/pause 300/faceDirection Ryden 1/emote Ryden 16/pause 500/speak Ryden \"@! Hide!$a\"/speed farmer 6/move farmer 3 0 2/move farmer 0 5 3/move farmer -4 0 0/speed Ryden 6/move Ryden 11 0 2/speed Ryden 6/move Ryden 0 3 0/faceDirection Marcus 2/pause 250/faceDirection Marcus 1/pause 250/faceDirection Marcus 2/pause 500/speak Marcus \"Ryden? Where did you go?\"/move Marcus 0 3 1/pause 1000/emote Marcus 8/pause 500/speed Marcus 4/viewport move 2 1 3500/move Marcus 12 0 2/speak Marcus \"Ryden? Why are you standing there?\"/speak Ryden \"Eheh... I'm simply... showing reverence. By standing out of the way.\"/speak Marcus \"Yeah, right. Like you've ever shown me reverence a day in your life.$u\"/faceDirection Marcus 1/speak Marcus \"The sooner you stop idling around like an idiot, the sooner we can go survey the plains.$u\"/emote Marcus 16/faceDirection Marcus 2/speak Marcus \"Did I just see bubbles come out from behind that wall?$a\"/emote Ryden 28/speak Ryden \"Eheh... bubbles! Don't be ridiculous!$h\"/speak Marcus \"Ryden, if you're trying to hide a sea monster from me...$a\"/speak Ryden \"Of course not, father! I would never dream of such a thing!$6\"/speak Marcus \"Then you won't care if I take a quick look...\"/move Marcus 4 0 2/move Marcus 0 1 2/speed Ryden 6/move Ryden 4 0 0/speak Ryden \"This really isn't necessary, father!$6\"/speak Marcus \"Move. Or else.$a\"/pause 1000/speak Ryden \"Fine, but... promise not to get mad.$s\"/speak Marcus \"I'll get mad if what I'm about to see is deserving of anger.$a\"/emote Ryden 28/pause 2000/move Ryden 2 0 3/playMusic malha_ambience/move Marcus 0 4 3/faceDirection farmer 1/speak Marcus \"!!!$6#$b#RYYYYYDEEEEEN!$a\"/shake Ryden 1500/pause 1500/speed Ryden 6/move Ryden 0 3 3/speed Ryden 6/move Ryden -2 0 0/speak Ryden \"Please don't hurt him!$a^Please don't hurt her!$a\"/pause 1000/speed Marcus 1/move Marcus -3 0 3/faceDirection Ryden 3/pause 2000/speak Marcus \"So this is what you think of Malha's legacy?$u\"/speak Ryden \"Dad, it's not like that...$s\"/faceDirection Marcus 1/pause 2000/speak Marcus \"Get out of my sight. Both you and that...$u\"/faceDirection Marcus 3/speak Marcus \"...thing.$u\"/faceDirection Marcus 1/speak Marcus \"NOW!$a\"/pause 500/speak Ryden \"...$s\"/move Ryden -5 0 3/faceDirection Marcus 3/faceDirection farmer 3/speak Ryden \"...Come on, @.$7\"/move Ryden -7 0 3 true/pause 500/globalFade/viewport -1000 -1000/end"
+            },
+            "When": {
+                    "HasSeenEvent | contains=1844310": true
+            }
+        },
+        {//Ryden Date Curry
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Malha",
+            "Entries": { 
+                "1844308/e 1844304/n Custom_Malha_RydenDate/t 600 2000": "malha_ambience/-1000 -1000/farmer 28 41 0 Ryden 28 32 1/skippable/fade/viewport 28 33/move farmer 0 -6 0/faceDirection Ryden 2/speak Ryden \"Oh, @! You have no idea how delighted I am to see you!$h#$b#I trust you received my letter?$u\"/emote farmer 32/pause 500/speak Ryden \"Splendid!$h#$b#The reason I invited you here, @... Well, we've been friends for a long time now, and I wanted to do something special. To celebrate!\"/move Ryden -1 0 2/move Ryden 0 3 1/pause 200/faceDirection farmer 3/speak Ryden \"Follow me. We're going on a little adventure.\"/move Ryden 0 6 2 true/globalFade .007/viewport -1000 -1000/pause 1000/message \"Ryden takes you through the outskirts of Malha into a long, winding trench, wherein you discover...\"/pause 1500/changeToTemporaryMap Custom_Malha_Jellytopia/viewport -1000 -1000/playMusic Cavern/warp Ryden 20 20/faceDirection Ryden 0/warp farmer 20 21/faceDirection farmer 0/changePortrait Ryden underwater/changeSprite Ryden underwater/fade/viewport 20 13/move Ryden 0 -5 2/pause 1000/speak Ryden \"Ta-da!$h\"/pause 2000/speak Ryden \"I have learned that it's human tradition to view the Dance of the Moonlight Jellies every year. Well, this is where they come from!\"/faceDirection Ryden 0/pause 2000/faceDirection Ryden 2/speak Ryden \"But that's not all. I've prepared a little treat for us. Come, have a seat.\"/move farmer 0 -5 1/move farmer 2 0 0/move farmer 0 -3 3/showFrame farmer 117/move Ryden 2 0 0/move Ryden 0 -1 0/pause 500/shake Ryden 500/pause 500/addObject 21 12 907/playSound throwDownITem/move Ryden 0 1 3/move Ryden -4 0 0/move Ryden 0 -2 1/addObject 19 12 907/speak Ryden \"Enjoy your meal. Courtesy of Ryden's Secret Friends Restaurant!$h\"/pause 500/removeObject 21 12/farmerEat 907/pause 2000/message \"Wow! This is nothing like Ryden's first forays into cuisine... it's amazing! The flavors compliment each other perfectly, and you can tell every ingredient was used thoughtfully.\"/faceDirection farmer 3/showFrame farmer 117/speak Ryden \"Oh, my! You eat fast!$h\"/quickQuestion It appears you liked it quite a lot, yes?#It was delicious!#Meh.(break)speak Ryden \"Well, you said that curry was your favorite, so...#$b#I wanted to give you the best of the best.$h\"(break)friendship Ryden -100\\speak Ryden \"O-oh...$s#$b#I worked really, really hard...$7#$b#But I guess it just wasn't good enough, huh?$s#$b#I'm sorry.$7\"/pause 1000/playMusic echos/speak Ryden \"Um, while we're here together, @...$s#$b#I just wanted to thank you. For everything.#$b#After Malha fell, everyone told me that humans were nothing but trouble.$s#$b#But ever since that day, when you saved my life...$s#$b#You've always been so kind to me... and you've always accepted me for who I am.#$b#Which is more than I can say for some merfolk.$s#$b#That's the real reason I've arranged this dinner...#$b#To show you my gratitude.$l#$b#There's a saying in Malha that goes, \"For as long as the tide still comes\".#$b#So... for as long as the tide still comes... I hope we stay the best of friends!$h\"/pause 2500/playMusic none/speak Ryden \"I guess it's time to go now, isn't it?$u\"/move Ryden 0 2 2/move Ryden 2 0 1/showFrame farmer 117/move farmer 0 2 3/move farmer -1 0 3/quickQuestion ...#Thank him for dinner.#Kiss him.(break)speak Ryden \"Of course! Anything for you, @!$h#$b#Hehe... now you can say you were the famous chef Ryden's first ever customer.$h\"\\animate Ryden false false 100 1 5 9 13 1\\pause 500\\playSound yoba\\animate Ryden false true 1000 16\\pause 3000\\stopAnimation Ryden 0\\move Ryden 0 3 0\\faceDirection farmer 2\\speak Ryden \"Come on, @!$h\"\\move Ryden 0 6 2\\warp Ryden 500 500\\pause 500\\emote farmer 32\\move farmer 0 5 2 true\\globalFade .007(break)pause 1000\\playMusic musicboxsong\\showFrame Ryden 28\\positionOffset Ryden 8 8\\showFrame farmer 101\\pause 4000\\showFrame Ryden 4\\positionOffset Ryden -8 -8\\showFrame farmer 0\\faceDirection farmer 3\\speak Ryden \"O-oh! Um... w-wow!$6#$b#Eheh... oh my.$l#$b#Look at what you've done, @, you've turned me into a stuttering mess!$h#$b#@, I... I think I like kissing humans.$l#$b#We should do that more often, don't you think?$h\"\\pause 2000\\showFrame Ryden 28\\positionOffset Ryden 8 8\\showFrame farmer 101\\emote farmer 20 true\\emote Ryden 20 true\\pause 2000\\globalFade .007/viewport -1000 -1000/end"
+            },
+            "When": {
+                "HasDialogueAnswer|contains=18443000": true
+                 }
+        },
+        {//Ryden Date Bisque
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Malha",
+            "Entries": { 
+                "1844308/e 1844304/n Custom_Malha_RydenDate/t 600 2000": "malha_ambience/-1000 -1000/farmer 28 41 0 Ryden 28 32 1/skippable/fade/viewport 28 33/move farmer 0 -6 0/faceDirection Ryden 2/speak Ryden \"Oh, @! You have no idea how delighted I am to see you!$h#$b#I trust you received my letter?$u\"/emote farmer 32/pause 500/speak Ryden \"Splendid!$h#$b#The reason I invited you here, @... Well, we've been friends for a long time now, and I wanted to do something special. To celebrate!\"/move Ryden -1 0 2/move Ryden 0 3 1/pause 200/faceDirection farmer 3/speak Ryden \"Follow me. We're going on a little adventure.\"/move Ryden 0 6 2 true/globalFade .007/viewport -1000 -1000/pause 1000/message \"Ryden takes you through the outskirts of Malha into a long, winding trench, wherein you discover...\"/pause 1500/changeToTemporaryMap Custom_Malha_Jellytopia/viewport -1000 -1000/playMusic Cavern/warp Ryden 20 20/faceDirection Ryden 0/warp farmer 20 21/faceDirection farmer 0/changePortrait Ryden underwater/changeSprite Ryden underwater/fade/viewport 20 13/move Ryden 0 -5 2/pause 1000/speak Ryden \"Ta-da!$h\"/pause 2000/speak Ryden \"I have learned that it's human tradition to view the Dance of the Moonlight Jellies every year. Well, this is where they come from!\"/faceDirection Ryden 0/pause 2000/faceDirection Ryden 2/speak Ryden \"But that's not all. I've prepared a little treat for us. Come, have a seat.\"/move farmer 0 -5 1/move farmer 2 0 0/move farmer 0 -3 3/showFrame farmer 117/move Ryden 2 0 0/move Ryden 0 -1 0/pause 500/shake Ryden 500/pause 500/addObject 21 12 730/playSound throwDownITem/move Ryden 0 1 3/move Ryden -4 0 0/move Ryden 0 -2 1/addObject 19 12 730/speak Ryden \"Enjoy your meal. Courtesy of Ryden's Secret Friends Restaurant!$h\"/pause 500/removeObject 21 12/farmerEat 730/pause 2000/message \"Wow! This is nothing like Ryden's first forays into cuisine... it's amazing! The flavors compliment each other perfectly, and you can tell every ingredient was used thoughtfully.\"/faceDirection farmer 3/showFrame farmer 117/speak Ryden \"Oh, my! You eat fast!$h\"/quickQuestion It appears you liked it quite a lot, yes?#It was delicious!#Meh.(break)speak Ryden \"Well, you said that Lobster Bisque was your favorite, so...#$b#I wanted to give you the best of the best.$h\"(break)friendship Ryden -100\\speak Ryden \"O-oh...$s#$b#I worked really, really hard...$7#$b#But I guess it just wasn't good enough, huh?$s#$b#I'm sorry.$7\"/pause 1000/playMusic echos/speak Ryden \"Um, while we're here together, @...$s#$b#I just wanted to thank you. For everything.#$b#After Malha fell, everyone told me that humans were nothing but trouble.$s#$b#But ever since that day, when you saved my life...$s#$b#You've always been so kind to me... and you've always accepted me for who I am.#$b#Which is more than I can say for some merfolk.$s#$b#That's the real reason I've arranged this dinner...#$b#To show you my gratitude.$l#$b#There's a saying in Malha that goes, \"For as long as the tide still comes\".#$b#So... for as long as the tide still comes... I hope we stay the best of friends!$h\"/pause 2500/playMusic none/speak Ryden \"I guess it's time to go now, isn't it?$u\"/move Ryden 0 2 2/move Ryden 2 0 1/showFrame farmer 117/move farmer 0 2 3/move farmer -1 0 3/quickQuestion ...#Thank him for dinner.#Kiss him.(break)speak Ryden \"Of course! Anything for you, @!$h#$b#Hehe... now you can say you were the famous chef Ryden's first ever customer.$h\"\\animate Ryden false false 100 1 5 9 13 1\\pause 500\\playSound yoba\\animate Ryden false true 1000 16\\pause 3000\\stopAnimation Ryden 0\\move Ryden 0 3 0\\faceDirection farmer 2\\speak Ryden \"Come on, @!$h\"\\move Ryden 0 6 2\\warp Ryden 500 500\\pause 500\\emote farmer 32\\move farmer 0 5 2 true\\globalFade .007(break)pause 1000\\playMusic musicboxsong\\showFrame Ryden 28\\positionOffset Ryden 8 8\\showFrame farmer 101\\pause 4000\\showFrame Ryden 4\\positionOffset Ryden -8 -8\\showFrame farmer 0\\faceDirection farmer 3\\speak Ryden \"O-oh! Um... w-wow!$6#$b#Eheh... oh my.$l#$b#Look at what you've done, @, you've turned me into a stuttering mess!$h#$b#@, I... I think I like kissing humans.$l#$b#We should do that more often, don't you think?$h\"\\pause 2000\\showFrame Ryden 28\\positionOffset Ryden 8 8\\showFrame farmer 101\\emote farmer 20 true\\emote Ryden 20 true\\pause 2000\\globalFade .007/viewport -1000 -1000/end"
+            },
+            "When": {
+                "HasDialogueAnswer|contains=18443001": true
+                 }
+        },
+        {//Ryden Date Breakfast
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Malha",
+            "Entries": { 
+                "1844308/e 1844304/n Custom_Malha_RydenDate/t 600 2000": "malha_ambience/-1000 -1000/farmer 28 41 0 Ryden 28 32 1/skippable/fade/viewport 28 33/move farmer 0 -6 0/faceDirection Ryden 2/speak Ryden \"Oh, @! You have no idea how delighted I am to see you!$h#$b#I trust you received my letter?$u\"/emote farmer 32/pause 500/speak Ryden \"Splendid!$h#$b#The reason I invited you here, @... Well, we've been friends for a long time now, and I wanted to do something special. To celebrate!\"/move Ryden -1 0 2/move Ryden 0 3 1/pause 200/faceDirection farmer 3/speak Ryden \"Follow me. We're going on a little adventure.\"/move Ryden 0 6 2 true/globalFade .007/viewport -1000 -1000/pause 1000/message \"Ryden takes you through the outskirts of Malha into a long, winding trench, wherein you discover...\"/pause 1500/changeToTemporaryMap Custom_Malha_Jellytopia/viewport -1000 -1000/playMusic Cavern/warp Ryden 20 20/faceDirection Ryden 0/warp farmer 20 21/faceDirection farmer 0/changePortrait Ryden underwater/changeSprite Ryden underwater/fade/viewport 20 13/move Ryden 0 -5 2/pause 1000/speak Ryden \"Ta-da!$h\"/pause 2000/speak Ryden \"I have learned that it's human tradition to view the Dance of the Moonlight Jellies every year. Well, this is where they come from!\"/faceDirection Ryden 0/pause 2000/faceDirection Ryden 2/speak Ryden \"But that's not all. I've prepared a little treat for us. Come, have a seat.\"/move farmer 0 -5 1/move farmer 2 0 0/move farmer 0 -3 3/showFrame farmer 117/move Ryden 2 0 0/move Ryden 0 -1 0/pause 500/shake Ryden 500/pause 500/addObject 21 12 201/playSound throwDownITem/move Ryden 0 1 3/move Ryden -4 0 0/move Ryden 0 -2 1/addObject 19 12 201/speak Ryden \"Enjoy your meal. Courtesy of Ryden's Secret Friends Restaurant!$h\"/pause 500/removeObject 21 12/farmerEat 201/pause 2000/message \"Wow! This is nothing like Ryden's first forays into cuisine... it's amazing! The flavors compliment each other perfectly, and you can tell every ingredient was used thoughtfully.\"/faceDirection farmer 3/showFrame farmer 117/speak Ryden \"Oh, my! You eat fast!$h\"/quickQuestion It appears you liked it quite a lot, yes?#It was delicious!#Meh.(break)speak Ryden \"Well, you said that Lobster Bisque was your favorite, so...#$b#I wanted to give you the best of the best.$h\"(break)friendship Ryden -100\\speak Ryden \"O-oh...$s#$b#I worked really, really hard...$7#$b#But I guess it just wasn't good enough, huh?$s#$b#I'm sorry.$7\"/pause 1000/playMusic echos/speak Ryden \"Um, while we're here together, @...$s#$b#I just wanted to thank you. For everything.#$b#After Malha fell, everyone told me that humans were nothing but trouble.$s#$b#But ever since that day, when you saved my life...$s#$b#You've always been so kind to me... and you've always accepted me for who I am.#$b#Which is more than I can say for some merfolk.$s#$b#That's the real reason I've arranged this dinner...#$b#To show you my gratitude.$l#$b#There's a saying in Malha that goes, \"For as long as the tide still comes\".#$b#So... for as long as the tide still comes... I hope we stay the best of friends!$h\"/pause 2500/playMusic none/speak Ryden \"I guess it's time to go now, isn't it?$u\"/move Ryden 0 2 2/move Ryden 2 0 1/showFrame farmer 117/move farmer 0 2 3/move farmer -1 0 3/quickQuestion ...#Thank him for dinner.#Kiss him.(break)speak Ryden \"Of course! Anything for you, @!$h#$b#Hehe... now you can say you were the famous chef Ryden's first ever customer.$h\"\\animate Ryden false false 100 1 5 9 13 1\\pause 500\\playSound yoba\\animate Ryden false true 1000 16\\pause 3000\\stopAnimation Ryden 0\\move Ryden 0 3 0\\faceDirection farmer 2\\speak Ryden \"Come on, @!$h\"\\move Ryden 0 6 2\\warp Ryden 500 500\\pause 500\\emote farmer 32\\move farmer 0 5 2 true\\globalFade .007(break)pause 1000\\playMusic musicboxsong\\showFrame Ryden 28\\positionOffset Ryden 8 8\\showFrame farmer 101\\pause 4000\\showFrame Ryden 4\\positionOffset Ryden -8 -8\\showFrame farmer 0\\faceDirection farmer 3\\speak Ryden \"O-oh! Um... w-wow!$6#$b#Eheh... oh my.$l#$b#Look at what you've done, @, you've turned me into a stuttering mess!$h#$b#@, I... I think I like kissing humans.$l#$b#We should do that more often, don't you think?$h\"\\pause 2000\\showFrame Ryden 28\\positionOffset Ryden 8 8\\showFrame farmer 101\\emote farmer 20 true\\emote Ryden 20 true\\pause 2000\\globalFade .007/viewport -1000 -1000/end"
+            },
+            "When": {
+                "HasDialogueAnswer|contains=18443002": true
+                 }
+        },
+                {//Ryden Pride Fest
+                "Action": "EditData",
+                "Target": "Data/Events/Town",
+                "Entries": { 
+                    "18443010/e 1844304/t 600 2000": "springtown/-1000 -1000/farmer 26 54 2 Ryden 34 60 0/skippable/fade/viewport 28 60/move farmer 0 5 2/move farmer 3 0 1/faceDirection Ryden 3/speak Ryden \"There you are, @! Oh, this is just perfect!\"/move farmer 3 0 2/speak Ryden \"You see, there's something going on today at a park outside Zuzu City, and I was wondering if you'd be interested in joining me.\"/emote farmer 8/speak Ryden \"I'm so glad you asked! It's the annual Rainbow Festival!$h#$b#In Malha, all different kinds of relationships and people are simply everyday fare. It never occurred to me that humans would have a special day just to celebrate it.#$b#But you know how I love celebrating!$h\"/quickQuestion Oh please, @, can we go?#Yes#No(break)speak Ryden \"I knew you'd say yes!$h#$b#There's a train that leaves here for Zuzu in about thirty minutes. If we run, we can make it!\"\\move Ryden 4 0 3\\speak Ryden \"Come on, @!\"\\faceDirection Ryden 1\\move farmer 4 0 1(break)friendship Ryden -100\\speak Ryden \"O-oh. Well, that's okay. I guess I'll just go by myself.$s\"\\faceDirection Ryden 2\\speak Ryden \"Ta-ta!\"\\move Ryden 5 0 1\\/globalFade .007/viewport -1000 -1000/"
+                }
+            },
+        {//Sonia 12 heart part 1
+                "Action": "EditData",
+                "Target": "Data/Events/Farmhouse",
+                "Entries": { 
+                    "18443112/e 1844308/L/O Sonia/f Sonia 3000": "distantBanjo/-1000 -1000/farmer 7 14 3 Sonia 5 14 0/skippable/fade/viewport 6 14/pause 2000/faceDirection Sonia 1/speak Sonia \"Oh. Hey, @.$s\"/emote farmer 8/pause 1000/faceDirection Sonia 0/speak Sonia \"I've been thinking... mainly about what I would've done differently having known the things I do now.$s#$b#I was so obsessed with defending Malha that I let some things slip me by.$16#$b#I neglected friends, neglected hobbies, but...$s#$b#Out of all those things, the one thing I wish I could change more than anything else is how I soured my relationship with my parents.$16\"/faceDirection Sonia 1/speak Sonia \"They left Malha because it was too dangerous for them to remain in their old age.$9#$b#I saw it as disloyalty.$16#$b#And I was so angry... that I didn't even spare them a proper goodbye.$s\"/faceDirection Sonia 0/speak Sonia \"I need to make amends.$16\"/faceDirection Sonia 1/speak Sonia \"And I want you to come with me, @.\"/pause 1000/speak Sonia \"Meet me at the outskirts of Malha early in the morning, and you and I will take the journey down to their home together.$9#$b#Thank you for doing this with me, @. It means a lot to me.\"/emote farmer 32/pause 500/end"
+                }
+        },
+        {//Sonia 12 heart part 2
+               "Action": "EditData",
+               "Target": "Data/Events/Custom_Malha_Malha",
+               "Entries": { 
+                   "18443113/e 18443112/O Sonia/f Sonia 3000/t 600 1130": "malha_malharuins/-1000 -1000/farmer 28 45 2 Sonia 28 55 2/skippable/fade/viewport 28 54 clamp/move farmer 0 8 2/pause 2000/faceDirection Sonia 0/speak Sonia \"There you are, @.\"/faceDirection Sonia 2/speak Sonia \"My parents moved from Malha to another region of the Gem Sea commonly referred to as Haven Hills.$8#$b#Settlement there is sparse, but it's a much safer place for an elderly couple like my parents to live than Malha.$8\"/pause 1000/speak Sonia \"I almost don't want to go...$s#$b#They're probably so upset about the way I treated them... they won't even want to see me.$16#$b#I have to do this, though.$s\"/faceDirection Sonia 0/speak Sonia \"The journey there will take a few hours. I hope you're well prepared.$17\"/faceDirection Sonia 2/speak Sonia \"Let's go!$h\"/globalFade/viewport -1000 -1000/message \"Swimming through kelp forests, around crags, and above coral reefs, you and Sonia take the long journey from Malha to Haven Hills.\"/playMusic distantBanjo/changeToTemporaryMap Custom_Malha_SoniaParentsHouse/viewport -1000 -1000/addTemporaryActor SoniaDad 16 32 19 16 1 true Character/showFrame SoniaDad 16/warp Sonia 19 28/warp farmer 19 29/faceDirection Sonia 0/faceDirection farmer 0/fade/viewport 19 20/pause 2000/speak SoniaDad \"Hmm... looking beautiful as ever...\"/advancedMove Sonia false 0 -7/move farmer 0 -7 0/speak SoniaDad \"Just one moment...\"/pause 2000/showFrame SoniaDad 4/speak SoniaDad \"All done.$h\"/faceDirection SoniaDad 2/pause 500/speak SoniaDad \"!!!$3#$b#Sonia!!!$h\"/speed SoniaDad 6/move SoniaDad 0 4 2/pause 1500/speak Sonia \"Hi, dad.$s\"/speak SoniaDad \"Sonia... it's been so long!$h#$b#Your mother isn't going to believe this...\"/faceDirection SoniaDad 0/speak SoniaDad \"Honey! Come outside, quick!$h\"/addTemporaryActor SoniaMom 16 32 18 14 2 true Character/emote SoniaMom 16/speed SoniaMom 6/move SoniaMom 0 6 2/faceDirection SoniaDad 2/speak SoniaMom \"Sonia... I thought you were never going to visit!$h\"/globalFade/viewport -1000 -1000/message \"Sonia and her parents share a long embrace.\"/fade/viewport 19 20/pause 1500/speak Sonia \"Mom... dad...$s#$b#I was so terrible to you before you guys left and I would do anything to go back and change it now and I know you might not want to forgive m-$11\"/speak SoniaDad \"Woah! Slow down there, Sonia!$3#$b#Why don't you take it slow and just tell us how you've been? You still sharpening the old spear?\"/speak Sonia \"Um... I'm good, Dad. And... no, actually. Not anymore.$s\"/speak SoniaMom \"Oh, I'm... wow. I'm surprised, dear. That was something you really cared about... did something happen?$s\"/speak Sonia \"Yeah, actually... I got injured, so that's indefinitely on hold.$u\"/speak SoniaMom \"Oh, Sonia... if only we'd known you were hurt - we'd have come back right away!$s\"/speak SoniaDad \"Yup yup! So what are you up to nowadays?\"/speak Sonia \"I, um... I'm not really sure yet? I've been trying out some new hobbies... but I'm just trying to take it one day at a time.\"/speak SoniaMom \"Well, Sonia... you don't have to have everything figured out at once.\"/speak SoniaDad \"Maybe you could finally try out gardening!$h\"/speak SoniaMom \"Don't pressure her, honey.$s\"/speak SoniaDad \"Alright, alright.$h#$b#And who's this little character with you?\"/faceDirection Sonia 2/speak Sonia \"Oh, yeah. This is actually my husband.^Oh, yeah. This is actually my wife.\"/faceDirection Sonia 0/speak SoniaMom \"O-oh! Well, dear... just know that we'll always support your decisions.\"/speak SoniaDad \"W-within reason, of course!$h\"/speak SoniaMom \"And if you love a human... that's perfectly okay with us. Right, honey?\"/speak SoniaDad \"I don't care if he's human - I just care that he comes out for our barbecues!$h^I don't care if she's human, I just care that she comes out for our barbecues!$h\"/speak Sonia \"Thanks, guys.\"/pause 1000/playMusic echos/speak Sonia \"So... you aren't mad?$s#$b#When you guys left, I...$s\"/faceDirection SoniaDad 3/faceDirection SoniaMom 1/pause 2000/faceDirection SoniaDad 2/faceDirection SoniaMom 2/speak SoniaMom \"It's okay, Sonia. We know that was a really stressful time.\"/speak SoniaDad \"And we're just glad that you've come back to see your mom and pops.$h\"/speak Sonia \"Still, I... I wanted to apologize for the way I acted.$s#$b#I was so *obsessed* with fighting...$16#$b#I couldn't even give you guys the goodbye you deserved.$11#$b#I regret it so much... and I'm so sorry.$s\"/faceDirection SoniaDad 3/speak SoniaDad \"Your mother and I have talked about it. We talk about you a lot, you know.$s\"/faceDirection SoniaDad 2/speak SoniaDad \"And we decided that we would forgive you, no matter what.\"/speak SoniaMom \"Thank you for the apology, Sonia. Just know that we will always love you.\"/playMusic malha_ambience/speak Sonia \"Thanks, mom. Thanks, dad. I... I love you too.\"/speak SoniaDad \"Enough of this serious talk. Why don't you two lovebirds come in for something to eat?$h\"/speak SoniaMom \"I want to hear all about how you two met. It must be a very interesting story!$h\"/speak Sonia \"Don't worry, I'll tell you all about it.$h\"/globalFade 0.04/viewport -1000 -1000/message \"You, Sonia, and Sonia's parents go inside and enjoy grilled seaweed cakes and relaxed conversation.#$b#On the way home, Sonia stops for a moment and looks at you.\"/speak Sonia \"@... I'm so glad we did that.\"/pause 2000/end"
+               }
+       },
+        { //Sonia House Restored <4 Heart
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_SoniaHouse",
+            "Entries": {
+                "184435/e 184433": "none/-1000 -1000/farmer 100 100 0 Sonia 9 9 0/skippable/fade/viewport 9 9/faceDirection Sonia 3/faceDirection Sonia 0/faceDirection Sonia 1/playMusic junimoStarSong/speak Sonia \"What the...$7#$b#It's... it's beautiful!$10\"/warp farmer 9 13/move farmer 0 -2 0/faceDirection Sonia 2/speak Sonia \"Did you... did you do this?$11\"/emote farmer 32/faceDirection Sonia 1/pause 1000/speak Sonia \"It's exactly like it used to be... no, it's even better.#$b#I don't know how you did this, but...$s#$b#...Thank you.$9\"/faceDirection Sonia 2/speak Sonia \"I mean it, by the way. Even though you're a human...$u#$b#This is nice.\"/faceDirection Sonia 1/pause 800/speak Sonia \"Now get out of my house before I give you something to be sorry about.$9\"/move farmer 0 2 0/warp farmer 100 100/end"
+            },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.SoniaHouse}} >= 0": true,
+                "Query: {{Hearts:Sonia }} < 4": true,
+                "Day|contains=0": false
+                 }
+        },
+        { //Sonia House Restored >4 Heart
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_SoniaHouse",
+            "Entries": {
+                "184435/e 184433": "none/-1000 -1000/farmer 100 100 0 Sonia 9 9 0/skippable/fade/viewport 9 9/faceDirection Sonia 3/faceDirection Sonia 0/faceDirection Sonia 1/playMusic junimoStarSong/speak Sonia \"What the...$7#$b#It's... it's beautiful!$10\"/warp farmer 9 13/move farmer 0 -2 0/faceDirection Sonia 2/speak Sonia \"Did you... did you do this?$11\"/emote farmer 32/faceDirection Sonia 1/pause 1000/speak Sonia \"It's exactly like it used to be... no, it's even better.#$b#I don't know how you did this, but...$s#$b#...Thank you. From the bottom of my heart.\"/faceDirection Sonia 2/speak Sonia \"When I first met you, I thought you'd only bring Malha trouble, but...$s#$b#You've really proven me wrong.#$b#Come see me sometime, okay?$h\"/emote farmer 32/pause 500/move farmer 0 2 0/warp farmer 100 100/end"
+            },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true,
+                "Query: {{Hearts:Sonia }} >= 4": true,
+                "Day|contains=0": false
+                 }
+        },
+        { //Castle Restored No Marcus
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Castle",
+            "Entries": {
+                "184436/e 184433": "none/-1000 -1000/farmer 25 31 0 Ryden 7 5/skippable/fade/viewport 8 7/move Ryden 1 0 2/textAboveHead Ryden \"Yawn...\"/move Ryden 0 3 2/pause 1000/faceDirection Ryden 3/pause 500/faceDirection Ryden 1/faceDirection Ryden 2/speak Ryden \"Oh my stars...$6#$b#...@!$h\"/globalFade/viewport -1000 -1000/warp Ryden 25 21/faceDirection Ryden 0/fade/viewport 25 23/move farmer 0 -6 0/faceDirection Ryden 2/jump Ryden/speak Ryden \"Oh, @!$h\"/speed Ryden 5/move Ryden 0 3 2/speak Ryden \"I KNEW there was something different about you!$h#$b#Thank you. So much.\"/faceDirection Ryden 1/speak Ryden \"Just wait until my dad sees this... it'll blow his scales off!$h\"/faceDirection Ryden 2/speak Ryden \"Now we can play cards on a brand-spanking-new carpet, cook in a clean kitchen...#$b#And it's all because of you, @.$h\"/emote farmer 32/emote Ryden 32/pause 500/end"
+            },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true,
+                "HasSeenEvent | contains=1844320": false
+                 }
+        },
+        { //Castle Restored Yes Marcus
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Castle",
+            "Entries": {
+                "184436/e 184433": "junimoStarSong/-1000 -1000/farmer 25 31 0 Ryden 7 5 1 Marcus -100 -100 3/skippable/fade/viewport 8 7/move Ryden 1 0 2/textAboveHead Ryden \"Yawn...\"/move Ryden 0 3 2/pause 1000/faceDirection Ryden 3/pause 500/faceDirection Ryden 1/faceDirection Ryden 2/speak Ryden \"Oh my stars...$6#$b#...@!$h\"/globalFade/viewport -1000 -1000/warp Ryden 25 21/faceDirection Ryden 0/fade/viewport 25 23/move farmer 0 -6 0/faceDirection Ryden 2/jump Ryden/speak Ryden \"Oh, @!$h\"/speed Ryden 5/move Ryden 0 3 2/warp Marcus 35 17/advancedMove Marcus false -3 0 0 3 -7 0 2 500/speak Ryden \"I KNEW there was something different about you!$h#$b#Thank you. So much.\"/pause 2000/speak Marcus \"I can't believe it...$6\"/faceDirection Ryden 0/speak Ryden \"Oh, dad, isn't this just the best? And it's all because of @!$h\"/speak Marcus \"What, you mean that land dweller? Don't be ridiculous.#$b#This must have been a divine intervention of some kind...$u\"/emote Ryden 28/pause 500/speak Marcus \"Tch, I suppose today is a day for celebration, so I will let my reservations go unsaid for now...$u\"/move Marcus 1 0 2/move Marcus 0 7 2/faceDirection farmer 2/faceDirection Ryden 2/pause 1000/faceDirection Marcus 2/speak Marcus \"And Ryden? If you had any part in making this happen...#$b#Thank you.$u\"/move Marcus 0 4 2/warp Marcus -100 -100/emote Ryden 32/pause 500/faceDirection farmer 0/speak Ryden \"Wow... I'm so excited!$h#$b#We can play cards on a brand-spanking-new carpet, cook in a clean kitchen...$u#$b#This really is a wonderful day.$h#$b#And it's all because of you, @.\"/emote farmer 32/pause 500/end"
+                },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true,
+                "HasSeenEvent | contains=1844320": true
+                }
+        }
+           
+    ]
+}

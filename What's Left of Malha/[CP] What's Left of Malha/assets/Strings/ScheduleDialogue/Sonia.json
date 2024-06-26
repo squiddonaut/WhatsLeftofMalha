@@ -1,0 +1,7 @@
+{
+    "spring": "610 Custom_Malha_SoniaHouse 12 8 2",
+    "summer": "610 Custom_Malha_SoniaHouse 12 8 2",
+    "fall": "610 Custom_Malha_SoniaHouse 12 8 2",
+    "winter": "610 Custom_Malha_SoniaHouse 12 8 2",
+    "default": "GOTO spring"
+}

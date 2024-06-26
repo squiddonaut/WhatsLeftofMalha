@@ -1,0 +1,11 @@
+{
+    "Name": "Map Lighting Util Test Pack",
+    "Author": "sophie",
+    "Version": "0.1.0",
+    "Description": "Pack detailing the basic usage of my MapLightingUtil mod.",
+    "UniqueID": "sophie.MapLightingUtilTestPack",
+    "UpdateKeys": [],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    },
+}
