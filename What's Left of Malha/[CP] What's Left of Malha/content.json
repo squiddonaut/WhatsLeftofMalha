@@ -345,18 +345,18 @@
         },
         { //Castle Events
             "Action": "Load",
-            "Target": "Data/Events/Malha_Castle",
-            "FromFile": "assets/Events/Malha_Castle.json"
+            "Target": "Data/Events/Custom_Malha_Castle",
+            "FromFile": "assets/Events/Custom_Malha_Castle.json"
         }, 
         { //Sonia's House Events
             "Action": "Load",
-            "Target": "Data/Events/Malha_SoniaHouse",
-            "FromFile": "assets/Events/Malha_SoniaHouse.json"
+            "Target": "Data/Events/Custom_Malha_SoniaHouse",
+            "FromFile": "assets/Events/Custom_Malha_SoniaHouse.json"
         },
         { //Malha Events
         "Action": "Load",
-        "Target": "Data/Events/Malha_Malha",
-        "FromFile": "assets/Events/Malha_Malha.json"
+        "Target": "Data/Events/Custom_Malha_Malha",
+        "FromFile": "assets/Events/Custom_Malha_Malha.json"
     },
         {
             "Action": "EditData",
@@ -380,7 +380,7 @@
                 "{{ModId}}_MarcusIntro/e {{Sonia}}Intro/e {{ModId}}_DaddyIssues/A custom_malha_{{Sonia}}intro/t 800 1900": "malha_malharuins/-1000 -1000/farmer 42 35 2 {{ModId}}_Ryden 30 35 2 {{ModId}}_Marcus 29 35 2/skippable/fade/viewport 33 41/advancedMove {{ModId}}_Ryden false 0 7 4 2000/advancedMove farmer false 0 7 3 2000/pause 500/advancedMove {{ModId}}_Marcus false 0 4 4 2000/pause 4500/faceDirection {{ModId}}_Ryden 3/pause 300/faceDirection {{ModId}}_Ryden 1/emote {{ModId}}_Ryden 16/pause 500/speak {{ModId}}_Ryden \"@! Hide!$a\"/speed farmer 6/move farmer 3 0 2/move farmer 0 5 3/move farmer -4 0 0/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden 11 0 2/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden 0 3 0/faceDirection {{ModId}}_Marcus 2/pause 250/faceDirection {{ModId}}_Marcus 1/pause 250/faceDirection {{ModId}}_Marcus 2/pause 500/speak {{ModId}}_Marcus \"Ryden? Where did you go?\"/move {{ModId}}_Marcus 0 3 1/pause 1000/emote {{ModId}}_Marcus 8/pause 500/speed {{ModId}}_Marcus 4/viewport move 2 1 3500/move {{ModId}}_Marcus 12 0 2/speak {{ModId}}_Marcus \"Ryden? Why are you standing there?\"/speak {{ModId}}_Ryden \"Eheh... I'm simply... showing reverence. By standing out of the way.\"/speak {{ModId}}_Marcus \"Yeah, right. Like you've ever shown me reverence a day in your life.$u\"/faceDirection {{ModId}}_Marcus 1/speak {{ModId}}_Marcus \"The sooner you stop idling around like an idiot, the sooner we can go survey the plains.$u\"/emote {{ModId}}_Marcus 16/faceDirection {{ModId}}_Marcus 2/speak {{ModId}}_Marcus \"Did I just see bubbles come out from behind that wall?$a\"/emote {{ModId}}_Ryden 28/speak {{ModId}}_Ryden \"Eheh... bubbles! Don't be ridiculous!$h\"/speak {{ModId}}_Marcus \"Ryden, if you're trying to hide a sea monster from me...$a\"/speak {{ModId}}_Ryden \"Of course not, father! I would never dream of such a thing!$6\"/speak {{ModId}}_Marcus \"Then you won't care if I take a quick look...\"/move {{ModId}}_Marcus 4 0 2/move {{ModId}}_Marcus 0 1 2/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden 4 0 0/speak {{ModId}}_Ryden \"This really isn't necessary, father!$6\"/speak {{ModId}}_Marcus \"Move. Or else.$a\"/pause 1000/speak {{ModId}}_Ryden \"Fine, but... promise not to get mad.$s\"/speak {{ModId}}_Marcus \"I'll get mad if what I'm about to see is deserving of anger.$a\"/emote {{ModId}}_Ryden 28/pause 2000/move {{ModId}}_Ryden 2 0 3/playMusic malha_ambience/move {{ModId}}_Marcus 0 4 3/faceDirection farmer 1/speak {{ModId}}_Marcus \"!!!$6#$b#RYYYYYDEEEEEN!$a\"/shake {{ModId}}_Ryden 1500/pause 1500/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden 0 3 3/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden -2 0 0/speak {{ModId}}_Ryden \"Please don't hurt him!$a^Please don't hurt her!$a\"/pause 1000/speed {{ModId}}_Marcus 1/move {{ModId}}_Marcus -3 0 3/faceDirection {{ModId}}_Ryden 3/pause 2000/speak {{ModId}}_Marcus \"So this is what you think of Malha's legacy?$u\"/speak {{ModId}}_Ryden \"Dad, it's not like that...$s\"/faceDirection {{ModId}}_Marcus 1/pause 2000/speak {{ModId}}_Marcus \"Get out of my sight. Both you and that...$u\"/faceDirection {{ModId}}_Marcus 3/speak {{ModId}}_Marcus \"...thing.$u\"/faceDirection {{ModId}}_Marcus 1/speak {{ModId}}_Marcus \"NOW!$a\"/pause 500/speak {{ModId}}_Ryden \"...$s\"/move {{ModId}}_Ryden -5 0 3/faceDirection {{ModId}}_Marcus 3/faceDirection farmer 3/speak {{ModId}}_Ryden \"...Come on, @.$7\"/move {{ModId}}_Ryden -7 0 3 true/pause 500/globalFade/viewport -1000 -1000/end"
             },
             "When": {
-                    "HasSeenEvent | contains={{Sonia}}Intro": true,
+                    "HasSeenEvent | contains={{ModId}}_SoniIntro": true,
                     "HasSeenEvent | contains={{ModId}}_DaddyIssues": true
             }
         },
