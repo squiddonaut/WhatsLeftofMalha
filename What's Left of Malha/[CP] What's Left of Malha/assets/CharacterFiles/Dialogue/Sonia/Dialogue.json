@@ -6,11 +6,11 @@ z{
     "Resort_Leaving": "",
     "Resort_Wander": "",
     "Resort_Wander_2": "",
-    "Resort_Shore": "",
+    "Resort_Shore": "The water smells so unique in this area of the Gem Sea.#$b#Not that you would've noticed. Humans aren't attuned to that sort of thing.$u",
     "Resort_Chair": "",
-    "Resort_Towel": "",
-    "Resort_Towel_2": "",
-    "Resort_Bar": "",
+    "Resort_Towel": "Yes, I know I look good in a swimsuit. No need to flatter me.",
+    "Resort_Towel_2": "Um... I think I'm getting sunburnt.$s",
+    "Resort_Bar": "I don't drink. It always makes me feel incapacitated.$s",
     "Resort": "",
     //Dating Shenanigans
     "danceRejection": "Why do you think I'd ever dance with a human? Are you crazy?$a",
@@ -55,8 +55,9 @@ z{
       ////Thursday
       "summer_Thu4": "My parents used to make me hold ice cubes until they melted in my hands whenever I got too fired up playing games with the other kids.$8#$b#The funny thing is that now, cold sensations on my hands remind me of time outs.$u",
       ////Friday
-      "summer_Fri4": "",
+      "summer_Fri4": "There are problems related to living underwater that humans wouldn't even consider.$b#For example, as merchildren, we were always told not to catch bubbles in our mouths that came from beneath the sand or rocks. Apparently the gas is toxic or something.$s#$b#Of course, that didn't stop Ryden. I have to remind myself sometimes that he is, in fact, an intelligent life form.$u",
       ////Saturday
+      "summer_Sat4": "It's not so bad living in a shipwreck. At first I hated it, but...#$b#It helped to think about all the humans that faced their end within those walls.$8#$b#A bit much? Don't worry, if YOU died in my house, I'd be grossed out.$h#$b#...I'm not very good at this.$u",
       ////Sunday
       ////Specific Days
     //Fall Dialogue
@@ -65,7 +66,7 @@ z{
       "fall_Sun4": "There's a path that leads down to a trench in Malha.$9#$b#According to tradition, one of the founders of Malha was a deep-sea mermaid, and they built the city next to a trench to ensure her and others comfort.$8#$b#It goes to show that Malha has always prioritized its people, even from day one.$17",
       ////Wednesday
       ////Thursday
-      "fall_Thu": "",
+      "fall_Thu4": "I love Ryden, but I get so sick of him bragging about his singing.$u#$b#What? No. It's not good.$9",
       ////Friday
       ////Saturday
       ////Sunday
@@ -79,7 +80,7 @@ z{
       ////Wednesday
       ////Thursday
       ////Friday
-      "winter_Fri4": ""
+      "winter_Fri4": "Some merfolk say that the royal family has a higher aptitude for mermaid magic than your average merperson.$8#$b#I think it's nonsense.$u#$b#Even if they did, what does it matter? Mermaid magic isn't useful for combat. It's just a party trick.$a#$b#Don't tell anyone I said that.$u"
       ////Saturday
       ////Sunday
       ////Specific Days
