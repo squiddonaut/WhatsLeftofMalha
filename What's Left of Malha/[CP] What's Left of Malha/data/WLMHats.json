@@ -1,0 +1,20 @@
+{
+	"Changes": [
+	//Hats
+		{
+			"LogName": "WLM Hats",
+			"Action": "EditData",
+			"Target": "Data/Hats",
+			"Entries": {
+				"{{ModId}}_SonisHat": "Sonia's Hat/She knitted this just for you./false/true//Sonia's Hat/0/Mods\\squiddonaut.WhatsLeftofMalhaCP\\Hats"
+			}
+		},
+		
+		{
+			"LogName": "WLM Hat Loading",
+			"Action": "Load",
+			"Target": "Mods/squiddonaut.WhatsLeftofMalhaCP/Hats",
+			"FromFile": "assets/WLMHats.png"
+		},
+	]
+}

@@ -1,0 +1,172 @@
+{
+	"Changes": [
+		//Adding New Locations 
+		{
+			"LogName": "Loading Malha Locations",
+			"Action": "Load",
+			"Target": "Maps/Malha_Malha, Maps/Malha_Jellytopia, Maps/Malha_WarpRoom, Maps/Malha_PrideFest, Maps/Malha_SoniaParentsHouse, Maps/Malha_SoniaDate",
+			"FromFile": "assets/{{Target}}.tmx"
+		},
+		//Ruins or Restored
+		{
+			"LogName": "Ruined or Restored Castle",
+			"Action": "Load",
+			"Target": "Maps/Malha_Castle",
+			"FromFile": "assets/{{Target}}{{CastleHouseStatus}}.tmx"
+		},
+		{
+			"LogName": "Ruined or Restored House",
+			"Action": "Load",
+			"Target": "Maps/Malha_SoniaHouse",
+			"FromFile": "assets/{{Target}}{{SoniaHouseStatus}}.tmx"
+		},
+		
+		//If you ever chose to do recolor compat, thank me later ;)
+		{
+			"LogName": "Loading Tilesheets",
+			"Action": "Load",
+			"Target": "maps/castledoor, maps/castledoorrestored, maps/fall_zRydenPatio, maps/spring_zRydenPatio, maps/summer_zRydenPatio, maps/winter_zRydenPatio, maps/z_jellytopia, maps/z_MalhaInterior, maps/z_MalhaRuins, maps/z_passedoutRyden, maps/z_pridefest",
+			"FromFile": "assets/maps/{{TargetWithoutPath}}.png"
+		},
+		//Location Data
+		{
+			"LogName": "Malha Location Data",
+			"Action": "EditData",
+			"Target": "Data/Locations",
+			"Entries": {
+				"Malha_Malha": {
+					"DisplayName": "Malha",
+					"FormerLocationNames": [ "Custom_Malha_Malha" ],
+					"DefaultArrivalTile": {
+						"X": 28,
+						"Y": 46
+					},
+					"CreateOnLoad": {
+						"MapPath": "Maps/Malha_Malha",
+					},
+				},
+				"Malha_Jellytopia": {
+					"DisplayName": "Jellytopia",
+					"FormerLocationNames": [ "Custom_Malha_Jellytopia" ],
+					"DefaultArrivalTile": {
+						"X": 20,
+						"Y": 19
+					},
+					"CreateOnLoad": {
+						"MapPath": "Maps/Malha_Jellytopia",
+					},
+					"CanPlantHere": false,
+					"ExcludeFromNpcPathfinding": true,
+					"CanHaveGreenRainSpawns": false,
+				},
+				"Malha_SoniaDate": {
+					"DisplayName": "SoniaDate",
+					"FormerLocationNames": [ "Custom_Malha_SoniaDate" ],
+					"DefaultArrivalTile": {
+						"X": 22,
+						"Y": 16
+					},
+					"CreateOnLoad": {
+						"MapPath": "Maps/Malha_SoniaDate"
+					},
+					"CanPlantHere": false,
+					"ExcludeFromNpcPathfinding": true,
+					"CanHaveGreenRainSpawns": false
+				},
+				"Malha_WarpRoom": {
+					"DisplayName": "Malha Warp Room",
+					"FormerLocationNames": [ "Custom_Malha_WarpRoom" ],
+					"DefaultArrivalTile": {
+						"X": 1,
+						"Y": 1
+					},
+					"CreateOnLoad": {
+						"MapPath": "Maps/Malha_WarpRoom",
+					},
+					"CanPlantHere": false,
+					"ExcludeFromNpcPathfinding": true,
+					"CanHaveGreenRainSpawns": false,
+				},
+				"Malha_PrideFest": {
+					"DisplayName": "Malha Pride Festival",
+					"FormerLocationNames": [ "Custom_Malha_PrideFest" ],
+					"DefaultArrivalTile": {
+						"X": 1,
+						"Y": 1
+					},
+					"CreateOnLoad": {
+						"MapPath": "Maps/Malha_PrideFest",
+					},
+					"CanPlantHere": false,
+					"ExcludeFromNpcPathfinding": false,
+					"CanHaveGreenRainSpawns": false,
+				},
+				"Malha_SoniaParentsHouse": {
+					"DisplayName": "Sonia Parents House",
+					"FormerLocationNames": [ "Custom_Malha_SoniaParentsHouse" ],
+					"DefaultArrivalTile": {
+						"X": 1,
+						"Y": 1
+					},
+					"CreateOnLoad": {
+						"MapPath": "Maps/Malha_SoniaParentsHouse",
+					},
+					"CanPlantHere": false,
+					"ExcludeFromNpcPathfinding": true,
+					"CanHaveGreenRainSpawns": false,
+				},
+				"Malha_Castle": {
+					"DisplayName": "Old Castle",
+					"FormerLocationNames": [ "Custom_Malha_Castle" ],
+					"DefaultArrivalTile": {
+						"X": 25,
+						"Y": 27
+					},
+					"CreateOnLoad": {
+						"MapPath": "Maps/Malha_Castle",
+					},
+					"CanPlantHere": false,
+					"ExcludeFromNpcPathfinding": false,
+					"CanHaveGreenRainSpawns": false,
+				},
+				"Malha_SoniaHouse": {
+					"DisplayName": "Malha",
+					"FormerLocationNames": [ "Custom_Malha_SoniaHouse" ],
+					"DefaultArrivalTile": {
+						"X": 9,
+						"Y": 11
+					},
+					"CreateOnLoad": {
+						"MapPath": "Maps/Malha_SoniaHouse",
+					},
+					"CanPlantHere": false,
+					"ExcludeFromNpcPathfinding": false,
+					"CanHaveGreenRainSpawns": false,
+				}, 
+			},
+		}, 
+		//Map Strings
+		{
+			"LogName": "Malha Map Strings",
+			"Action": "EditData",
+			"Target": "Strings/StringsFromMaps",
+			"Entries": {
+				"WRMCastle.0": "An extravagant collection of starfish.",
+				"WRMCastle.1": "Remains of a fierce ancient creature.",
+			},
+		},
+		//Chair Tilesheets
+		{
+			"LogName": "Malha Chair Tiles",
+			"Action": "EditData",
+			"Target": "Data/ChairTiles",
+			"Entries": {
+				"MalhaInterior/5/7": "1/1/down/chair/-1/-1/false",
+				"MalhaInterior/25/7": "1/1/down/chair/-1/-1/false",
+				"MalhaInterior/1/26": "1/1/down/stool/-1/-1/false",
+				"MalhaInterior/2/26": "1/1/down/stool/-1/-1/false",
+				"MalhaInterior/3/26": "1/1/down/stool/-1/-1/false",
+			}
+		},
+	]
+}

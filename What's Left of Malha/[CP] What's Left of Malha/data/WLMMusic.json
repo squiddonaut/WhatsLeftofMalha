@@ -1,0 +1,46 @@
+{
+    "Changes": [
+    {
+        "Action": "EditData",
+        "Target": "Data/AudioChanges",
+        "Entries": {
+            "malha_malharuins": {
+                "ID": "malha_malharuins",
+                "FilePaths": [
+                    "{{AbsoluteFilePath: assets/Music/lostmalha.wav}}"
+                ],
+                "Category": "Music",
+                "Looped": true
+            }
+        }
+    },
+    {
+        "Action": "EditData",
+        "Target": "Data/AudioChanges",
+        "Entries": {
+            "malha_soniatheme": {
+                "ID": "malha_soniatheme",
+                "FilePaths": [
+                    "{{AbsoluteFilePath: assets/Music/soniatheme.wav}}"
+                ],
+                "Category": "Music",
+                "Looped": true
+            }
+        }
+    },
+    {
+        "Action": "EditData",
+        "Target": "Data/AudioChanges",
+        "Entries": {
+            "malha_ambience": {
+                "ID": "malha_ambience",
+                "FilePaths": [
+                    "{{AbsoluteFilePath: assets/Music/underwaterambience.wav}}"
+                ],
+                "Category": "Music",
+                "Looped": true
+            }
+        }
+    }
+]
+}
