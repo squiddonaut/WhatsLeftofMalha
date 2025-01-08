@@ -347,7 +347,7 @@
             "Action": "EditData",
             "Target": "Data/Mail",
             "Entries": {
-                "{{ModId}}_Mail_RydenDate": "To my bestest friend @,^I must humbly request that you meet me outside of the castle in Malha. I have something very special planned.   ^   From your favorite merman,   ^   Ryden[#]Ryden's Invitation"
+                "{{ModId}}_Mail_RydenDate": "To my bestest friend @,^I must humbly request that you meet me outside of the castle in Malha. I have something very special planned.   ^   From your favorite merman,   ^   Ryden%item quest RydenDate true %%[#]Ryden's Invitation"
             }
         }, 
 	]
