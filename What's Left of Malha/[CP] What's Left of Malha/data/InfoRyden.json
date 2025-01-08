@@ -44,6 +44,12 @@
 			"Target": "OverworldSprites/{{ModId}}_Ryden_surface",
 			"FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_surface.png"
 		},
+		//Adding temporary Ryden sprite for intro
+        {
+            "Action": "Load",
+            "Target": "Characters/{{ModId}}_Ryden_Temporary",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_surface.png"
+        },
 		//10 Heart Stuff
 		{
             "Action": "Load",
@@ -62,7 +68,7 @@
 			"Target": "Data/Characters",
 			"Entries": {
 				"{{ModId}}_Ryden": {
-					"DisplayName": "Ryden",
+					"DisplayName": "???",
 					"Language": "Default",
 					"Gender": "Male",
 					"Age": "Teen",
@@ -74,12 +80,12 @@
 					"HomeRegion": "Other",
 					"IsDarkSkinned": "false",
 					
-					"CanSocialize": true,
-					"CanBeRomanced": true,
+					"CanSocialize": "{{RydenNPCUnlocked}}",
+					"CanBeRomanced": "{{RydenNPCUnlocked}}",
 					"CanRecieveGifts": true,
 					"CanCommentOnPurchasedShopItems": false,
-					"CanGreetNearbyCharacters": true,
-					"CanVisitIsland": true,
+					"CanGreetNearbyCharacters": "{{RydenNPCUnlocked}}",
+					"CanVisitIsland": "{{RydenNPCUnlocked}}",
 					"Calendar": "HiddenUntilMet",
 					"SocialTab": "HiddenUntilMet",
 					"SpouseAdopts": null,
@@ -126,23 +132,33 @@
 					"WinterStarParticipant": false,
 					"WinterStarGifts": [],
 					
-					"UnlockConditions": "PLAYER_HAS_SEEN_EVENT Any {{ModId}}_MalhaUnlock",
+					"UnlockConditions": "MINE_LOWEST_LEVEL_REACHED 120",
 					"SpawnIfMissing": true,
 					"Home": [
 						{
 							"Id": "Default",
-							"Condition": null,
+							"Condition": "PLAYER_HAS_SEEN_EVENT Any {{ModId}}_RydenRescued",
 							"Location": "Malha_Castle",
 							"Tile": {
 								"X": 6,
 								"Y": 5
 							},
 							"Direction": "right"
+						},
+						{
+							"Id": "Ryden_WashedUp",
+							"Condition": "MINE_LOWEST_LEVEL_REACHED 120",
+							"Location": "Beach",
+							"Tile": {
+								"X": 49,
+								"Y": 24
+							},
+							"Direction": "right"
 						}
 					],
 					
 					//The BEAST!!! (Appearances)
-					"TextureName": "Ryden",
+					"TextureName": "{{ModId}}_Ryden",
 					"Appearance": [
 						{
 							"ID": "RydenDefaultOutfit",
@@ -177,12 +193,11 @@
             "Action": "EditData",
             "Target": "Characters/schedules/{{ModId}}_Ryden",
             "Entries": {
-                "spring":"0 Beach 49 24 0",
+                "spring":"610 Beach 49 24 0 {{ModId}}_Ryden_washedup \"Strings\\schedules\\{{ModId}}_Ryden:washedup.000\"",
                 "default": "GOTO spring"
             },
 			"When": {
-                "HasWalletItem": "SkullKey",
-                "HasSeenEvent | contains={{ModId}}_MalhaUnlock": false
+                "HasSeenEvent | contains={{ModId}}_RydenRescued": false
             }
         },
         {
@@ -221,9 +236,23 @@
                 "{{ModId}}_Ryden_sleep": "21/21/21",
                 "{{ModId}}_Ryden_dishes": "36/36 37/36",
                 "{{ModId}}_Ryden_weights": "40/40 40 40 40 40 41 42 43 43 43 43 43 43 43 42 41 40/40",
-				"{{ModId}}_Ryden_sackedout": "19/19/19"
+		"{{ModId}}_Ryden_sackedout": "19/19/19",
+		"{{ModID}}_Ryden_washedup": "24/24/24",
             }
         },
+		//Big sprite animationDescriptions
+		{
+			"Action": "EditData",
+			"Target": "spacechase0.SpaceCore/ScheduleAnimationExtensionData",
+			"Entries": {
+				"{{ModID}}_Ryden_washedup": {
+					"SourceRectSize": "32, 32",
+					"DrawOffset": "0,0",
+					"AppearanceOverride": null,
+					"OnStart": { "Emote": null, "PlaySound": null },
+				}
+			}
+		},
 		
 		{
 			"Action": "EditData",
@@ -268,6 +297,49 @@
             },
             "When": {
                 "PlayerGender": "Female"
+            }
+        },
+		//Name change
+		{
+            "LogName": "Ryden Name Change",
+            "Action": "EditData",
+            "Target": "Data/Characters",
+            "Fields": {
+                "{{ModId}}_Ryden": {
+					"DisplayName": "Ryden",
+                }
+            },
+            "When": {
+                "HasSeenEvent": "{{ModId}}_RydenRescued",
+            }
+        },
+		//NPC Map Locations Compat
+        {
+            "LogName": "Ryden NPC Map Locations Exclusion",
+            "Action": "EditData",
+            "Target": "Mods/Bouhm.NPCMapLocations/NPCs",
+            "When": {
+                "HasMod": "Bouhm.NPCMapLocations"
+            },
+            "Entries": {
+                "{{ModId}}_Ryden": {
+					"Exclude": "true"
+                }
+            }
+        },
+        {
+            "LogName": "Ryden NPC Map Locations Patch",
+            "Action": "EditData",
+            "Target": "Mods/Bouhm.NPCMapLocations/NPCs",
+            "When": {
+                "HasMod": "Bouhm.NPCMapLocations",
+				"HasSeenEvent": "{{ModId}}_RydenRescued"
+            },
+            "Entries": {
+                "{{ModId}}_Ryden": {
+                    "MarkerCropOffset": -2,
+					"Exclude": "false"
+                }
             }
         },
 //Mail
