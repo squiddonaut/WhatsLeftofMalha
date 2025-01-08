@@ -5,6 +5,8 @@
 		"Target": "Data/Quests",
 		"Entries": {
 			"WashedUpMerman": "Basic/Fish Taco Rescue/A merman has washed up on shore and requests... a fish taco?/Give the merman a fish taco./-1/-1/0/-1/false",
+			"RydenDate": "Location/Meeting Ryden/Ryden has humbly requested that you meet him inside his castle./Enter Ryden's castle before 8./Malha_Castle/-1/0/-1/false",
+			"MeetingSonia": "Location/Ryden asked you to meet his friend Sonia, at the shipwrecked house./Enter Sonia's house before 8./Malha_SoniaHouse/-1/0/-1/false",
 		}
 	},
 	]
