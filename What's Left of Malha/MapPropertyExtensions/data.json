@@ -1,0 +1,20 @@
+{
+  "OverlayProperties": [
+    {
+      "ImagePath": "assets/Image",
+      "PropertyName": "Underwater",
+      "Animation": {
+        "NumberOfFrames": 32,
+        "FrameDuration": 10
+      }
+    },
+    {
+      "ImagePath": "assets/MalhaCG",
+      "PropertyName": "MalhaCG",
+      "Animation": {
+        "NumberOfFrames": 1,
+        "FrameDuration": 10
+      }
+    }
+  ]
+}
