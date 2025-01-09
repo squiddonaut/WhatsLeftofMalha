@@ -73,6 +73,9 @@
 		"Action": "Include",
 		"FromFile": "data/InfoRyden.json, data/InfoSonia.json, data/InfoMarcus.json, data/WLMLocations.json, data/WLMhats.json, data/WLMMusic.json, data/RydenHeartEvents.json, data/SoniaHeartEvents.json, data/WLMQuests.json"
 	},
+
+    //Temp NPCs
+    
 //Map Stuff
         { //NPCWarp for {{ModId}}_Ryden
             "Action": "EditMap",
@@ -256,16 +259,26 @@
             }
         }, 
 
-//{{Sonia}} Parents Stuff
+//Temp Actors
         {
             "Action": "Load",
-            "Target": "Characters/SoniaMom, Characters/SoniaDad",
-            "FromFile": "assets/CharacterFiles/OverworldSprites/SoniaParents/{{TargetWithoutPath}}.png"
+            "Target": "Characters/{{ModId}}_SoniaMom, Characters/{{ModId}}_SoniaDad",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/SoniaParents/SoniaMom.png, assets/CharacterFiles/OverworldSprites/SoniaParents/SoniaDad.png"
         },
         {
             "Action": "Load",
-            "Target": "Portraits/SoniaMom, Portraits/SoniaDad",
-            "FromFile": "assets/CharacterFiles/Portraits/SoniaParents/{{TargetWithoutPath}}.png"
+            "Target": "Portraits/{{ModId}}_SoniaMom, Portraits/{{ModId}}_SoniaDad",
+            "FromFile": "assets/CharacterFiles/Portraits/SoniaParents/SoniaMom.png, assets/CharacterFiles/Portraits/SoniaParents/SoniaDad.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/{{ModId}}_Shea",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Shea/Shea.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/{{ModId}}_Shea",
+            "FromFile": "assets/CharacterFiles/Portraits/Shea/Shea.png"
         },
 //Malha Lighting
         {
