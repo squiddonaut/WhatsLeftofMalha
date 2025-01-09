@@ -69,9 +69,8 @@
 			"Action": "EditData",
 			"Target": "Data/Locations",
 			"Entries": {
-				"Malha_Malha": {
+				"Custom_Malha_Malha": {
 					"DisplayName": "Malha",
-					"FormerLocationNames": [ "Custom_Malha_Malha" ],
 					"DefaultArrivalTile": {
 						"X": 28,
 						"Y": 46
@@ -80,9 +79,8 @@
 						"MapPath": "Maps/Custom_Malha_Malha"
 					},
 				},
-				"Malha_Jellytopia": {
+				"Custom_Malha_Jellytopia": {
 					"DisplayName": "Jellytopia",
-					"FormerLocationNames": [ "Custom_Malha_Jellytopia" ],
 					"DefaultArrivalTile": {
 						"X": 20,
 						"Y": 19
@@ -94,9 +92,8 @@
 					"ExcludeFromNpcPathfinding": true,
 					"CanHaveGreenRainSpawns": false
 				},
-				"Malha_SoniaDate": {
+				"Custom_Malha_SoniaDate": {
 					"DisplayName": "SoniaDate",
-					"FormerLocationNames": [ "Custom_Malha_SoniaDate" ],
 					"DefaultArrivalTile": {
 						"X": 22,
 						"Y": 16
@@ -108,9 +105,8 @@
 					"ExcludeFromNpcPathfinding": true,
 					"CanHaveGreenRainSpawns": false
 				},
-				"Malha_WarpRoom": {
+				"Custom_Malha_WarpRoom": {
 					"DisplayName": "Malha Warp Room",
-					"FormerLocationNames": [ "Custom_Malha_WarpRoom" ],
 					"DefaultArrivalTile": {
 						"X": 1,
 						"Y": 1
@@ -122,9 +118,8 @@
 					"ExcludeFromNpcPathfinding": true,
 					"CanHaveGreenRainSpawns": false,
 				},
-				"Malha_PrideFest": {
+				"Custom_Malha_PrideFest": {
 					"DisplayName": "Malha Pride Festival",
-					"FormerLocationNames": [ "Custom_Malha_PrideFest" ],
 					"DefaultArrivalTile": {
 						"X": 1,
 						"Y": 1
@@ -136,9 +131,8 @@
 					"ExcludeFromNpcPathfinding": false,
 					"CanHaveGreenRainSpawns": false,
 				},
-				"Malha_SoniaParentsHouse": {
+				"Custom_Malha_SoniaParentsHouse": {
 					"DisplayName": "Sonia Parents House",
-					"FormerLocationNames": [ "Custom_Malha_SoniaParentsHouse" ],
 					"DefaultArrivalTile": {
 						"X": 1,
 						"Y": 1
@@ -150,9 +144,8 @@
 					"ExcludeFromNpcPathfinding": true,
 					"CanHaveGreenRainSpawns": false
 				},
-				"Malha_Castle": {
+				"Custom_Malha_Castle": {
 					"DisplayName": "Old Castle",
-					"FormerLocationNames": [ "Custom_Malha_Castle" ],
 					"DefaultArrivalTile": {
 						"X": 25,
 						"Y": 27
@@ -164,9 +157,8 @@
 					"ExcludeFromNpcPathfinding": false,
 					"CanHaveGreenRainSpawns": false,
 				},
-				"Malha_SoniaHouse": {
+				"Custom_Malha_SoniaHouse": {
 					"DisplayName": "Malha",
-					"FormerLocationNames": [ "Custom_Malha_SoniaHouse" ],
 					"DefaultArrivalTile": {
 						"X": 9,
 						"Y": 11
@@ -177,8 +169,8 @@
 					"CanPlantHere": false,
 					"ExcludeFromNpcPathfinding": false,
 					"CanHaveGreenRainSpawns": false,
-				}, 
-			},
+				}
+			}
 		}, 
 		//Map Strings
 		{
