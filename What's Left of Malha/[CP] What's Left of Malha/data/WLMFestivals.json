@@ -384,7 +384,7 @@
 				"Delimiter": "/",
 			},
 			],
-			"When": {	"HasMod |contains=AndrewJC.CoalPointFarm": "false",},
+			"When": {	"HasMod |contains=AndrewJC.CoalPointFarm": "false"}
 		},
 		
 		//Dialogue
@@ -393,8 +393,8 @@
 			"Action": "EditData",
 			"Target": "data/festivals/spring13",
 			"Entries": {
-				"{{ModId}}_Ryden": "We're in the water away from everyone.",
-				"{{ModId}}_Sonia": "We're in the water away from everyone.",
+				"{{ModId}}_Ryden": "I just love the smell of fresh eggs on a spring morning!$h",
+				"{{ModId}}_Sonia": "Ryden... they have the shells on. You can't smell them.$u"
 			}
 		},
 		/*
@@ -413,8 +413,8 @@
 			"Action": "EditData",
 			"Target": "data/festivals/summer11",
 			"Entries": {
-				"{{ModId}}_Ryden": "We're in the water away from everyone.",
-				"{{ModId}}_Sonia": "We're in the water away from everyone.",
+				"{{ModId}}_Ryden": "Ahh... this is the life. Basking in the sun surrounded by the smell of food.$h",
+				"{{ModId}}_Sonia": "Human gatherings are so inane.$u"
 			}
 		},    
 		{
@@ -422,8 +422,8 @@
 			"Action": "EditData",
 			"Target": "data/festivals/summer28",
 			"Entries": {
-				"{{ModId}}_Ryden": "We're in the water away from everyone.",
-				"{{ModId}}_Sonia": "We're in the water away from everyone.",
+				"{{ModId}}_Ryden": "The Moonlight Jellies from the surface is such a unique sight. Most merfolk will never get to experience it.",
+				"{{ModId}}_Sonia": "...I want to go home.$u"
 			}
 		},
         {
@@ -431,10 +431,10 @@
 			"Action": "EditData",
 			"Target": "data/festivals/fall16",
 			"Entries": {
-				"{{ModId}}_Ryden": "I'm next to the fishing game stand",
-				"{{ModId}}_Ryden_y2": "I'm next to the strength game",
-				"{{ModId}}_Sonia": "I'm next to the slingshot game",
-				"{{ModId}}_Sonia_y2": "I'm next to the fishing game stand",
+				"{{ModId}}_Ryden": "Why do humans fish with POLES of all things?$a#$b#Get down there! Use your hands, for Alana's sake!$h",
+				"{{ModId}}_Ryden_y2": "Get Sonia to try this one. My arms are much too weak.$s",
+				"{{ModId}}_Sonia": "The slingshot is such a crude human invention. It would never work underwater.$u",
+				"{{ModId}}_Sonia_y2": "There's so many two-legs around here...$u#$b#Oh, well. I guess things can always be worse."
 			}
 		},
         {
@@ -442,10 +442,10 @@
 			"Action": "EditData",
 			"Target": "data/festivals/fall27",
 			"Entries": {
-				"{{ModId}}_Ryden": "I'm in the maze",
-				"{{ModId}}_Ryden_y2": "I'm in the maze",
-				"{{ModId}}_Sonia": "I'm watching monsters",
-				"{{ModId}}_Sonia_y2": "I'm in the maze",
+				"{{ModId}}_Ryden": "Oh dear, I'm starting to get dizzy...$h",
+				"{{ModId}}_Ryden_y2": "I need to get out of this maze soon, so everyone else can see the makeup I worked so hard on!$h",
+				"{{ModId}}_Sonia": "The monsters in the human world are so much... cuter.",
+				"{{ModId}}_Sonia_y2": "It's always a relief when I lose Ryden in these mazes.#$b#He whines like you wouldn't believe!$h"
 			}
 		},
         {
@@ -455,7 +455,7 @@
 			"Entries": {
 				"{{ModId}}_Ryden": "Hey, building snowmen isn't so bad!$1",
 				"{{ModId}}_Ryden_y2": "Her sculpture is remarkably accurate, although she appears to have forgotten the gils...$0",
-				"{{ModId}}_Sonia": "I haven't felt my fingers in hours...$2",
+				"{{ModId}}_Sonia": "I haven't felt my fingers in hours...$2"
 			}
 		},
         {
@@ -464,9 +464,9 @@
 			"Target": "data/festivals/winter25",
 			"Entries": {
 				"{{ModId}}_Ryden": "It feels a tad bittersweet celebrating the feast without my family..$2",
-				"{{ModId}}_Sonia": "I'm still thankful to have you, Ryden.$10#$b#I even got you some trinkets from the shopkeeper!$1",
+				"{{ModId}}_Sonia": "I'm still thankful to have you, Ryden.$10#$b#I even got you some trinkets from the shopkeeper!$1"
 			},
-			"When": {	"HasMod |contains=AndrewJC.CoalPointFarm": "false",},
+			"When": {	"HasMod |contains=AndrewJC.CoalPointFarm": "false"}
 		},
 		//I had them sit with my NPCs from Coal Point Farm at Winter Star because I thought it'd be cute! +The mod adds new table that's only half full. I tried to make Mora's dialogue oblivious to them being mermaids but finding solace in them both preferring to be alone- if it comes off as her knowing Sonia's a mermaid then you can just scrap this
         {
