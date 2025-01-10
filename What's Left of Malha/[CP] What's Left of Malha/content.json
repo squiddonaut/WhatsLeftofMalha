@@ -78,7 +78,7 @@
 		"Action": "Include",
 		"FromFile": "data/WLMFestivals.json",
 		"When": {
-			"HasSeenEvent": "{{ModId}}_SoniaIntro"
+			"HasSeenEvent": "{{ModId}}_SoniIntro"
 		}
 	},
 
