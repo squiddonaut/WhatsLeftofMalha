@@ -166,7 +166,7 @@
             "FromFile": "assets/Maps/castledoor.png",
             "ToArea": { "X": 512, "Y": 144, "Width": 64, "Height": 48 },
             "When": {
-                "LocationName": "Malha_Castle"
+                "LocationName": "Custom_Malha_Castle"
                 },
             "Update": "OnLocationChange"
         },
@@ -177,7 +177,7 @@
             "FromArea": { "X": 0, "Y": 0, "Width": 16, "Height": 48 },
             "ToArea": { "X": 384, "Y": 16, "Width": 16, "Height": 48 },
             "When": {
-                "LocationName": "Malha_Castle"
+                "LocationName": "Custom_Malha_Castle"
                 },
             "Update": "OnLocationChange"
         },
@@ -187,7 +187,7 @@
             "FromFile": "assets/Maps/castledoorrestored.png",
             "ToArea": { "X": 512, "Y": 144, "Width": 64, "Height": 48 },
             "When": {
-                "LocationName": "Malha_Castle",
+                "LocationName": "Custom_Malha_Castle",
                 "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
                 },
             "Update": "OnLocationChange"
@@ -199,7 +199,7 @@
             "FromArea": { "X": 0, "Y": 0, "Width": 16, "Height": 48 },
             "ToArea": { "X": 384, "Y": 16, "Width": 16, "Height": 48 },
             "When": {
-                "LocationName": "Malha_Castle",
+                "LocationName": "Custom_Malha_Castle",
                 "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
                 },
             "Update": "OnLocationChange"
@@ -245,7 +245,7 @@
             "Target": "UnlockableBundles/Bundles",
             "Entries":{
             "Malha.Castle": {
-                "Location": "Malha_Castle",
+                "Location": "Custom_Malha_Castle",
                 "BundleName": "Ryden's Bundle",
                 "BundleIconAsset": "Mods/squiddonaut.WhatsLeftofMalha/{{ModId}}_Ryden",
                 "BundleSlots": 4,	  
@@ -394,7 +394,7 @@
             "Target": "Data/Events/Beach",
             "Entries": {
                 "{{ModId}}_BeachRequest/b 1/t 600 1900": "ocean/-1000 -1000/farmer 40 24 1 {{ModId}}_Ryden 100 100 0/addTemporaryActor {{ModId}}_Ryden_Temporary 32 32 49 24 0 false/showFrame {{ModId}}_Ryden_Temporary 24/addQuest WashedUpMerman/skippable/changeName {{ModId}}_Ryden ???/fade unfade/viewport 48 24/fade true/move farmer 3 0 1/shake {{ModId}}_Ryden 1000/pause 3000/speak {{ModId}}_Ryden \"Urgh...$8\"/move farmer 4 0 1/pause 2000/speak {{ModId}}_Ryden \"Fish tacos...$8\"/emote farmer 8/speak {{ModId}}_Ryden \"All I need... is one fish taco...$8\"/shake {{ModId}}_Ryden 1000/pause 3000/speak {{ModId}}_Ryden \"Huh? ...A human?$9#$b#You there... please, hear my plea.$8\"/pause 1500/speak {{ModId}}_Ryden \"I just need one fish taco...$8\"/end",
-                "{{ModId}}_RydenRescued/e {{ModId}}_BeachRequest/i 213": "ocean/-1000 -1000/farmer 43 24 1 {{ModId}}_Ryden 100 100 0/addTemporaryActor {{ModId}}_Ryden_Temporary 32 32 49 24 0 false/showFrame {{ModId}}_Ryden_Temporary 24/skippable/removeQuest WashedUpMerman/changeName {{ModId}}_Ryden ???/fade unfade/viewport 48 24/fade true/move farmer 4 0 1/pause 2000/speak {{ModId}}_Ryden \"That smell...$8#$b#Could it be...?$9\"/addObject 48 24 213/removeItem 213/playSound throwDownITem/pause 1500/speak {{ModId}}_Ryden \"Yes... finally...$8\"/pause 1000/removeObject 48 24/playSound eat/pause 1000/speak {{ModId}}_Ryden \"Ahhh... I can feel the power surging through me...$10\"/pause 500/globalFade 0.04/viewport -1000 -1000/playSound wand/screenFlash 1/warp farmer 12 35/faceDirection farmer 2/warp {{ModId}}_Ryden 12 37/faceDirection {{ModId}}_Ryden 2/warp {{ModId}}_Ryden_Temporary 100 -100/pause 800/fade/viewport 12 39 clamp/pause 1000/animate {{ModId}}_Ryden false false 100 1 5 9 13 1/pause 500/playSound yoba/animate {{ModId}}_Ryden false true 2500 16/pause 2500/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"YES!$h\"/stopAnimation {{ModId}}_Ryden/playMusic musicboxsong/pause 1500/move {{ModId}}_Ryden 0 1 2/speak {{ModId}}_Ryden \"I thought I'd never gaze upon the sea in all of its glory again...\"/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Human! You have my deepest of gratitudes.$h#$b#Perhaps we will meet again, but for now, I must take my leave.\"/faceDirection {{ModId}}_Ryden 2/move {{ModId}}_Ryden 0 1 2/speak {{ModId}}_Ryden \"So long!\"/pause 3000/shake {{ModId}}_Ryden 1000/playMusic ocean/pause 2500/emote farmer 8/pause 2000/speak {{ModId}}_Ryden \"...$7\"/pause 2500/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Have you ever heard the story of the fate of Malha?$11#$b#It's not a tale most merfolk will tell you.$7\"/move farmer 0 1 2/pause 1000/faceDirection {{ModId}}_Ryden 2/playMusic echos/speak {{ModId}}_Ryden \"Long ago, the city of Malha was founded as a safe haven for merfolk from all across the Gem Sea.$11#$b#The city grew in size and power, becoming a hub of trade and culture within the vast expanse of the sea.$11#$b#No one ever thought that a city so prosperous could fall so easily.$7#$b#Previously docile sea creatures became suddenly agitated, tearing down our walls and ravaging our homeland.$11#$b#It can't be said for sure, but many believe that they were provoked by the poisoning of our waters.$11#$b#Only one last bastion remains--yet even it is in disarray.$11#$b#It was in the defense of this last bastion that I was defeated and found myself here.$7\"/pause 500/faceDirection {{ModId}}_Ryden 0/pause 1000/faceDirection {{ModId}}_Ryden 2/playMusic none/speak {{ModId}}_Ryden \"I owe the merpeople my presence, but...$s#$b#It is a place I hesitate to return to.$7\"/playMusic ocean/pause 3000/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Human! With my powers restored, I can transform into one of your kind at will.$0#$b#Perhaps I could... come back around every once in a while?$u\"/faceDirection {{ModId}}_Ryden 2/animate {{ModId}}_Ryden false false 100 1 5 9 13 1/pause 500/playSound yoba/animate {{ModId}}_Ryden false true 1000 16/speak {{ModId}}_Ryden \"So long for now!$h\"/stopAnimation {{ModId}}_Ryden/globalFade 0.03/viewport -1000 -1000/pause 1000/playSound pullItemFromWater/pause 2000/end invisible {{ModId}}_Ryden"
+                "{{ModId}}_RydenRescued/e {{ModId}}_BeachRequest/i 213": "ocean/-1000 -1000/farmer 43 24 1 {{ModId}}_Ryden 100 100 0/addTemporaryActor {{ModId}}_Ryden_Temporary 32 32 49 24 0 false/showFrame {{ModId}}_Ryden_Temporary 24/skippable/removeQuest WashedUpMerman/changeName {{ModId}}_Ryden ???/fade unfade/viewport 48 24/fade true/move farmer 4 0 1/pause 2000/speak {{ModId}}_Ryden \"That smell...$8#$b#Could it be...?$9\"/addObject 48 24 213/removeItem 213/playSound throwDownITem/pause 1500/speak {{ModId}}_Ryden \"Yes... finally...$8\"/pause 1000/removeObject 48 24/playSound eat/pause 1000/speak {{ModId}}_Ryden \"Ahhh... I can feel the power surging through me...$10\"/pause 500/globalFade 0.04/viewport -1000 -1000/playSound wand/screenFlash 1/warp farmer 12 35/faceDirection farmer 2/warp {{ModId}}_Ryden 12 37/faceDirection {{ModId}}_Ryden 2/warp {{ModId}}_Ryden_Temporary 100 -100/pause 800/fade/viewport 12 39 clamp/pause 1000/animate {{ModId}}_Ryden false false 100 1 5 9 13 1/pause 500/playSound yoba/animate {{ModId}}_Ryden false true 2500 16/pause 2500/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"YES!$h\"/stopAnimation {{ModId}}_Ryden/playMusic musicboxsong/pause 1500/move {{ModId}}_Ryden 0 1 2/speak {{ModId}}_Ryden \"I thought I'd never gaze upon the sea in all of its glory again...\"/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Human! You have my deepest of gratitudes.$h#$b#Perhaps we will meet again, but for now, I must take my leave.\"/faceDirection {{ModId}}_Ryden 2/move {{ModId}}_Ryden 0 1 2/speak {{ModId}}_Ryden \"So long!\"/pause 3000/shake {{ModId}}_Ryden 1000/playMusic ocean/pause 2500/emote farmer 8/pause 2000/speak {{ModId}}_Ryden \"...$7\"/pause 2500/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Have you ever heard about the fate of Malha?$11#$b#It's not a story most merfolk will tell you.$7\"/move farmer 0 1 2/pause 1000/faceDirection {{ModId}}_Ryden 2/playMusic echos/speak {{ModId}}_Ryden \"Long ago, the city of Malha was founded as a safe haven for merfolk from all across the Gem Sea.$11#$b#The city grew in size and power, becoming a hub of trade and culture within the vast expanse of the sea.$11#$b#No one ever thought that a city so prosperous could fall so easily.$7#$b#Previously docile sea creatures became suddenly agitated, tearing down our walls and ravaging our homeland.$11#$b#It can't be said for sure, but many believe that they were provoked by the poisoning of our waters.$11#$b#Only one last bastion remains - yet even it is in disarray.$11#$b#It was in the defense of this last bastion that I was defeated and found myself here.$7\"/pause 500/faceDirection {{ModId}}_Ryden 0/pause 1000/faceDirection {{ModId}}_Ryden 2/playMusic none/speak {{ModId}}_Ryden \"I owe the merpeople my presence, but...$s#$b#It is a place I hesitate to return to.$7\"/playMusic ocean/pause 3000/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Human! With my powers restored, I can transform into one of your kind at will.$0#$b#Perhaps I could... come back around every once in a while?$u\"/faceDirection {{ModId}}_Ryden 2/animate {{ModId}}_Ryden false false 100 1 5 9 13 1/pause 500/playSound yoba/animate {{ModId}}_Ryden false true 1000 16/speak {{ModId}}_Ryden \"So long for now!$h\"/stopAnimation {{ModId}}_Ryden/globalFade 0.03/viewport -1000 -1000/pause 1000/playSound pullItemFromWater/pause 2000/end invisible {{ModId}}_Ryden"
             }
         },  
         {//Ryden lets you into Malha
