@@ -440,6 +440,7 @@
             "When": {
                 "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true,
                 "HasSeenEvent | contains={{ModId}}_MarcusIntro": false
+
                  }
         },
         { //Castle Restored Yes Marcus
