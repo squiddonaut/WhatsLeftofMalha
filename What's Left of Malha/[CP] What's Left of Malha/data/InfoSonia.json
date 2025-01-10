@@ -49,6 +49,11 @@
 			"Target": "OverworldSprites/{{Sonia}}_beach",
 			"FromFile": "assets/CharacterFiles/OverworldSprites/Sonia/Sonia_beach.png"
 		},
+		{
+			"Action": "Load",
+			"Target": "OverworldSprites/{{Sonia}}_swim",
+			"FromFile": "assets/CharacterFiles/OverworldSprites/Sonia/Sonia_swim.png"
+		},
 //10 Heart Event Stuff
 		{
 			"Action": "Load",
@@ -180,7 +185,14 @@
 							"Portrait": "Portraits/{{Sonia}}_surface",   
 							"Sprite": "OverworldSprites/{{Sonia}}_surfacecast",
 							"Condition": "PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast"
-						}
+						},
+						{
+							"ID": "{{Sonia}}SwimOutfit",
+							"Portrait": "Portraits/{{Sonia}}",
+							"Sprite": "OverworldSprites/{{Sonia}}_swim",
+							"Condition": "IS_EVENT festival_summer28 festival_summer11 festival_spring13",
+							"Precedence":"-1"
+						},
 					]
 				}
 			}
@@ -207,7 +219,8 @@
             "Target": "Data/animationDescriptions",
             "Entries": {
                 "{{Sonia}}_sleep": "23/23/23",
-				"{{Sonia}}_guard": "18/18/18"
+		"{{Sonia}}_guard": "18/18/18"
+		"{{ModId}}_Sonia_shore0": "12/12 12 12 12 12 12 12 12 12 12 13 13 13 13 13 13 13 13 13/12//offset 0 16/laying_down",
             }
         },
 		//Dialogue
