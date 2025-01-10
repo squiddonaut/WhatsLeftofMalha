@@ -136,7 +136,7 @@
 					"WinterStarParticipant": false,
 					"WinterStarGifts": [],
 					
-					"UnlockConditions": "PLAYER_HAS_SEEN_EVENT Any {{ModId}}_SoniaIntro",
+					"UnlockConditions": "PLAYER_HAS_SEEN_EVENT Any {{ModId}}_SoniIntro",
 					"SpawnIfMissing": true,
 					"Home": [
 						{
