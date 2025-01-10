@@ -44,6 +44,11 @@
 			"Target": "OverworldSprites/{{ModId}}_Ryden_surface",
 			"FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_surface.png"
 		},
+        {
+			"Action": "Load",
+			"Target": "OverworldSprites/{{ModId}}_Ryden_swim",
+			"FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_swim.png"
+		},
 		//Adding temporary Ryden sprite for intro
         {
             "Action": "Load",
@@ -169,7 +174,15 @@
 						{
 							"ID": "RydenSurfaceOutfit",
 							"Portrait": "Portraits/{{ModId}}_Ryden_surface",
-							"Sprite": "OverworldSprites/{{ModId}}_Ryden_surface"
+							"Sprite": "OverworldSprites/{{ModId}}_Ryden_surface",
+							"Precedence":"-1"
+						},
+						{
+							"ID": "RydenSwimmingOutfit",
+							"Portrait": "Portraits/{{ModId}}_Ryden",
+							"Sprite": "OverworldSprites/{{ModId}}_Ryden_swim",
+							"Condition": "IS_EVENT festival_summer28 festival_summer11 festival_spring13",
+							"Precedence":"-10"
 						},
 					]
 				}
@@ -238,6 +251,7 @@
                 "{{ModId}}_Ryden_weights": "40/40 40 40 40 40 41 42 43 43 43 43 43 43 43 42 41 40/40",
 		"{{ModId}}_Ryden_sackedout": "19/19/19",
 		"{{ModID}}_Ryden_washedup": "24/24/24",
+		"{{ModId}}_Ryden_shore2": "0/0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/1",
             }
         },
 		//Big sprite animationDescriptions

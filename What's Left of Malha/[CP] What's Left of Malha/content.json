@@ -73,6 +73,14 @@
 		"Action": "Include",
 		"FromFile": "data/InfoRyden.json, data/InfoSonia.json, data/InfoMarcus.json, data/WLMLocations.json, data/WLMhats.json, data/WLMMusic.json, data/RydenHeartEvents.json, data/SoniaHeartEvents.json, data/WLMQuests.json"
 	},
+	{
+		"LogName": "Festival Inclusions",
+		"Action": "Include",
+		"FromFile": "data/WLMFestivals.json",
+		"When": {
+			"HasSeenEvent": "{{ModId}}_SoniaIntro"
+		}
+	},
 
     //Temp NPCs
     
