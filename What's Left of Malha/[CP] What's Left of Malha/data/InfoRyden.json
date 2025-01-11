@@ -137,7 +137,7 @@
 					"WinterStarParticipant": false,
 					"WinterStarGifts": [],
 					
-					"UnlockConditions": "MINE_LOWEST_LEVEL_REACHED 120",
+					//"UnlockConditions": "MINE_LOWEST_LEVEL_REACHED 120",
 					"SpawnIfMissing": true,
 					"Home": [
 						{
@@ -149,7 +149,7 @@
 							},
 							"Direction": "right"
 						},
-						{
+						/*{
 							"Id": "Default",
 							"Condition": "PLAYER_HAS_SEEN_EVENT Any {{ModId}}_RydenRescued",
 							"Location": "Custom_Malha_Castle",
@@ -169,6 +169,7 @@
 							},
 							"Direction": "right"
 						}
+							*/
 					],
 					
 					//The BEAST!!! (Appearances)
@@ -203,7 +204,7 @@
             "FromFile": "assets/Maps/RydenSpouseRoom.tmx"
         },
 		//Schedule
-        {
+        /*{
             "Action": "EditData",
             "Target": "Characters/schedules/{{ModId}}_Ryden",
             "Entries": {
@@ -211,6 +212,7 @@
                 "default": "GOTO spring"
             }
         },
+		/*
 		{
             "Action": "EditData",
             "Target": "Characters/schedules/{{ModId}}_Ryden",
@@ -222,6 +224,7 @@
                 "HasSeenEvent | contains={{ModId}}_RydenRescued": false
             }
         },
+		*/
         {
             "Action": "EditData",
             "Target": "Characters/schedules/{{ModId}}_Ryden",
@@ -246,10 +249,10 @@
                 "winter_17": "610 Custom_Malha_Castle 6 5 3/1100 Custom_Malha_Castle 40 5 0/1600 Beach 11 30 2/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
                 "marriage_Tue":"900 Custom_Malha_Malha 26 31 2/1500 BusStop -1 23 3",
                 "default": "GOTO spring"
-            },
-            "When": {
-                "HasSeenEvent | contains={{ModId}}_RydenRescued": true
             }
+           // "When": {
+                //"HasSeenEvent | contains={{ModId}}_RydenRescued": true
+           //}
         },
         {
             "Action": "EditData",

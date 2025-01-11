@@ -23,7 +23,7 @@
         },
 		{
 			"Name": "RydenNPCUnlocked",
-			"Value": false
+			"Value": true //false
 		},
 		{
 			"Name": "RydenNPCUnlocked",
@@ -90,10 +90,6 @@
             "Target": "Maps/Beach",
             "MapProperties": {
                 "NPCWarp": "14 38 Custom_Malha_Malha 28 0"
-            },
-            "When": {
-                "HasSeenEvent | contains={{ModId}}_RydenRescued": true,
-                "HasSeenEvent | contains={{ModId}}_MalhaUnlock": false
             }
         },
         { //{{ModId}}_Ryden Spouse Patio
