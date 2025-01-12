@@ -23,13 +23,13 @@
         },
 		{
 			"Name": "RydenNPCUnlocked",
-			"Value": true //false
+			"Value": false 
 		},
 		{
 			"Name": "RydenNPCUnlocked",
 			"Value": true,
 			"When": {
-				"HasSeenEvent": "{{ModId}})_RydenRescued"
+				"HasSeenEvent": "{{ModId}}_RydenRescued"
 			}
 		},
 		{
@@ -89,7 +89,7 @@
             "Action": "EditMap",
             "Target": "Maps/Beach",
             "MapProperties": {
-                "NPCWarp": "14 38 Custom_Malha_Malha 28 0"
+                "NPCWarp": "15 38 Custom_Malha_Malha 28 0"
             }
         },
         { //{{ModId}}_Ryden Spouse Patio
@@ -397,7 +397,7 @@
             "Action": "EditData",
                 "Target": "Data/Events/Town",
                 "Entries": { 
-                    "{{ModId}}_MalhaUnlock/e 184432/f {{ModId}}_Ryden 500/t 1000 1900": "springtown/-1000 -1000/farmer 52 29 0 {{ModId}}_Ryden 50 22 0/addQuest MeetingSonia/skippable/fade/viewport 52 24/advancedMove {{ModId}}_Ryden false 5 0 4 1/pause 500/move farmer 0 -4 0/pause 2000/move {{ModId}}_Ryden -5 0 0/pause 2000/move {{ModId}}_Ryden 2 0 0/pause 1000/speak {{ModId}}_Ryden \"Hmmm...$u\"/pause 500/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"Oh! Hello there, @!\"/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Every time I've visited Pelican Town, this community center has caught my eye.#$b#I sense a magical presence in the area...$u\"/faceDirection {{ModId}}_Ryden 2/quickQuestion Tell me - have you seen anything peculiar?#I think I've seen some kind of spirits...#Yeah. Magical apples.(break)speak {{ModId}}_Ryden \"Spirits, you say? That is most intriguing...$u\"(break)speak {{ModId}}_Ryden \"Magical apples, you say? That is most intriguing...$u\"/playMusic none/pause 1000/speak {{ModId}}_Ryden \"@... can I ask something of you that might sound a little bit crazy?\"/emote farmer 32/pause 500/faceDirection {{ModId}}_Ryden 0/pause 500/speak {{ModId}}_Ryden \"...I want you to come to Malha.$7\"/faceDirection {{ModId}}_Ryden 2/playMusic malha_malharuins/speak {{ModId}}_Ryden \"There's something I haven't been telling you.$s#$b#...I'm actually a prince.$7#$b#For years now, I have watched my people suffer... and I have not been able to do anything about it.$s#$b#Unlike mermaids, humans are generally numb to magic. But if you have a uniquely intimate connection to the arcane forces of nature...$s#$b#You might just be the cure to our ailment.\"/pause 200/move {{ModId}}_Ryden 0 1 2/pause 500/speak {{ModId}}_Ryden \"In my time on the surface, @... you have become a dear friend.#$b#I trust that you would not do anything to endanger Malha.#$b#With all that said... wait one moment.\"/move {{ModId}}_Ryden 0 -1 2/pause 500/shake {{ModId}}_Ryden 1000/pause 1000/playSound wand/screenFlash 1/pause 500/speak {{ModId}}_Ryden \"Don't fear, @. It was simply a spell of water breathing, and nothing more.#$b#Visit the westernmost dock on the beach tomorrow, and I will have opened a magical method of transport for you.#$b#I will eagerly await your arrival.$h\"/playMusic none/move {{ModId}}_Ryden -1 0 2/move {{ModId}}_Ryden 0 6 2/faceDirection farmer 2/pause 500/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"One more thing, @. There's a little house nestled into a shipwreck in the northeastern part of Malha where my friend Sonia lives.#$b#I know that she would just love to meet you... so stop by when you can, okay?$h\"/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"See you!$h\"/move {{ModId}}_Ryden 0 5 2 true/pause 500/end "
+                    "{{ModId}}_MalhaUnlock/e {{ModId}}_RydenRescued/e 611439/f {{ModId}}_Ryden 500/t 1000 1900": "springtown/-1000 -1000/farmer 52 29 0 {{ModId}}_Ryden 50 22 0/addQuest MeetingSonia/skippable/fade/viewport 52 24/advancedMove {{ModId}}_Ryden false 5 0 4 1/pause 500/move farmer 0 -4 0/pause 2000/move {{ModId}}_Ryden -5 0 0/pause 2000/move {{ModId}}_Ryden 2 0 0/pause 1000/speak {{ModId}}_Ryden \"Hmmm...$u\"/pause 500/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"Oh! Hello there, @!\"/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Every time I've visited Pelican Town, this community center has caught my eye.#$b#I sense a magical presence in the area...$u\"/faceDirection {{ModId}}_Ryden 2/quickQuestion Tell me - have you seen anything peculiar?#I think I've seen some kind of spirits...#Yeah. Magical apples.(break)speak {{ModId}}_Ryden \"Spirits, you say? That is most intriguing...$u\"(break)speak {{ModId}}_Ryden \"Magical apples, you say? That is most intriguing...$u\"/playMusic none/pause 1000/speak {{ModId}}_Ryden \"@... can I ask something of you that might sound a little bit crazy?\"/emote farmer 32/pause 500/faceDirection {{ModId}}_Ryden 0/pause 500/speak {{ModId}}_Ryden \"...I want you to come to Malha.$7\"/faceDirection {{ModId}}_Ryden 2/playMusic malha_malharuins/speak {{ModId}}_Ryden \"There's something I haven't been telling you.$s#$b#...I'm actually a prince.$7#$b#For years now, I have watched my people suffer... and I have not been able to do anything about it.$s#$b#Unlike mermaids, humans are generally numb to magic. But if you have a uniquely intimate connection to the arcane forces of nature...$s#$b#You might just be the cure to our ailment.\"/pause 200/move {{ModId}}_Ryden 0 1 2/pause 500/speak {{ModId}}_Ryden \"In my time on the surface, @... you have become a dear friend.#$b#I trust that you would not do anything to endanger Malha.#$b#With all that said... wait one moment.\"/move {{ModId}}_Ryden 0 -1 2/pause 500/shake {{ModId}}_Ryden 1000/pause 1000/playSound wand/screenFlash 1/pause 500/speak {{ModId}}_Ryden \"Don't fear, @. It was simply a spell of water breathing, and nothing more.#$b#Visit the westernmost dock on the beach tomorrow, and I will have opened a magical method of transport for you.#$b#I will eagerly await your arrival.$h\"/playMusic none/move {{ModId}}_Ryden -1 0 2/move {{ModId}}_Ryden 0 6 2/faceDirection farmer 2/pause 500/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"One more thing, @. There's a little house nestled into a shipwreck in the northeastern part of Malha where my friend Sonia lives.#$b#I know that she would just love to meet you... so stop by when you can, okay?$h\"/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"See you!$h\"/move {{ModId}}_Ryden 0 5 2 true/pause 500/end "
                 }
         },
         { //Meeting Ryden's Dad

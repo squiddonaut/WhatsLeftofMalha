@@ -213,7 +213,7 @@
  <objectgroup id="6" name="Buildings">
   <object id="28" name="TileData" x="144" y="208" width="16" height="16">
    <properties>
-    <property name="Action" value="Door WLMRyden"/>
+    <property name="Action" value="Door squiddonaut.WhatsLeftofMalhaCP_Ryden"/>
    </properties>
   </object>
   <object id="30" name="TileData" x="672" y="336" width="16" height="16">

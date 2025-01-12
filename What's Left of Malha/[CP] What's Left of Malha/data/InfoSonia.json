@@ -142,7 +142,7 @@
 						{
 							"Id": "Default",
 							"Condition": null,
-							"Location": "Malha_SoniaHouse",
+							"Location": "Custom_Malha_SoniaHouse",
 							"Tile": {
 								"X": 18,
 								"Y": 14
@@ -159,40 +159,42 @@
 							"Sprite": "Characters/{{Sonia}}_beach",
 							"Portrait": "Portraits/{{Sonia}}_beach",
 							"IsIslandAttire": true,
-							"Precedence": 0
+							"Precedence": "-100"
 						},
 						{
-							"ID": "{{Sonia}}DefaultOutfit",
+							"ID": "SoniaDefaultOutfit",
 							"Portrait": "Portraits/{{Sonia}}",
 							"Sprite": "OverworldSprites/{{Sonia}}",
-							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Target Custom_Malha_Malha Target Malha_SoniaHouse Target Beach Target Malha_Jellytopia Target Malha_WarpRoom Target Hospital",
-							"Precedence":"-100"
-						},
-						{
-							"ID": "{{Sonia}}DefaultOutfitCast",
-							"Portrait": "Portraits/{{Sonia}}",
-							"Sprite": "OverworldSprites/{{Sonia}}",
-							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Target Custom_Malha_Malha Target Malha_SoniaHouse Target Beach Target Malha_Jellytopia Target Hospital, PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast",
+							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Custom_Malha_Malha Custom_Custom_Malha_SoniaHouse Beach Malha_Jellytopia Hospital",
 							"Precedence":"-50"
 						},
 						{
-							"ID": "{{Sonia}}SurfaceOutfit",
-							"Portrait": "Portraits/{{Sonia}}_surface",
-							"Sprite": "OverworldSprites/{{Sonia}}_surface"
+							"ID": "SoniaDefaultOutfitCast",
+							"Portrait": "Portraits/{{Sonia}}",
+							"Sprite": "OverworldSprites/{{Sonia}}",
+							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Target Custom_Malha_Malha Target Custom_Malha_SoniaHouse Target Beach Target Malha_Jellytopia Target Hospital, PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast",
+							"Precedence":"-52"
 						},
 						{
-							"ID": "{{Sonia}}SurfaceOutfitCast",
+							"ID": "SoniaSurfaceOutfit",
+							"Portrait": "Portraits/{{Sonia}}_surface",
+							"Sprite": "OverworldSprites/{{Sonia}}_surface",
+							"Precedence":"0"
+						},
+						{
+							"ID": "SoniaSurfaceOutfitCast",
 							"Portrait": "Portraits/{{Sonia}}_surface",   
 							"Sprite": "OverworldSprites/{{Sonia}}_surfacecast",
-							"Condition": "PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast"
+							"Condition": "PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast",
+							"Precedence":"-20"
 						},
 						{
-							"ID": "{{Sonia}}SwimOutfit",
+							"ID": "SoniaSwimOutfit",
 							"Portrait": "Portraits/{{Sonia}}",
 							"Sprite": "OverworldSprites/{{Sonia}}_swim",
 							"Condition": "IS_EVENT festival_summer28 festival_summer11 festival_spring13",
-							"Precedence":"-1"
-						},
+							"Precedence":"-80"
+						}
 					]
 				}
 			}
@@ -207,10 +209,10 @@
             "Action": "EditData",
             "Target": "Characters/schedules/{{Sonia}}",
             "Entries": {
-                "spring": "610 Malha_SoniaHouse 12 8 2/900 Malha_SoniaHouse 11 7 3/1030 Custom_Malha_Malha 49 11 2 {{Sonia}}_guard/1330 Custom_Malha_Malha 28 46 0/2200 Malha_SoniaHouse 18 14 1 {{Sonia}}_sleep",
-                "summer": "610 Malha_SoniaHouse 12 8 2/2200 Malha_SoniaHouse 18 14 1",
-                "fall": "610 Malha_SoniaHouse 12 8 2/2200 Malha_SoniaHouse 18 14 1",
-                "winter": "610 Malha_SoniaHouse 12 8 2/2200 Malha_SoniaHouse 18 14 1",
+                "spring": "610 Custom_Malha_SoniaHouse 12 8 2/900 Custom_Malha_SoniaHouse 11 7 3/1030 Custom_Malha_Malha 49 11 2 {{Sonia}}_guard/1330 Custom_Malha_Malha 28 46 0/2200 Custom_Malha_SoniaHouse 18 14 1 {{Sonia}}_sleep",
+                "summer": "610 Custom_Malha_SoniaHouse 12 8 2/2200 Custom_Malha_SoniaHouse 18 14 1",
+                "fall": "610 Custom_Malha_SoniaHouse 12 8 2/2200 Custom_Malha_SoniaHouse 18 14 1",
+                "winter": "610 Custom_Malha_SoniaHouse 12 8 2/2200 Custom_Malha_SoniaHouse 18 14 1",
                 "default": "GOTO spring"
             }
         },
