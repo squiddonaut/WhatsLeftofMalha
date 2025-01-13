@@ -54,7 +54,8 @@
 			"Target": "OverworldSprites/{{Sonia}}_swim",
 			"FromFile": "assets/CharacterFiles/OverworldSprites/Sonia/Sonia_swim.png"
 		},
-//10 Heart Event Stuff
+		
+//Event Outfits
 		{
 			"Action": "Load",
 			"Target": "Characters/{{Sonia}}_underwater",
@@ -64,6 +65,16 @@
 			"Action": "Load",
 			"Target": "Portraits/{{Sonia}}_underwater",
 			"FromFile": "assets/CharacterFiles/Portraits/Sonia/Sonia.png"
+		},
+		{
+			"Action": "Load",
+			"Target": "Characters/{{Sonia}}_surfacenocast",
+			"FromFile": "assets/CharacterFiles/OverworldSprites/Sonia/Sonia_surface.png"
+		},
+		{
+			"Action": "Load",
+			"Target": "Portraits/{{Sonia}}_surfacenocast",
+			"FromFile": "assets/CharacterFiles/Portraits/Sonia/Sonia_surface.png"
 		},
 		//Disposition
 		{
@@ -100,7 +111,7 @@
 						"MapAsset": "Custom_Malha_RydenSpouseRoom"
 					},
 					"SpousePatio": {
-						"MapAsset": "Custom_Malha_RydenSpousePatio",
+						"MapAsset": "Custom_Malha_RydenSpousePatio{{PondPatio}}",
 						"MapSourceRect": {
 							"X": 0,
 							"Y": 0,

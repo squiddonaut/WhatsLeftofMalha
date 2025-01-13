@@ -46,8 +46,14 @@
 		{
 			"LogName": "RydenSpousePatio",
 			"Action": "Load",
-			"Target": "Maps/Custom_Malha_RydenSpousePatio",
-			"FromFile": "assets/Maps/RydenSpousePatio{{PondPatio}}.tmx"
+			"Target": "Maps/Custom_Malha_RydenSpousePatiotrue",
+			"FromFile": "assets/Maps/RydenSpousePatiotrue.tmx"
+		},
+		{
+			"LogName": "RydenSpousePatio",
+			"Action": "Load",
+			"Target": "Maps/Custom_Malha_RydenSpousePatiofalse",
+			"FromFile": "assets/Maps/RydenSpousePatiofalse.tmx"
 		},
 		{
 			"LogName": "PrideFest",
