@@ -108,7 +108,7 @@
 					"SpouseGiftJealousy": true,
 					"SpouseGiftJealousyFriendshipChange": -30,
 					"SpouseRoom": {
-						"MapAsset": "Custom_Malha_RydenSpouseRoom"
+						"MapAsset": "Custom_Malha_SoniaSpouseRoom"
 					},
 					"SpousePatio": {
 						"MapAsset": "Custom_Malha_RydenSpousePatio{{PondPatio}}",
@@ -119,8 +119,8 @@
 							"Height": 4,
 						},
 						"SpriteAnimationFrames": [
-							[22, 1250],
-							[23, 1250]
+							[29, 1250],
+							[30, 1250]
 						],
 						"SpriteAnimationPixelOffset": {
 							"X": 1,
@@ -176,14 +176,14 @@
 							"ID": "SoniaDefaultOutfit",
 							"Portrait": "Portraits/{{Sonia}}",
 							"Sprite": "OverworldSprites/{{Sonia}}",
-							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Custom_Malha_Malha Custom_Custom_Malha_SoniaHouse Beach Malha_Jellytopia Hospital",
+							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Custom_Malha_Malha Custom_Malha_SoniaHouse Beach Malha_Jellytopia Hospital Farm",
 							"Precedence":"-50"
 						},
 						{
 							"ID": "SoniaDefaultOutfitCast",
 							"Portrait": "Portraits/{{Sonia}}",
 							"Sprite": "OverworldSprites/{{Sonia}}",
-							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Target Custom_Malha_Malha Target Custom_Malha_SoniaHouse Target Beach Target Malha_Jellytopia Target Hospital, PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast",
+							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Custom_Malha_Malha Custom_Malha_SoniaHouse Beach Malha_Jellytopia Hospital Farm, PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast, !PLAYER_HAS_SEEN_EVENT any {{ModId}}_CrochetTime",
 							"Precedence":"-52"
 						},
 						{
@@ -196,7 +196,7 @@
 							"ID": "SoniaSurfaceOutfitCast",
 							"Portrait": "Portraits/{{Sonia}}_surface",   
 							"Sprite": "OverworldSprites/{{Sonia}}_surfacecast",
-							"Condition": "PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast",
+							"Condition": "PLAYER_HAS_SEEN_EVENT any {{ModId}}_SoniaCast, !PLAYER_HAS_SEEN_EVENT any {{ModId}}_CrochetTime",
 							"Precedence":"-20"
 						},
 						{
@@ -210,6 +210,12 @@
 				}
 			}
 		},
+
+		{
+            "Action": "Load",
+            "Target": "Maps/Custom_Malha_SoniaSpouseRoom",
+            "FromFile": "assets/Maps/SoniaSpouseRoom.tmx"
+        },
 		//Schedule
         {
             "Action": "Load",
