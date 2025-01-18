@@ -5,48 +5,48 @@
   <property name="Light" value="7 3 6 3 9 6 6 3 4 1 3 4 10 3 4 7 8 4"/>
   <property name="Warp" value="3 10 Beach 49 11"/>
  </properties>
- <tileset firstgid="1" name="path" tilewidth="16" tileheight="16" tilecount="36" columns="4">
-  <image source="paths" width="64" height="144"/>
+ <tileset firstgid="1" name="path" tilewidth="16" tileheight="16" tilecount="64" columns="4">
+  <image source="paths.png" width="64" height="256"/>
  </tileset>
- <tileset firstgid="37" name="z_MalhaInterior" tilewidth="16" tileheight="16" tilecount="900" columns="30">
+ <tileset firstgid="65" name="z_MalhaInterior" tilewidth="16" tileheight="16" tilecount="900" columns="30">
   <image source="z_MalhaInterior.png" width="480" height="480"/>
  </tileset>
- <tileset firstgid="937" name="untitled tile sheet" tilewidth="16" tileheight="16" tilecount="2176" columns="32">
+ <tileset firstgid="965" name="untitled tile sheet" tilewidth="16" tileheight="16" tilecount="2176" columns="32">
   <image source="townInterior.ru-RU.png" width="512" height="1088"/>
  </tileset>
  <layer id="1" name="Back" width="6" height="9">
   <data encoding="csv">
-673,673,673,673,673,673,
-399,399,399,399,399,399,
-169,169,169,169,169,169,
-107,108,107,108,107,108,
-137,138,137,138,137,138,
-167,168,167,168,167,168,
-137,138,137,138,137,138,
-167,168,167,168,167,168,
-137,138,137,138,137,138
+701,701,701,255,255,701,
+427,427,427,427,427,427,
+197,197,197,197,197,197,
+135,136,135,136,135,136,
+165,166,165,166,165,166,
+195,196,195,196,195,196,
+165,166,165,166,165,166,
+195,196,195,196,195,196,
+165,166,165,166,165,166
 </data>
  </layer>
  <layer id="2" name="Buildings" width="6" height="9">
   <data encoding="csv">
-227,227,227,227,227,227,
-169,169,169,169,169,169,
-262,262,262,262,262,262,
-0,813,814,811,812,259,
+255,255,255,868,869,255,
+197,197,197,197,197,197,
+290,290,290,290,290,290,
+0,960,961,958,959,287,
 0,0,0,0,0,0,
-0,0,84,85,86,0,
-0,0,114,115,116,0,
-0,0,0,225,0,0,
-0,0,0,0,815,816
+0,0,112,113,114,0,
+0,0,142,143,144,0,
+0,0,0,253,0,0,
+0,0,0,0,962,963
 </data>
  </layer>
  <layer id="3" name="Front" width="6" height="9">
   <data encoding="csv">
-204,205,204,205,204,205,
-0,753,754,0,0,199,
-0,783,784,781,782,229,
+232,233,232,233,232,233,
+0,900,901,898,899,227,
+0,930,931,928,929,257,
 0,0,0,0,0,0,
-0,0,54,55,56,0,
+0,0,82,83,84,0,
 0,0,0,0,0,0,
 0,0,0,0,0,0,
 0,0,0,0,0,0,
