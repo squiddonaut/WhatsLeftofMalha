@@ -194,11 +194,15 @@
 			"Action": "EditData",
 			"Target": "Data/ChairTiles",
 			"Entries": {
-				"MalhaInterior/5/7": "1/1/down/chair/-1/-1/false",
-				"MalhaInterior/25/7": "1/1/down/chair/-1/-1/false",
-				"MalhaInterior/1/26": "1/1/down/stool/-1/-1/false",
-				"MalhaInterior/2/26": "1/1/down/stool/-1/-1/false",
-				"MalhaInterior/3/26": "1/1/down/stool/-1/-1/false"
+				"z_MalhaInterior/5/7": "1/1/down/chair/-1/-1/false",
+				"z_MalhaInterior/25/7": "1/1/down/chair/-1/-1/false",
+				"z_MalhaInterior/0/26": "1/1/down/stool/-1/-1/false",
+				"z_MalhaInterior/1/26": "1/1/down/stool/-1/-1/false",
+				"z_MalhaInterior/2/26": "1/1/down/stool/-1/-1/false",
+				"z_MalhaInterior/27/20": "1/1/down/couch/-1/-1/false",
+				"z_MalhaInterior/4/16": "1/1/down/couch/-1/-1/false",
+				"z_MalhaInterior/8/6": "1/1/down/stool/-1/-1/false",
+				"z_MalhaInterior/15/21": "1/1/down/stool/-1/-1/false",
 			}
 		},
 	]
