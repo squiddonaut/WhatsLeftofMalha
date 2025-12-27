@@ -1,6 +1,6 @@
 Ryden and Sonia schedules are either incomplete or empty.
 
-Add back music files - currently missing
+Add back music files - currently not implemented properly and should be converted to .ogg to save filespace
 
 Placeholder marriage dialogue, needs to be finished
 
