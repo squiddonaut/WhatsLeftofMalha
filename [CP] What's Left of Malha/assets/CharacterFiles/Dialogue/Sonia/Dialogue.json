@@ -1,0 +1,90 @@
+{
+    //Introduction
+    "Introduction": "...Don't. Even.$u#$e#I said, leave me alone.$a",
+    //Resort
+    "Resort_Entering": "",
+    "Resort_Leaving": "",
+    "Resort_Wander": "",
+    "Resort_Wander_2": "",
+    "Resort_Shore": "The water smells so unique in this area of the Gem Sea.#$b#Not that you would've noticed. Humans aren't attuned to that sort of thing.$u",
+    "Resort_Chair": "",
+    "Resort_Towel": "Yes, I know I look good in a swimsuit. No need to flatter me.",
+    "Resort_Towel_2": "Um... I think I'm getting sunburnt.$s",
+    "Resort_Bar": "I don't drink. It always makes me feel incapacitated.$s",
+    "Resort": "",
+    //Dating Shenanigans
+    "danceRejection": "Why do you think I'd ever dance with a human? Are you crazy?$a",
+    "divorced": "I never want to see you again. And I really mean it this time.$a#$b#None of you humans are trustworthy...$16",
+    "dumped_Girls": "Get out of my way.$u#$b#Seriously, stop hanging around me. We're done.$a",
+    "secondChance_Girls": "@...$s#$b#Can we just... put everything behind us and start fresh?$11",
+    "breakUp": "Is this... are you breaking up with me?!$a#$b#You know what? Good riddance. I shouldn't have been fooling around with a human anyway.$u",
+    //Spring Dialogue
+      ////Monday
+      "Mon": "It is disrespectful to the very grounds that Malha was built upon for you to be down here.$u#$e#If you knew what's best for you, you'd leave.$u",
+      "Mon4": "Spearplay is an art form, just as is painting a picture or playing an instrument.$8#$b#It requires grace, fluidity, focus... skills that many can attempt to learn, but few can master.$8",
+      ////Tuesday
+      "Tue": "Why are you staring at me?$9#$b#...Gross.$u",
+      "Tue4": "I wasn't born in Malha, you know. My parents and I emigrated here from another region of the Gem Sea when I was a child.$8#$e#You also left your home to settle somewhere else?$s#$b#...Cool.$l",
+      ////Wednesday
+      "Wed": "...I have to go practice my spears.$9#$b#That's mermaid speak for \"Leave me alone\".$9",
+      "Wed4": "Malha's government was founded on the principles of justice and equality.#$b#$q 1844305/1844306 activityquestion_followup#So, @... what is human government like?#$r 184430010 50 governmentquestion_different#Governments differ all across the world.#$r 184430010 0 governmentquestion_oppressive#Oppressive.#$r 184430011 -20 governmentquestion_politics#I'm not into politics.",
+      "governmentquestion_followup": "$p 184430010#What you said about human government... very interesting.$u|You really should be aware of the values instilled in the processes by which your life is governed.$8",
+      "governmentquestion_different": "I figured.$u#$b#You could say the same for the Gem Sea, although... Malha was really the first consolidated government of its kind.$8#$b#A shrewd observation, @.",
+      "governmentquestion_oppressive": "Oppressive, huh?$u#$b#...Sounds like a human problem.",
+      "governmentquestion_politics": "Tsk...$u#$b#Leave it to a human to be uneducated.$u",
+      ////Thursday
+      "Thu": "Don't you have anything better to do?$9",
+      "Thu4": "Don't those clothes get heavy when you're underwater?$9#$b#You could try dressing a little more appropriately, you know...$u",
+      ////Friday
+      "Fri": "I've spent the past decade defending Malha against the problem that your kind caused.$9#$b#Don't you understand? We don't want you here.$a",
+      "Fri4": "Before Malha fell, we had something called Sea-Snail Mail.$9#$b#It was sort of a combination of a newsletter and a social network.#$e#You're asking me what my Snail Mail address was?$11#$b#I can't tell you. I named it when I was 14 and it's like, super embarrassing.$s",
+      ////Saturday
+      "Sat": "All of your... land-dirt is muddling up the waters.$u",
+      "Sat6": "Sorry for being so, uh... standoffish when we first met.$s#$b#I still don't trust humans, but... I GUESS you're one of the good ones.$u",
+      ////Sunday
+      "Sun": "I know Ryden has been wasting his precious time up on the surface.$u#$b#Don't even THINK about asking me to go there with you.$a",
+      "Sun4": "I have to be more careful with my tail fin than most.$8#$b#Most merfolk have spines on their tail fin, but mine is just thin membranous tissue.$s#$b#Not the best thing for combat.$u",
+      ////Specific Days
+    //Summer Dialogue
+      ////Monday
+      "summer_Mon6": "%Sonia approaches timidly.#$b#Hey, @...? I drew something for you.$11#$b#%Sonia hands you a piece of waterproof paper with a drawing of a person on it. The upper body is well drawn and attractive, but the legs are incomprehensibly long and the feet have seven toes each.#$b#%Is this supposed to be you...?#$b#Do you... do you like it?$11#%You nod.#$b#...Thanks.$l",
+      ////Tuesday
+      "summer_Tue4": "I've read various books on the customs of humans.$8#$b#I'd be interested to probe your mind about which of my presumptions are true.",
+      ////Wednesday
+      "summer_Wed4": "Oh, hi, @.#$e#What are you up to? Planting or something?$8",
+      ////Thursday
+      "summer_Thu4": "My parents used to make me hold ice cubes until they melted in my hands whenever I got too fired up playing games with the other kids.$8#$b#The funny thing is that now, cold sensations on my hands remind me of time outs.$u",
+      ////Friday
+      "summer_Fri4": "There are problems related to living underwater that humans wouldn't even consider.$b#For example, as merchildren, we were always told not to catch bubbles in our mouths that came from beneath the sand or rocks. Apparently the gas is toxic or something.$s#$b#Of course, that didn't stop Ryden. I have to remind myself sometimes that he is, in fact, an intelligent life form.$u",
+      ////Saturday
+      "summer_Sat4": "It's not so bad living in a shipwreck. At first I hated it, but...#$b#It helped to think about all the humans that faced their end within those walls.$8#$b#A bit much? Don't worry, if YOU died in my house, I'd be grossed out.$h#$b#...I'm not very good at this.$u",
+      ////Sunday
+      ////Specific Days
+    //Fall Dialogue
+      ////Monday
+      ////Tuesday
+      "fall_Sun4": "There's a path that leads down to a trench in Malha.$9#$b#According to tradition, one of the founders of Malha was a deep-sea mermaid, and they built the city next to a trench to ensure her and others comfort.$8#$b#It goes to show that Malha has always prioritized its people, even from day one.$17",
+      ////Wednesday
+      ////Thursday
+      "fall_Thu4": "I love Ryden, but I get so sick of him bragging about his singing.$u#$b#What? No. It's not good.$9",
+      ////Friday
+      ////Saturday
+      ////Sunday
+      "fall_Sun": "",
+      ////Specific Days
+      "fall_1": "",
+    //Winter Dialogue
+      ////Monday
+      "winter_Mon2": "",
+      ////Tuesday
+      ////Wednesday
+      ////Thursday
+      ////Friday
+      "winter_Fri4": "Some merfolk say that the royal family has a higher aptitude for mermaid magic than your average merperson.$8#$b#I think it's nonsense.$u#$b#Even if they did, what does it matter? Mermaid magic isn't useful for combat. It's just a party trick.$a#$b#Don't tell anyone I said that.$u"
+      ////Saturday
+      ////Sunday
+      ////Specific Days
+    //Night Market Dialogue
+    //Location Based
+    //Event Dialogue
+  }

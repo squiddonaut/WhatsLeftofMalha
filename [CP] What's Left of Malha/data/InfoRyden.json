@@ -1,0 +1,379 @@
+{
+	"Changes": [
+		//Significant Loads
+        {
+            "Action": "Load",
+            "Target": "Characters/{{ModId}}_Ryden",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_surface.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/schedules/{{ModId}}_Ryden",
+            "FromFile": "assets/CharacterFiles/Schedules/Ryden.json"
+        },
+        {
+            "Action": "Load",
+            "Target": "Strings/schedules/{{ModId}}_Ryden",
+            "FromFile": "assets/Strings/ScheduleDialogue/Ryden.json"
+        },
+		//Loading Outfits
+		{
+			"Action": "Load",
+			"Target": "Portraits/{{ModId}}_Ryden",
+			"FromFile": "assets/CharacterFiles/Portraits/Ryden/Ryden.png"
+		},
+        {
+			"Action": "Load",
+			"Target": "Portraits/{{ModId}}_Ryden_surface",
+			"FromFile": "assets/CharacterFiles/Portraits/Ryden/Ryden_surface.png"
+		},
+        {
+			"Action": "Load",
+			"Target": "OverworldSprites/{{ModId}}_Ryden",
+			"FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden.png"
+		},
+        {
+			"Action": "Load",
+			"Target": "OverworldSprites/{{ModId}}_Ryden_surface",
+			"FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_surface.png"
+		},
+        {
+			"Action": "Load",
+			"Target": "OverworldSprites/{{ModId}}_Ryden_swim",
+			"FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_swim.png"
+		},
+		//Adding temporary Ryden sprite for intro
+        {
+            "Action": "Load",
+            "Target": "Characters/{{ModId}}_Ryden_Temporary",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden_surface.png"
+        },
+		//10 Heart Stuff
+		{
+            "Action": "Load",
+            "Target": "Characters/{{ModId}}_Ryden_underwater",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Ryden/Ryden.png"
+        },
+		{
+            "Action": "Load",
+            "Target": "Portraits/{{ModId}}_Ryden_underwater",
+            "FromFile": "assets/CharacterFiles/Portraits/Ryden/Ryden.png"
+        },
+		//Disposition
+		{
+			"LogName": "Ryden Disposition",
+			"Action": "EditData",
+			"Target": "Data/Characters",
+			"Entries": {
+				"{{ModId}}_Ryden": {
+					"DisplayName": "???",
+					"Language": "Default",
+					"Gender": "Male",
+					"Age": "Teen",
+					"Manner": "Neutral",
+					"SocialAnxiety": "Outgoing",
+					"Optimism": "Positive",
+					"BirthSeason": "summer",
+					"BirthDay": "10",
+					"HomeRegion": "Other",
+					"IsDarkSkinned": "false",
+					
+					"CanSocialize": "{{RydenNPCUnlocked}}",
+					"CanBeRomanced": "{{RydenNPCUnlocked}}",
+					"CanReceiveGifts": true,
+					"CanCommentOnPurchasedShopItems": false,
+					"CanGreetNearbyCharacters": "{{RydenNPCUnlocked}}",
+					"CanVisitIsland": "{{RydenNPCUnlocked}}",
+					"Calendar": "HiddenUntilMet",
+					"SocialTab": "HiddenUntilMet",
+					"SpouseAdopts": null,
+					"SpouseWantsChildren": true,
+					"SpouseGiftJealousy": true,
+					"SpouseGiftJealousyFriendshipChange": -30,
+					"SpouseRoom": {
+						"MapAsset": "Custom_Malha_RydenSpouseRoom"
+					},
+					"SpousePatio": {
+						"MapAsset": "Custom_Malha_RydenSpousePatio{{PondPatio}}",
+						"MapSourceRect": {
+							"X": 0,
+							"Y": 0,
+							"Width": 4,
+							"Height": 4,
+						},
+						"SpriteAnimationFrames": [
+							[22, 1250],
+							[23, 1250]
+						],
+						"SpriteAnimationPixelOffset": {
+							"X": 1,
+							"Y": 3
+						}
+					},
+					/* If you want, you can add these :) -Andrew
+					"SpouseFloors": __,
+					"SpouseWallpapers": ___, */
+					"IntroductionsQuest": false,
+					"ItemDeliveryQuests": "{{RydenNPCUnlocked}}",
+					"PerfectionScore": "{{MalhaNPCPerfection}}",
+					"EndSlideShow": "MainGroup",
+					"FriendsAndFamily": {
+						"{{Sonia}}": "Friend",
+						"{{ModId}}_Marcus": "Father"
+					},
+					
+					
+					"DumpsterDiveEmote": 12,
+					"DumpsterDiveFriendshipEffect": -25,
+					
+					"FlowerDanceCanDance": true,
+					"WinterStarParticipant": false,
+					"WinterStarGifts": [],
+					
+					//"UnlockConditions": "MINE_LOWEST_LEVEL_REACHED 120",
+					"SpawnIfMissing": true,
+					"Home": [
+						{
+							"Id": "Default",
+							"Location": "Custom_Malha_Castle",
+							"Tile": {
+								"X": 6,
+								"Y": 5
+							},
+							"Direction": "right"
+						},
+						{
+							"Id": "Ryden_WashedUp",
+							"Condition": "MINE_LOWEST_LEVEL_REACHED 120",
+							"Location": "Beach",
+							"Tile": {
+								"X": 49,
+								"Y": 24
+							},
+							"Direction": "right"
+						},
+						{
+							"Id": "Default",
+							"Condition": "PLAYER_HAS_SEEN_EVENT Any {{ModId}}_RydenRescued",
+							"Location": "Custom_Malha_Castle",
+							"Tile": {
+								"X": 6,
+								"Y": 5
+							},
+							"Direction": "right"
+						},
+							
+					],
+					
+					//The BEAST!!! (Appearances)
+					"TextureName": "{{ModId}}_Ryden",
+					"Appearance": [
+						{
+							"ID": "RydenDefaultOutfit",
+							"Portrait": "Portraits/{{ModId}}_Ryden",
+							"Sprite": "OverworldSprites/{{ModId}}_Ryden",
+							"Condition": "LOCATION_NAME Target Custom_Malha_Castle Custom_Malha_Malha Custom_Malha_Jellytopia Custom_Malha_SoniaHouse Beach",
+							"Precedence":"-10"
+						},
+						{
+							"ID": "RydenSurfaceOutfit",
+							"Portrait": "Portraits/{{ModId}}_Ryden_surface",
+							"Sprite": "OverworldSprites/{{ModId}}_Ryden_surface",
+							"Precedence":"0"
+						},
+						{
+							"ID": "RydenSwimmingOutfit",
+							"Portrait": "Portraits/{{ModId}}_Ryden",
+							"Sprite": "OverworldSprites/{{ModId}}_Ryden_swim",
+							"Condition": "IS_EVENT festival_summer28 festival_summer11 festival_spring13",
+							"Precedence":"-1"
+						}
+					]
+				}
+			}
+		},
+        {
+            "Action": "Load",
+            "Target": "Maps/Custom_Malha_RydenSpouseRoom",
+            "FromFile": "assets/Maps/RydenSpouseRoom.tmx"
+        },
+		//Schedule
+		{
+            "Action": "EditData",
+            "Target": "Characters/schedules/{{ModId}}_Ryden",
+            "Entries": {
+                "spring":"610 Custom_Malha_Castle 6 5 3/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "default": "GOTO spring"
+            }
+        },
+		{
+            "Action": "EditData",
+            "Target": "Characters/schedules/{{ModId}}_Ryden",
+            "Entries": {
+                "spring":"610 Beach 49 24 0 {{ModId}}_Ryden_washedup \"Strings\\schedules\\{{ModId}}_Ryden:washedup.000\"",
+                "default": "GOTO spring"
+            },
+			"When": {
+                "HasSeenEvent | contains={{ModId}}_RydenRescued": false
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Characters/schedules/{{ModId}}_Ryden",
+            "Entries": {
+                "rain": "610 Custom_Malha_Castle 6 5 3/1000 Beach 51 24 2 \"Strings\\schedules\\Ryden:rain.000\"/1400 ArchaeologyHouse 15 9 0/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "spring":"610 Custom_Malha_Castle 6 5 3/900 Beach 20 13 2/1400 Custom_Malha_Malha 29 30 2/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "winter": "610 Custom_Malha_Castle 6 5 3/1300 Custom_Malha_Malha 29 32 2/2130 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+				"Mon": "GOTO spring",
+                "Tue": "610 Custom_Malha_Castle 6 5 3/1000 Custom_Malha_Malha 28 50 2 \"Strings\\schedules\\Ryden:ruins.000\"/1400 Custom_Malha_Castle 24 17 2/1800 Custom_Malha_Castle 4 10 3/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "Wed": "610 Custom_Malha_Castle 6 5 3/1030 Town 87 103 2/1330 Town 72 91 3/1700 Town 51 87 0 \"Strings\\schedules\\Ryden:grave.000\"/2130 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+				"Thu": "610 Custom_Malha_Castle 6 5 3/930 Custom_Malha_Malha 26 47 2/1200 Town 76 54 2/1800 Custom_Malha_Malha 10 6 0/2130 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "Fri": "610 Custom_Malha_Castle 6 5 3/1000 Custom_Malha_Malha 42 5 0 {{ModId}}_Ryden_dishes/1400 Saloon 20 19 3/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+				"Sat": "610 Custom_Malha_Castle 6 5 3/1030 Town 49 22 2/1330 SeedShop 15 23 0/1630 Saloon 20 19 3/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+				"Sun": "610 Custom_Malha_Castle 6 5 3/1100 Mountain 45 20 1/1400 Town 44 79 2/1700 Custom_Malha_Malha 32 40 2/2130 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+				"summer_Tue": "610 Custom_Malha_Castle 6 5 3/1000 Custom_Malha_Castle 38 5 0/1300 Custom_Malha_Malha 31 8 2/1700 Beach 42 23 2/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "summer_Thu": "610 Custom_Malha_Castle 6 5 3/900 Beach 10 39 2/1300 Custom_Malha_Castle 9 6 2 {{ModId}}_Ryden_weights \"Strings\\schedules\\Ryden:weights.000\"/1700 Custom_Malha_Malha 29 32 2/2130 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+				"fall_Mon": "610 Custom_Malha_Castle 6 5 3/1000 Mountain 58 35 1/1600 Town 32 89 0/2100 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+				"fall_Thu": "610 Custom_Malha_Castle 6 5 3/1000 Town 32 89 0/1600 Mountain 14 14 2/2100 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+				"fall_Sun": "GOTO spring",
+                "winter_15": "610 Custom_Malha_Castle 6 5 3/1100 Custom_Malha_Castle 40 5 0/1600 Beach 11 30 2/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "winter_16": "610 Custom_Malha_Castle 6 5 3/1100 Custom_Malha_Malha 28 46 0/1600 Beach 11 30 2/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "winter_17": "610 Custom_Malha_Castle 6 5 3/1100 Custom_Malha_Castle 40 5 0/1600 Beach 11 30 2/2200 Custom_Malha_Castle 6 5 3 {{ModId}}_Ryden_sleep",
+                "marriage_Tue":"900 Custom_Malha_Malha 26 31 2/1500 BusStop -1 23 3",
+                "default": "GOTO spring"
+            },
+            "When": {
+                "HasSeenEvent | contains={{ModId}}_RydenRescued": true
+           }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/animationDescriptions",
+            "Entries": {
+                "{{ModId}}_Ryden_sleep": "21/21/21",
+                "{{ModId}}_Ryden_dishes": "36/36 37/36",
+                "{{ModId}}_Ryden_weights": "40/40 40 40 40 40 41 42 43 43 43 43 43 43 43 42 41 40/40",
+		"{{ModId}}_Ryden_sackedout": "19/19/19",
+		"{{ModId}}_Ryden_washedup": "26/26/26",
+		"{{ModId}}_Ryden_shore2": "0/0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/1",
+            }
+        },
+		//Big sprite animationDescriptions
+		{
+			"Action": "EditData",
+			"Target": "spacechase0.SpaceCore/ScheduleAnimationExtensionData",
+			"Entries": {
+				"{{ModId}}_Ryden_washedup": {
+					"SourceRectSize": "32, 32",
+					"DrawOffset": "0,0",
+					"AppearanceOverride": null,
+					"OnStart": { "Emote": null, "PlaySound": null },
+				}
+			}
+		},
+		
+		{
+			"Action": "EditData",
+			"Target": "spacechase0.SpaceCore/ScheduleAnimationExtensionData",
+			"Entries":
+			{
+			  "{{ModId}}_Ryden_sackedout": { 
+				"SourceRectSize": "32, 32", 
+				"DrawOffset": "0, 0", 
+				"AppearanceOverride": null, 
+				"OnStart": { "Emote": null, "PlaySound": null }, 
+				"OnEnd": { "Emote": null, "PlaySound": null }
+			  }
+			}
+		  },
+		
+		//Dialogue
+		{
+            "Action": "Load",
+            "Target": "Characters/Dialogue/{{ModId}}_Ryden",
+            "FromFile": "assets/CharacterFiles/Dialogue/Ryden/Dialogue.json"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/Dialogue/MarriageDialogue{{ModId}}_Ryden",
+            "FromFile": "assets/CharacterFiles/Dialogue/Ryden/MarriageDialogue.json"
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/EngagementDialogue",
+            "Entries": {
+                "{{ModId}}_Ryden0": "Oh, blessed day!$h#$e#The prospect of sharing my life with the one I love...$l#$b#How unbelievably exciting!$h",
+                "{{ModId}}_Ryden1": "If you went back in time and told me I was going to get married, I would've thought you were crazy...#$b#But now, there's nothing more I want in the world.$l"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Characters/Dialogue/MarriageDialogueRyden",
+            "Entries": {
+                "OneKid_1": "%kid1 is most definitely half merperson. I can sense it.#$b#When the time is right, I will instruct %kid1 in the art of merfolk transformation - if you think it best, of course.",
+                "TwoKids_1": "I wonder what it will be like for our children, growing up as half merpeople in such a divided world...$s#$b#Whether they will choose to be a part of the human world or the merfolk world - I think it is best that we leave that decision to them.$11"
+            },
+            "When": {
+                "PlayerGender": "Female"
+            }
+        },
+		//Name change
+		{
+            "LogName": "Ryden Name Change",
+            "Action": "EditData",
+            "Target": "Data/Characters",
+            "Fields": {
+                "{{ModId}}_Ryden": {
+					"DisplayName": "Ryden",
+                }
+            },
+            "When": {
+                "HasSeenEvent": "{{ModId}}_RydenRescued",
+            }
+        },
+		//NPC Map Locations Compat
+        {
+            "LogName": "Ryden NPC Map Locations Exclusion",
+            "Action": "EditData",
+            "Target": "Mods/Bouhm.NPCMapLocations/NPCs",
+            "When": {
+                "HasMod": "Bouhm.NPCMapLocations"
+            },
+            "Entries": {
+                "{{ModId}}_Ryden": {
+					"Exclude": "true"
+                }
+            }
+        },
+        {
+            "LogName": "Ryden NPC Map Locations Patch",
+            "Action": "EditData",
+            "Target": "Mods/Bouhm.NPCMapLocations/NPCs",
+            "When": {
+                "HasMod": "Bouhm.NPCMapLocations",
+				"HasSeenEvent": "{{ModId}}_RydenRescued"
+            },
+            "Entries": {
+                "{{ModId}}_Ryden": {
+                    "MarkerCropOffset": -2,
+					"Exclude": "false"
+                }
+            }
+        },
+//Mail
+        {
+            "Action": "EditData",
+            "Target": "Data/Mail",
+            "Entries": {
+                "{{ModId}}_Mail_RydenDate": "To my bestest friend @,^I must humbly request that you meet me outside of the castle in Malha. I have something very special planned.   ^   From your favorite merman,   ^   Ryden%item quest RydenDate true %%[#]Ryden's Invitation"
+            }
+        },
+		{
+			"Target": "Data/NPCGiftTastes",
+			"Action": "EditData",
+            "Entries": {
+                "{{ModId}}_Ryden": "I am astounded! What a wonderful gift!$h/228 837 213/I'm flattered, @! Thank you./206 194 -4 -5/Well, this is... cute.$s//Why would you bestow upon me something so detestable?$a/256 -21 -22/I can surely find use for this. Thank you, @.//"
+            }
+        }
+	]
+}

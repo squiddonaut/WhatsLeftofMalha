@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="6" height="9" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="19">
+ <properties>
+  <property name="AmbientLight" value="110 110 110"/>
+  <property name="Light" value="7 3 6 3 9 6 6 3 4 1 3 4 10 3 4 7 8 4"/>
+  <property name="Warp" value="3 10 Beach 49 11"/>
+ </properties>
+ <tileset firstgid="1" name="path" tilewidth="16" tileheight="16" tilecount="64" columns="4">
+  <image source="paths.png" width="64" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="z_MalhaInterior" tilewidth="16" tileheight="16" tilecount="900" columns="30">
+  <image source="z_MalhaInterior.png" width="480" height="480"/>
+ </tileset>
+ <tileset firstgid="965" name="untitled tile sheet" tilewidth="16" tileheight="16" tilecount="2176" columns="32">
+  <image source="townInterior.ru-RU.png" width="512" height="1088"/>
+ </tileset>
+ <layer id="1" name="Back" width="6" height="9">
+  <data encoding="csv">
+701,701,701,255,255,701,
+427,427,427,427,427,427,
+197,197,197,197,197,197,
+135,136,135,136,135,136,
+165,166,165,166,165,166,
+195,196,195,196,195,196,
+165,166,165,166,165,166,
+195,196,195,196,195,196,
+165,166,165,166,165,166
+</data>
+ </layer>
+ <layer id="2" name="Buildings" width="6" height="9">
+  <data encoding="csv">
+255,255,255,868,869,255,
+197,197,197,197,197,197,
+290,290,290,290,290,290,
+0,960,961,958,959,287,
+0,0,0,0,0,0,
+0,0,112,113,114,0,
+0,0,142,143,144,0,
+0,0,0,253,0,0,
+0,0,0,0,962,963
+</data>
+ </layer>
+ <layer id="3" name="Front" width="6" height="9">
+  <data encoding="csv">
+232,233,232,233,232,233,
+0,900,901,898,899,227,
+0,930,931,928,929,257,
+0,0,0,0,0,0,
+0,0,82,83,84,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="Paths" width="6" height="9">
+  <data encoding="csv">
+9,9,9,9,9,9,
+0,0,0,0,0,9,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,8,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="5" name="AlwaysFront" width="6" height="9">
+  <data encoding="csv">
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="6" name="Back"/>
+ <objectgroup id="7" name="Buildings"/>
+ <objectgroup id="8" name="Front"/>
+ <objectgroup id="9" name="Paths"/>
+ <objectgroup id="10" name="AlwaysFront"/>
+</map>

@@ -1,0 +1,436 @@
+{
+    "Format": "2.0.2",
+     "ConfigSchema": {
+        "PondPatio": {
+            "AllowValues": "true, false",
+            "Default": true
+        },
+        "Homophobia": {
+            "AllowValues": "true, false",
+            "Default": true
+        },
+		"MalhaNPCPerfection": {
+            "AllowValues": "true, false",
+            "Default": true
+		}
+    },
+	"DynamicTokens": [
+		//Don't be scared by these! They just make some 1.6 stuff easier :)
+			//Used for town values
+        {
+            "Name": "Sonia",
+            "Value": "{{ModId}}_Sonia"
+        },
+		{
+			"Name": "RydenNPCUnlocked",
+			"Value": false 
+		},
+		{
+			"Name": "RydenNPCUnlocked",
+			"Value": true,
+			"When": {
+				"HasSeenEvent": "{{ModId}}_RydenRescued"
+			}
+		},
+		{
+			"Name": "SoniaNPCUnlocked",
+			"Value": false
+		},
+		{
+			"Name": "SoniaNPCUnlocked",
+			"Value": true,
+			"When": {
+				"HasSeenEvent": "{{ModId}}_CrochetTime"
+			}
+		},
+		{
+			"Name": "CastleHouseStatus",
+			"Value": "Ruins"
+		},
+		{
+			"Name": "CastleHouseStatus",
+			"Value": "Restored",
+			"When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+			}
+		},
+		{
+			"Name": "SoniaHouseStatus",
+			"Value": "Ruins"
+		},
+		{
+			"Name": "SoniaHouseStatus",
+			"Value": "Restored",
+			"When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.SoniaHouse}} >= 0": true
+			}
+		},
+	],
+    "Changes": [
+	//Inclusions to help seperate longer 1.6 files
+	{
+		"LogName": "What's left of Malha Inclusions",
+		"Action": "Include",
+		"FromFile": "data/InfoRyden.json, data/InfoSonia.json, data/InfoMarcus.json, data/WLMLocations.json, data/WLMhats.json, data/WLMMusic.json, data/RydenHeartEvents.json, data/SoniaHeartEvents.json, data/WLMQuests.json"
+	},
+	{
+		"LogName": "Festival Inclusions",
+		"Action": "Include",
+		"FromFile": "data/WLMFestivals.json",
+		"When": {
+			"HasSeenEvent": "{{ModId}}_SoniIntro"
+		}
+	},
+
+    //Temp NPCs
+    
+//Map Stuff
+        { //NPCWarp for {{ModId}}_Ryden
+            "Action": "EditMap",
+            "Target": "Maps/Beach",
+            "MapProperties": {
+                "NPCWarp": "15 38 Custom_Malha_Malha 28 0"
+            }
+        },
+        { //adds warp to Malha after {{ModId}}_Ryden lets you into Malha
+            "Action": "EditMap",
+            "Target": "Maps/Beach",
+            "AddWarps": [
+               "16 38 Custom_Malha_Malha 28 2"
+            ],
+            "When": {
+                "HasSeenEvent | contains={{ModId}}_MalhaUnlock": true
+         }
+        },
+        { //Adds bubble to Beach after {{ModId}}_Ryden lets you into Malha
+            "Action": "EditMap",
+            "Target": "Maps/Beach",
+            "FromFile": "assets/Maps/Beach.tmx",
+            "FromArea": { "X": 14, "Y": 37, "Width": 4, "Height": 3},
+			"ToArea": { "X": 14, "Y": 37, "Width": 4, "Height": 3},
+            "When": {
+                "HasSeenEvent | contains={{ModId}}_MalhaUnlock": true
+         }
+        },
+        { //Adds bubble to Beach to Night Market
+            "Action": "EditMap",
+            "Target": "Maps/Beach-NightMarket",
+            "AddWarps": [
+               "15 38 Custom_Malha_Malha 29 0"
+            ],
+            "When": {
+                "HasSeenEvent | contains={{ModId}}_MalhaUnlock": true
+         }
+        },
+        { //{{Sonia}} Bundle Completion
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_SoniaHouse",
+            "FromFile": "assets/Maps/SoniaHouseRestored.tmx",
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.SoniaHouse}} >= 0": true
+            }
+        },
+        { //{{ModId}}_Ryden Bundle Completion
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Castle",
+            "FromFile": "assets/Maps/CastleRestored.tmx",
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+            }
+        },
+        { //{{ModId}}_Ryden Bundle Completion Properties
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Castle",
+            "MapProperties": {
+                "AmbientLight": "95 95 95",
+                "Light": "10 15 4 16 15 4 22 12 4 28 12 4 34 15 4 38 15 4 37 2 4 44 2 4",
+                "DayTiles": "Front 5 2 571 Front 5 3 601 Front 12 2 571 Front 12 3 601 Front 18 13 724 Front 18 14 754 Front 32 13 724 Front 32 14 754",
+                "NightTiles": "Front 5 2 570 Front 5 3 600 Front 12 2 570 Front 12 3 600 Front 18 13 723 Front 18 14 753 Front 32 13 723 Front 32 14 753"
+            },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+            }
+        },
+        { //Castle Doors
+            "Action": "EditImage",
+            "Target": "LooseSprites/Cursors",
+            "FromFile": "assets/Maps/castledoor.png",
+            "ToArea": { "X": 512, "Y": 144, "Width": 64, "Height": 48 },
+            "When": {
+                "LocationName": "Custom_Malha_Castle"
+                },
+            "Update": "OnLocationChange"
+        },
+        { //Also Castle Doors teehee
+            "Action": "EditImage",
+            "Target": "Maps/townInterior",
+            "FromFile": "assets/Maps/castledoor.png",
+            "FromArea": { "X": 0, "Y": 0, "Width": 16, "Height": 48 },
+            "ToArea": { "X": 384, "Y": 16, "Width": 16, "Height": 48 },
+            "When": {
+                "LocationName": "Custom_Malha_Castle"
+                },
+            "Update": "OnLocationChange"
+        },
+        { //Castle Doors restored
+            "Action": "EditImage",
+            "Target": "LooseSprites/Cursors",
+            "FromFile": "assets/Maps/castledoorrestored.png",
+            "ToArea": { "X": 512, "Y": 144, "Width": 64, "Height": 48 },
+            "When": {
+                "LocationName": "Custom_Malha_Castle",
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+                },
+            "Update": "OnLocationChange"
+        },
+        { //Also Castle Doors restored
+            "Action": "EditImage",
+            "Target": "Maps/townInterior",
+            "FromFile": "assets/Maps/castledoorrestored.png",
+            "FromArea": { "X": 0, "Y": 0, "Width": 16, "Height": 48 },
+            "ToArea": { "X": 384, "Y": 16, "Width": 16, "Height": 48 },
+            "When": {
+                "LocationName": "Custom_Malha_Castle",
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true
+                },
+            "Update": "OnLocationChange"
+        },
+//Unlockable Bundles Stuff
+        {
+            "Action": "Load",
+            "Target": "Mods/squiddonaut.WhatsLeftofMalha/{{Sonia}}",
+            "FromFile": "assets/BundleIcons/Sonia.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Mods/squiddonaut.WhatsLeftofMalha/{{ModId}}_Ryden",
+            "FromFile": "assets/BundleIcons/Ryden.png"
+        },
+        {
+            "Action": "EditData",
+            "Target": "UnlockableBundles/Bundles",
+            "Entries":{
+            "Malha.SoniaHouse": {
+                "Location": "Malha_SoniaHouse",
+                "BundleName": "Sonia's Bundle",
+                "BundleIconAsset": "Mods/squiddonaut.WhatsLeftofMalha/Sonia",
+                "BundleSlots": 4,	  
+                "ShopPosition": "15, 15",
+                "ShopType": "CCBundle",
+                "BundleReward": {
+                    "money": 50000,
+                    "645": 3 //Iridium Sprinkler
+                    },
+                "Price": {
+                  "221": 1, //Pink cake
+                  "344": 3, //jelly ;)
+                  "577": 1, //Fairy Stone
+                  "595:gold": 5, //Gold Fairy Rose
+                  "636": 10 //Peach
+                    }
+                 }
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "UnlockableBundles/Bundles",
+            "Entries":{
+            "Malha.Castle": {
+                "Location": "Custom_Malha_Castle",
+                "BundleName": "Ryden's Bundle",
+                "BundleIconAsset": "Mods/squiddonaut.WhatsLeftofMalha/{{ModId}}_Ryden",
+                "BundleSlots": 4,	  
+                "ShopPosition": "11, 9",
+                "ShopType": "CCBundle",
+                "BundleReward": {
+                    "money": 50000,
+                    "204": 3, //Lucky Lunch
+                    "265": 3,  //Seafoam Pudding
+                    "201": 3 //Complete Breakfast
+                  },
+                "Price": {
+                  "228": 1, //Maki Roll
+                  "715": 1, //Lobster
+                  "226": 1, //Spicy Eel
+                  "614": 1 //Green tea
+                }
+              }
+            }
+        }, 
+
+//Temp Actors
+        {
+            "Action": "Load",
+            "Target": "Characters/{{ModId}}_SoniaMom",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/SoniaParents/SoniaMom.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/{{ModId}}_SoniaDad",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/SoniaParents/SoniaDad.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/{{ModId}}_SoniaMom",
+            "FromFile": "assets/CharacterFiles/Portraits/SoniaParents/SoniaMom.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/{{ModId}}_SoniaDad",
+            "FromFile": "assets/CharacterFiles/Portraits/SoniaParents/SoniaDad.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/{{ModId}}_Shea",
+            "FromFile": "assets/CharacterFiles/OverworldSprites/Shea/Shea.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/{{ModId}}_Shea",
+            "FromFile": "assets/CharacterFiles/Portraits/Shea/Shea.png"
+        },
+//Malha Lighting
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "125 125 125"
+                },
+                "When": {
+                    "Time": "{{Range: 600, 1650}}"
+                },
+                 "Update": "OnTimeChange"
+        },
+         {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "145 145 145"
+                },
+                "When": {
+                    "Time": "{{Range: 1700, 1720}}"
+                },
+                "Update": "OnTimeChange"
+        },
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "165 165 165"
+                },
+                "When": {
+                    "Time": "{{Range: 1730, 1750}}"
+                },
+                "Update": "OnTimeChange"
+        },
+        {
+            "Action": "EditMap",
+            "Target": "Maps/Custom_Malha_Malha",
+            "MapProperties": {
+                    "AmbientLight": "185 185 185"
+                },
+                "When": {
+                    "Time": "{{Range: 1800, 2600}}"
+                },
+                "Update": "OnTimeChange"
+        },
+//end Malha lighting
+//Events
+        { //Mail Events
+            "Action": "EditData",
+            "Target": "Data/Events/Farmhouse",
+            "Entries": {
+                "{{ModId}}_RydenDateLetter/f {{ModId}}_Ryden 2000/x {{ModId}}_Mail_RydenDate": "null"
+            }
+        },
+        { //Castle Events
+            "Action": "Load",
+            "Target": "Data/Events/Custom_Malha_Castle",
+            "FromFile": "assets/Events/Custom_Malha_Castle.json"
+        }, 
+        { //Sonia's House Events
+            "Action": "Load",
+            "Target": "Data/Events/Custom_Malha_SoniaHouse",
+            "FromFile": "assets/Events/Custom_Malha_SoniaHouse.json"
+        },
+        { //Malha Events
+        "Action": "Load",
+        "Target": "Data/Events/Custom_Malha_Malha",
+        "FromFile": "assets/Events/Custom_Malha_Malha.json"
+    },
+        {
+            "Action": "EditData",
+            "Target": "Data/Events/Beach",
+            "Entries": {
+                "{{ModId}}_BeachRequest/b 1/t 600 1900": "ocean/-1000 -1000/farmer 40 24 1 {{ModId}}_Ryden 100 100 0/addTemporaryActor {{ModId}}_Ryden_Temporary 32 32 49 24 0 false/showFrame {{ModId}}_Ryden_Temporary 26/addQuest WashedUpMerman/skippable/changeName {{ModId}}_Ryden ???/fade unfade/viewport 48 24/fade true/move farmer 3 0 1/shake {{ModId}}_Ryden 1000/pause 3000/speak {{ModId}}_Ryden \"Urgh...$8\"/move farmer 4 0 1/pause 2000/speak {{ModId}}_Ryden \"Fish tacos...$8\"/emote farmer 8/speak {{ModId}}_Ryden \"All I need... is one fish taco...$8\"/shake {{ModId}}_Ryden 1000/pause 3000/speak {{ModId}}_Ryden \"Huh? ...A human?$9#$b#You there... please, hear my plea.$8\"/pause 1500/speak {{ModId}}_Ryden \"I just need one fish taco...$8\"/end",
+                "{{ModId}}_RydenRescued/e {{ModId}}_BeachRequest/i 213": "ocean/-1000 -1000/farmer 43 24 1 {{ModId}}_Ryden 100 100 0/addTemporaryActor {{ModId}}_Ryden_Temporary 32 32 49 24 0 false/showFrame {{ModId}}_Ryden_Temporary 26/skippable/removeQuest WashedUpMerman/changeName {{ModId}}_Ryden ???/fade unfade/viewport 48 24/fade true/move farmer 4 0 1/pause 2000/speak {{ModId}}_Ryden \"That smell...$8#$b#Could it be...?$9\"/addObject 48 24 213/removeItem 213/playSound throwDownITem/pause 1500/speak {{ModId}}_Ryden \"Yes... finally...$8\"/pause 1000/removeObject 48 24/playSound eat/pause 1000/speak {{ModId}}_Ryden \"Ahhh... I can feel the power surging through me...$10\"/pause 500/globalFade 0.04/viewport -1000 -1000/playSound wand/screenFlash 1/warp farmer 12 35/faceDirection farmer 2/warp {{ModId}}_Ryden 12 37/faceDirection {{ModId}}_Ryden 2/warp {{ModId}}_Ryden_Temporary 100 -100/pause 800/fade/viewport 12 39 clamp/pause 1000/animate {{ModId}}_Ryden false false 100 1 5 9 13 1/pause 500/playSound yoba/animate {{ModId}}_Ryden false true 2500 16/pause 2500/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"YES!$h\"/stopAnimation {{ModId}}_Ryden/playMusic musicboxsong/pause 1500/move {{ModId}}_Ryden 0 1 2/speak {{ModId}}_Ryden \"I thought I'd never gaze upon the sea in all of its glory again...\"/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Human! You have my deepest of gratitudes.$h#$b#Perhaps we will meet again, but for now, I must take my leave.\"/faceDirection {{ModId}}_Ryden 2/move {{ModId}}_Ryden 0 1 2/speak {{ModId}}_Ryden \"So long!\"/pause 3000/shake {{ModId}}_Ryden 1000/playMusic ocean/pause 2500/emote farmer 8/pause 2000/speak {{ModId}}_Ryden \"...$7\"/pause 2500/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Have you ever heard about the fate of Malha?$11#$b#It's not a story most merfolk will tell you.$7\"/move farmer 0 1 2/pause 1000/faceDirection {{ModId}}_Ryden 2/playMusic echos/speak {{ModId}}_Ryden \"Long ago, the city of Malha was founded as a safe haven for merfolk from all across the Gem Sea.$11#$b#The city grew in size and power, becoming a hub of trade and culture within the vast expanse of the sea.$11#$b#No one ever thought that a city so prosperous could fall so easily.$7#$b#Previously docile sea creatures became suddenly agitated, tearing down our walls and ravaging our homeland.$11#$b#It can't be said for sure, but many believe that they were provoked by the poisoning of our waters.$11#$b#Only one last bastion remains - yet even it is in disarray.$11#$b#It was in the defense of this last bastion that I was defeated and found myself here.$7\"/pause 500/faceDirection {{ModId}}_Ryden 0/pause 1000/faceDirection {{ModId}}_Ryden 2/playMusic none/speak {{ModId}}_Ryden \"I owe the merpeople my presence, but...$s#$b#It is a place I hesitate to return to.$7\"/playMusic ocean/pause 3000/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Human! With my powers restored, I can transform into one of your kind at will.$0#$b#Perhaps I could... come back around every once in a while?$u\"/faceDirection {{ModId}}_Ryden 2/animate {{ModId}}_Ryden false false 100 1 5 9 13 1/pause 500/playSound yoba/animate {{ModId}}_Ryden false true 1000 16/speak {{ModId}}_Ryden \"So long for now!$h\"/stopAnimation {{ModId}}_Ryden/globalFade 0.03/viewport -1000 -1000/pause 1000/playSound pullItemFromWater/pause 2000/end invisible {{ModId}}_Ryden"
+            }
+        },  
+        {//Ryden lets you into Malha
+            "Action": "EditData",
+                "Target": "Data/Events/Town",
+                "Entries": { 
+                    "{{ModId}}_MalhaUnlock/e {{ModId}}_RydenRescued/e 611439/f {{ModId}}_Ryden 500/t 1000 1900": "springtown/-1000 -1000/farmer 52 29 0 {{ModId}}_Ryden 50 22 0/addQuest MeetingSonia/skippable/fade/viewport 52 24/advancedMove {{ModId}}_Ryden false 5 0 4 1/pause 500/move farmer 0 -4 0/pause 2000/move {{ModId}}_Ryden -5 0 0/pause 2000/move {{ModId}}_Ryden 2 0 0/pause 1000/speak {{ModId}}_Ryden \"Hmmm...$u\"/pause 500/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"Oh! Hello there, @!\"/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Every time I've visited Pelican Town, this community center has caught my eye.#$b#I sense a magical presence in the area...$u\"/faceDirection {{ModId}}_Ryden 2/quickQuestion Tell me - have you seen anything peculiar?#I think I've seen some kind of spirits...#Yeah. Magical apples.(break)speak {{ModId}}_Ryden \"Spirits, you say? That is most intriguing...$u\"(break)speak {{ModId}}_Ryden \"Magical apples, you say? That is most intriguing...$u\"/playMusic none/pause 1000/speak {{ModId}}_Ryden \"@... can I ask something of you that might sound a little bit crazy?\"/emote farmer 32/pause 500/faceDirection {{ModId}}_Ryden 0/pause 500/speak {{ModId}}_Ryden \"...I want you to come to Malha.$7\"/faceDirection {{ModId}}_Ryden 2/playMusic malha_malharuins/speak {{ModId}}_Ryden \"There's something I haven't been telling you.$s#$b#...I'm actually a prince.$7#$b#For years now, I have watched my people suffer... and I have not been able to do anything about it.$s#$b#Unlike mermaids, humans are generally numb to magic. But if you have a uniquely intimate connection to the arcane forces of nature...$s#$b#You might just be the cure to our ailment.\"/pause 200/move {{ModId}}_Ryden 0 1 2/pause 500/speak {{ModId}}_Ryden \"In my time on the surface, @... you have become a dear friend.#$b#I trust that you would not do anything to endanger Malha.#$b#With all that said... wait one moment.\"/move {{ModId}}_Ryden 0 -1 2/pause 500/shake {{ModId}}_Ryden 1000/pause 1000/playSound wand/screenFlash 1/pause 500/speak {{ModId}}_Ryden \"Don't fear, @. It was simply a spell of water breathing, and nothing more.#$b#Visit the westernmost dock on the beach tomorrow, and I will have opened a magical method of transport for you.#$b#I will eagerly await your arrival.$h\"/playMusic none/move {{ModId}}_Ryden -1 0 2/move {{ModId}}_Ryden 0 6 2/faceDirection farmer 2/pause 500/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"One more thing, @. There's a little house nestled into a shipwreck in the northeastern part of Malha where my friend Sonia lives.#$b#I know that she would just love to meet you... so stop by when you can, okay?$h\"/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"See you!$h\"/move {{ModId}}_Ryden 0 5 2 true/pause 500/end "
+                }
+        },
+        { //Meeting Ryden's Dad
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Malha",
+            "Entries": {
+                "{{ModId}}_MarcusIntro/e {{Sonia}}Intro/e {{ModId}}_DaddyIssues/A custom_malha_{{Sonia}}intro/t 800 1900": "malha_malharuins/-1000 -1000/farmer 42 35 2 {{ModId}}_Ryden 30 35 2 {{ModId}}_Marcus 29 35 2/skippable/fade/viewport 33 41/advancedMove {{ModId}}_Ryden false 0 7 4 2000/advancedMove farmer false 0 7 3 2000/pause 500/advancedMove {{ModId}}_Marcus false 0 4 4 2000/pause 4500/faceDirection {{ModId}}_Ryden 3/pause 300/faceDirection {{ModId}}_Ryden 1/emote {{ModId}}_Ryden 16/pause 500/speak {{ModId}}_Ryden \"@! Hide!$a\"/speed farmer 6/move farmer 3 0 2/move farmer 0 5 3/move farmer -4 0 0/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden 11 0 2/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden 0 3 0/faceDirection {{ModId}}_Marcus 2/pause 250/faceDirection {{ModId}}_Marcus 1/pause 250/faceDirection {{ModId}}_Marcus 2/pause 500/speak {{ModId}}_Marcus \"Ryden? Where did you go?\"/move {{ModId}}_Marcus 0 3 1/pause 1000/emote {{ModId}}_Marcus 8/pause 500/speed {{ModId}}_Marcus 4/viewport move 2 1 3500/move {{ModId}}_Marcus 12 0 2/speak {{ModId}}_Marcus \"Ryden? Why are you standing there?\"/speak {{ModId}}_Ryden \"Eheh... I'm simply... showing reverence. By standing out of the way.\"/speak {{ModId}}_Marcus \"Yeah, right. Like you've ever shown me reverence a day in your life.$u\"/faceDirection {{ModId}}_Marcus 1/speak {{ModId}}_Marcus \"The sooner you stop idling around like an idiot, the sooner we can go survey the plains.$u\"/emote {{ModId}}_Marcus 16/faceDirection {{ModId}}_Marcus 2/speak {{ModId}}_Marcus \"Did I just see bubbles come out from behind that wall?$a\"/emote {{ModId}}_Ryden 28/speak {{ModId}}_Ryden \"Eheh... bubbles! Don't be ridiculous!$h\"/speak {{ModId}}_Marcus \"Ryden, if you're trying to hide a sea monster from me...$a\"/speak {{ModId}}_Ryden \"Of course not, father! I would never dream of such a thing!$6\"/speak {{ModId}}_Marcus \"Then you won't care if I take a quick look...\"/move {{ModId}}_Marcus 4 0 2/move {{ModId}}_Marcus 0 1 2/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden 4 0 0/speak {{ModId}}_Ryden \"This really isn't necessary, father!$6\"/speak {{ModId}}_Marcus \"Move. Or else.$a\"/pause 1000/speak {{ModId}}_Ryden \"Fine, but... promise not to get mad.$s\"/speak {{ModId}}_Marcus \"I'll get mad if what I'm about to see is deserving of anger.$a\"/emote {{ModId}}_Ryden 28/pause 2000/move {{ModId}}_Ryden 2 0 3/playMusic malha_ambience/move {{ModId}}_Marcus 0 4 3/faceDirection farmer 1/speak {{ModId}}_Marcus \"!!!$6#$b#RYYYYYDEEEEEN!$a\"/shake {{ModId}}_Ryden 1500/pause 1500/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden 0 3 3/speed {{ModId}}_Ryden 6/move {{ModId}}_Ryden -2 0 0/speak {{ModId}}_Ryden \"Please don't hurt him!$a^Please don't hurt her!$a\"/pause 1000/speed {{ModId}}_Marcus 1/move {{ModId}}_Marcus -3 0 3/faceDirection {{ModId}}_Ryden 3/pause 2000/speak {{ModId}}_Marcus \"So this is what you think of Malha's legacy?$u\"/speak {{ModId}}_Ryden \"Dad, it's not like that...$s\"/faceDirection {{ModId}}_Marcus 1/pause 2000/speak {{ModId}}_Marcus \"Get out of my sight. Both you and that...$u\"/faceDirection {{ModId}}_Marcus 3/speak {{ModId}}_Marcus \"...thing.$u\"/faceDirection {{ModId}}_Marcus 1/speak {{ModId}}_Marcus \"NOW!$a\"/pause 500/speak {{ModId}}_Ryden \"...$s\"/move {{ModId}}_Ryden -5 0 3/faceDirection {{ModId}}_Marcus 3/faceDirection farmer 3/speak {{ModId}}_Ryden \"...Come on, @.$7\"/move {{ModId}}_Ryden -7 0 3 true/pause 500/globalFade/viewport -1000 -1000/end"
+            },
+            "When": {
+                    "HasSeenEvent | contains={{ModId}}_SoniIntro": true,
+                    "HasSeenEvent | contains={{ModId}}_DaddyIssues": true
+            }
+        },
+        { //Sonia House Restored <4 Heart
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_SoniaHouse",
+            "Entries": {
+                "{{Sonia}}HouseRestored/e {{ModId}}_MalhaUnlock": "none/-1000 -1000/farmer 100 100 0 {{Sonia}} 9 9 0/skippable/fade/viewport 9 9/faceDirection {{Sonia}} 3/faceDirection {{Sonia}} 0/faceDirection {{Sonia}} 1/playMusic junimoStarSong/speak {{Sonia}} \"What the...$7#$b#It's... it's beautiful!$10\"/warp farmer 9 13/move farmer 0 -2 0/faceDirection {{Sonia}} 2/speak {{Sonia}} \"Did you... did you do this?$11\"/emote farmer 32/faceDirection {{Sonia}} 1/pause 1000/speak {{Sonia}} \"It's exactly like it used to be... no, it's even better.#$b#I don't know how you did this, but...$s#$b#...Thank you.$9\"/faceDirection {{Sonia}} 2/speak {{Sonia}} \"I mean it, by the way. Even though you're a human...$u#$b#This is nice.\"/faceDirection {{Sonia}} 1/pause 800/speak {{Sonia}} \"Now get out of my house before I give you something to be sorry about.$9\"/move farmer 0 2 0/warp farmer 100 100/end"
+            },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.{{Sonia}}House}} >= 0": true,
+                "Query: {{Hearts:{{Sonia}} }} < 4": true,
+                "Day|contains=0": false
+                 }
+        },
+        { //Sonia House Restored >4 Heart
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_SoniaHouse",
+            "Entries": {
+                "{{Sonia}}HouseRestored/e {{ModId}}_MalhaUnlock": "none/-1000 -1000/farmer 100 100 0 {{Sonia}} 9 9 0/skippable/fade/viewport 9 9/faceDirection {{Sonia}} 3/faceDirection {{Sonia}} 0/faceDirection {{Sonia}} 1/playMusic junimoStarSong/speak {{Sonia}} \"What the...$7#$b#It's... it's beautiful!$10\"/warp farmer 9 13/move farmer 0 -2 0/faceDirection {{Sonia}} 2/speak {{Sonia}} \"Did you... did you do this?$11\"/emote farmer 32/faceDirection {{Sonia}} 1/pause 1000/speak {{Sonia}} \"It's exactly like it used to be... no, it's even better.#$b#I don't know how you did this, but...$s#$b#...Thank you. From the bottom of my heart.\"/faceDirection {{Sonia}} 2/speak {{Sonia}} \"When I first met you, I thought you'd only bring Malha trouble, but...$s#$b#You've really proven me wrong.#$b#Come see me sometime, okay?$h\"/emote farmer 32/pause 500/move farmer 0 2 0/warp farmer 100 100/end"
+            },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true,
+                "Query: {{Hearts:{{Sonia}} }} >= 4": true,
+                "Day|contains=0": false
+                 }
+        },
+        { //Castle Restored No Marcus
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Castle",
+            "Entries": {
+                "{{ModId}}_CastleRestored/e {{ModId}}_MalhaUnlock": "none/-1000 -1000/farmer 25 31 0 {{ModId}}_Ryden 7 5/skippable/fade/viewport 8 7/move {{ModId}}_Ryden 1 0 2/textAboveHead {{ModId}}_Ryden \"Yawn...\"/move {{ModId}}_Ryden 0 3 2/pause 1000/faceDirection {{ModId}}_Ryden 3/pause 500/faceDirection {{ModId}}_Ryden 1/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"Oh my stars...$6#$b#...@!$h\"/globalFade/viewport -1000 -1000/warp {{ModId}}_Ryden 25 21/faceDirection {{ModId}}_Ryden 0/fade/viewport 25 23/move farmer 0 -6 0/faceDirection {{ModId}}_Ryden 2/jump {{ModId}}_Ryden/speak {{ModId}}_Ryden \"Oh, @!$h\"/speed {{ModId}}_Ryden 5/move {{ModId}}_Ryden 0 3 2/speak {{ModId}}_Ryden \"I KNEW there was something different about you!$h#$b#Thank you. So much.\"/faceDirection {{ModId}}_Ryden 1/speak {{ModId}}_Ryden \"Just wait until my dad sees this... it'll blow his scales off!$h\"/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"Now we can play cards on a brand-spanking-new carpet, cook in a clean kitchen...#$b#And it's all because of you, @.$h\"/emote farmer 32/emote {{ModId}}_Ryden 32/pause 500/end"
+            },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true,
+                "HasSeenEvent | contains={{ModId}}_MarcusIntro": false
+
+                 }
+        },
+        { //Castle Restored Yes Marcus
+            "Action": "EditData",
+            "Target": "Data/Events/Custom_Malha_Castle",
+            "Entries": {
+                "{{ModId}}_CastleRestored/e {{ModId}}_MalhaUnlock": "junimoStarSong/-1000 -1000/farmer 25 31 0 {{ModId}}_Ryden 7 5 1 {{ModId}}_Marcus -100 -100 3/skippable/fade/viewport 8 7/move {{ModId}}_Ryden 1 0 2/textAboveHead {{ModId}}_Ryden \"Yawn...\"/move {{ModId}}_Ryden 0 3 2/pause 1000/faceDirection {{ModId}}_Ryden 3/pause 500/faceDirection {{ModId}}_Ryden 1/faceDirection {{ModId}}_Ryden 2/speak {{ModId}}_Ryden \"Oh my stars...$6#$b#...@!$h\"/globalFade/viewport -1000 -1000/warp {{ModId}}_Ryden 25 21/faceDirection {{ModId}}_Ryden 0/fade/viewport 25 23/move farmer 0 -6 0/faceDirection {{ModId}}_Ryden 2/jump {{ModId}}_Ryden/speak {{ModId}}_Ryden \"Oh, @!$h\"/speed {{ModId}}_Ryden 5/move {{ModId}}_Ryden 0 3 2/warp {{ModId}}_Marcus 35 17/advancedMove {{ModId}}_Marcus false -3 0 0 3 -7 0 2 500/speak {{ModId}}_Ryden \"I KNEW there was something different about you!$h#$b#Thank you. So much.\"/pause 2000/speak {{ModId}}_Marcus \"I can't believe it...$6\"/faceDirection {{ModId}}_Ryden 0/speak {{ModId}}_Ryden \"Oh, dad, isn't this just the best? And it's all because of @!$h\"/speak {{ModId}}_Marcus \"What, you mean that land dweller? Don't be ridiculous.#$b#This must have been a divine intervention of some kind...$u\"/emote {{ModId}}_Ryden 28/pause 500/speak {{ModId}}_Marcus \"Tch, I suppose today is a day for celebration, so I will let my reservations go unsaid for now...$u\"/move {{ModId}}_Marcus 1 0 2/move {{ModId}}_Marcus 0 7 2/faceDirection farmer 2/faceDirection {{ModId}}_Ryden 2/pause 1000/faceDirection {{ModId}}_Marcus 2/speak {{ModId}}_Marcus \"And Ryden? If you had any part in making this happen...#$b#Thank you.$u\"/move {{ModId}}_Marcus 0 4 2/warp {{ModId}}_Marcus -100 -100/emote {{ModId}}_Ryden 32/pause 500/faceDirection farmer 0/speak {{ModId}}_Ryden \"Wow... I'm so excited!$h#$b#We can play cards on a brand-spanking-new carpet, cook in a clean kitchen...$u#$b#This really is a wonderful day.$h#$b#And it's all because of you, @.\"/emote farmer 32/pause 500/end"
+                },
+            "When": {
+                "Query: {{DLX.Bundles/DaysSincePurchase:Malha.Castle}} >= 0": true,
+                "HasSeenEvent | contains={{ModId}}_MarcusIntro": true
+                }
+        }
+           
+    ]
+}

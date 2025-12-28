@@ -1,0 +1,484 @@
+{
+	"Changes": [
+		//Egg Festival
+		{
+			"LogName": "WLM Hunt Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/spring13",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 40 104 2/{{ModId}}_Sonia 41 104 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"MainEvent_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 40 104 2/{{ModId}}_Sonia 41 104 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "set-up", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "mainEvent", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 40 104 2/{{ModId}}_Sonia 41 104 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"MainEvent_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 40 104 2/{{ModId}}_Sonia 41 104 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "set-up_y2", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "mainEvent_y2", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			]
+		},
+		//Flower Dance
+		/*
+		{
+			"LogName": "WLM Flower Dance Positions Vanilla",
+			"Action": "EditData",
+			"Target": "Data/Festivals/spring24",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 22 43 2/{{ModId}}_Sonia 23 43 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"MainEvent_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 22 43 2/{{ModId}}_Sonia 23 43 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 22 43 2/{{ModId}}_Sonia 23 43 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"MainEvent_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 22 43 2/{{ModId}}_Sonia 23 43 2",
+				"Delimiter": "/",
+			},
+			],
+		},
+		*/
+		//Luau
+		{
+			"LogName": "Luau Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/summer11",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 25 38 2 {{ModId}}_Ryden_shore2/{{ModId}}_Sonia 26 38 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"MainEvent_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 25 38 2/{{ModId}}_Sonia 26 38 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 25 38 2 {{ModId}}_Ryden_shore2/{{ModId}}_Sonia 26 38 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"MainEvent_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 25 38 2/{{ModId}}_Sonia 26 38 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "set-up_y2", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "mainEvent_y2", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			]
+		},
+		//Moonlight Jellies
+		{
+			"LogName": "Moonlight Jellies Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/summer28",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 89 30 1/{{ModId}}_Sonia 85 32 3",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"MainEvent_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 36 41 2/{{ModId}}_Sonia 33 42 down",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "set-up", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "mainEvent", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 89 30 1/{{ModId}}_Sonia 85 32 3",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"MainEvent_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 36 41 2/{{ModId}}_Sonia 33 42 down",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "set-up_y2", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			{
+				"Operation": "Append",
+				"Target": ["Fields", "mainEvent_y2", 5],
+				"Value": "/animate {{ModId}}_Ryden false true 100 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1/animate {{ModId}}_Sonia false true 100 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1",
+			},
+			],
+		},
+		//Fall Festival
+		{
+			"LogName": "Stardew Valley Fair Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/fall16",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 25 71 2/{{ModId}}_Sonia 26 63 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 32 56 2/{{ModId}}_Sonia 34 68 2",
+				"Delimiter": "/",
+			},
+			]
+		},
+		//Spirit's Eve
+		{
+			"LogName": "Spirit's Eve Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/fall27",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 23 28 2/{{ModId}}_Sonia 34 62 0",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 36 34 2/{{ModId}}_Sonia 37 17 2",
+				"Delimiter": "/",
+			},
+			],
+		},
+		//Festival of Ice
+		{
+			"LogName": "Festival of Ice Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/winter8",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 66 14 1/{{ModId}}_Sonia 64 45 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 49 37 2/{{ModId}}_Sonia 49 39 0",
+				"Delimiter": "/",
+			},
+			],
+			"When": {	"HasMod |contains=FlashShifter.StardewValleyExpandedCP": "false",},
+		},
+		{
+			"LogName": "Festival of Ice Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/winter8",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 80 20 2/{{ModId}}_Sonia 79 21 1",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 68 12 2/{{ModId}}_Sonia 64 51 2",
+				"Delimiter": "/",
+			},
+			],
+			"When": {	"HasMod |contains=FlashShifter.StardewValleyExpandedCP": "true",},
+		},
+		//Feast of Winter Star
+		{
+			"LogName": "Winter Star Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/winter25",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 26 76 3/{{ModId}}_Sonia 26 78 3",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 26 76 3/{{ModId}}_Sonia 26 78 3",
+				"Delimiter": "/",
+			},
+			],
+			"When": {	"HasMod |contains=AndrewJC.CoalPointFarm": "true",},
+		},
+		{
+			"LogName": "Winter Star Festival Positions",
+			"Action": "EditData",
+			"Target": "Data/Festivals/winter25",
+			"TextOperations": [
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters"
+				],
+				"Value": "{{ModID}}_Ryden 30 62 2/{{ModId}}_Sonia 29 62 2",
+				"Delimiter": "/",
+			},
+			{
+				"Operation": "Append",
+				"Target": [
+					"Entries",
+					"Set-Up_additionalCharacters_y2"
+				],
+				"Value": "{{ModID}}_Ryden 30 62 2/{{ModId}}_Sonia 29 62 2",
+				"Delimiter": "/",
+			},
+			],
+			"When": {	"HasMod |contains=AndrewJC.CoalPointFarm": "false"}
+		},
+		
+		//Dialogue
+        {
+			"LogName": "EggFest Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/spring13",
+			"Entries": {
+				"{{ModId}}_Ryden": "I just love the smell of fresh eggs on a spring morning!$h",
+				"{{ModId}}_Sonia": "Ryden... they have the shells on. You can't smell them.$u"
+			}
+		},
+		/*
+        {
+			"LogName": "Flower Dance Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/spring24",
+			"Entries": {
+				"APTMarcus": "{{i18n:spring24.APTMarcus}}",
+				"APTMora": "{{i18n:spring24.APTMora}}",
+				"APTAshida": "{{i18n:spring24.APTAshida}}",
+			}
+		}, */
+        {
+			"LogName": "Luau Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/summer11",
+			"Entries": {
+				"{{ModId}}_Ryden": "Ahh... this is the life. Basking in the sun surrounded by the smell of food.$h",
+				"{{ModId}}_Sonia": "Human gatherings are so inane.$u"
+			}
+		},    
+		{
+			"LogName": "Jellies Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/summer28",
+			"Entries": {
+				"{{ModId}}_Ryden": "The Moonlight Jellies from the surface is such a unique sight. Most merfolk will never get to experience it.",
+				"{{ModId}}_Sonia": "...I want to go home.$u"
+			}
+		},
+        {
+			"LogName": "Fair Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/fall16",
+			"Entries": {
+				"{{ModId}}_Ryden": "Why do humans fish with POLES of all things?$a#$b#Get down there! Use your hands, for Alana's sake!$h",
+				"{{ModId}}_Ryden_y2": "Get Sonia to try this one. My arms are much too weak.$s",
+				"{{ModId}}_Sonia": "The slingshot is such a crude human invention. It would never work underwater.$u",
+				"{{ModId}}_Sonia_y2": "There's so many two-legs around here...$u#$b#Oh, well. I guess things can always be worse."
+			}
+		},
+        {
+			"LogName": "Spirit's Eve Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/fall27",
+			"Entries": {
+				"{{ModId}}_Ryden": "Oh dear, I'm starting to get dizzy...$h",
+				"{{ModId}}_Ryden_y2": "I need to get out of this maze soon, so everyone else can see the makeup I worked so hard on!$h",
+				"{{ModId}}_Sonia": "The monsters in the human world are so much... cuter.",
+				"{{ModId}}_Sonia_y2": "It's always a relief when I lose Ryden in these mazes.#$b#He whines like you wouldn't believe!$h"
+			}
+		},
+        {
+			"LogName": "IceFest Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/winter8",
+			"Entries": {
+				"{{ModId}}_Ryden": "Hey, building snowmen isn't so bad!$1",
+				"{{ModId}}_Ryden_y2": "Her sculpture is remarkably accurate, although she appears to have forgotten the gils...$0",
+				"{{ModId}}_Sonia": "I haven't felt my fingers in hours...$2"
+			}
+		},
+        {
+			"LogName": "Winterstar Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/winter25",
+			"Entries": {
+				"{{ModId}}_Ryden": "It feels a tad bittersweet celebrating the feast without my family..$2",
+				"{{ModId}}_Sonia": "I'm still thankful to have you, Ryden.$10#$b#I even got you some trinkets from the shopkeeper!$1"
+			},
+			"When": {	"HasMod |contains=AndrewJC.CoalPointFarm": "false"}
+		},
+		//I had them sit with my NPCs from Coal Point Farm at Winter Star because I thought it'd be cute! +The mod adds new table that's only half full. I tried to make Mora's dialogue oblivious to them being mermaids but finding solace in them both preferring to be alone- if it comes off as her knowing Sonia's a mermaid then you can just scrap this
+        {
+			"LogName": "Winterstar Dialogue",
+			"Action": "EditData",
+			"Target": "data/festivals/winter25",
+			"Entries": {
+				"{{ModId}}_Ryden": "That little one is so cute Ashida! You're so sweet to him.$1",
+				"{{ModId}}_Sonia": "I wasn't expecting it, but thank you all so much for letting us sit with you.$4",
+				"APTMora": "Sonia and I have a lot in common, if you think about it.$1#$e#We like to be alone, we both stay up late, we both don't really like other people..$6#$b#Although she seems to take that last one a little too far, sometimes.$7",
+			},
+			"When": {	"HasMod |contains=AndrewJC.CoalPointFarm": "true",},
+		},
+	]
+}
